@@ -10,6 +10,21 @@
   },
   "author": "",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ioPanda/erp.git"
+  },
+  "keywords": [
+    "marionette",
+    "browserify",
+    "backbone"
+  ],
+  "author": "MIS <travel2wxy@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ioPanda/erp/issues"
+  },
+  "homepage": "https://github.com/ioPanda/erp",
   "devDependencies": {
     "babel": "^6.5.2",
     "babel-polyfill": "^6.9.1",
