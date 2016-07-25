@@ -1,0 +1,36 @@
+[
+	    {
+		    "hasSub": false,
+		    "text": "主页",
+		    "path": "#index/index"
+		},
+		{
+		    "hasSub": false,
+		    "text": "年度规划会议",
+		    "path": "#index/index"
+		},
+		{
+		    "hasSub": false,
+		    "text": "测试",
+		    "path": "#colors"
+		},
+		{
+		    "hasSub": true,
+		    "text": "市场管理",
+		    "path": "#",
+		    "subMenu": 
+		    [{
+		        "text": "各类市场管理",
+		        "path": "#index/market"
+		    },
+		    {
+		        "text": "广告投放&订单",
+		        "path": "#index/ads"
+		    }]
+		},
+		  {
+		    "hasSub": false,
+		    "text": "退出",
+		    "path": "#exit"
+		  }
+	]
