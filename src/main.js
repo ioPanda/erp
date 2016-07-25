@@ -1,6 +1,6 @@
 
 import Backbone from 'backbone';
-import Application from './app/application';
+import Application from './application/application';
 
 import Index from './index/router';
 import Login from './login/router';
