@@ -4,15 +4,15 @@ ERP 沙盘虚拟运营平台
 An applicaiton built with Marionette.js.
 
 ## 开始
-[Clone]() or [Download]() this repo.
+[Clone](https://github.com/ioPanda/erp.git) or [Download](https://github.com/ioPanda/erp/archive/master.zip) this repo.
 
 ```sh
-git clone && cd 
+git clone git@github.com:ioPanda/erp.git && cd erp
 ```
 
 确认 [Node.js](http://nodejs.org/) & [npm](https://www.npmjs.org/) 已经
 [installed](http://nodejs.org/download/).
-建议使用 [nvm]().
+建议使用 [nvm](https://github.com/creationix/nvm) || [nvm-windows](https://github.com/coreybutler/nvm-windows).
 
 ```sh
 npm install 
@@ -36,4 +36,5 @@ gulp watch
 
 ===
 
-&copy; 2014-2016 重邮信管工作室. Distributed under [ISC license](LICENSE.md).
+&copy; 2014-2016 重邮信管工作室. 
+Distributed under [ISC license](LICENSE.md).
