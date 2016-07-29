@@ -17,14 +17,6 @@ export default Marionette.Object.extend({
   },
 
   onModelChange() {
-    nprogress.start();
-    Util.save(this.model)
-        .then(() => {
-          history.navigate('pregame', { trigger: true });
-        })
-        .catch(() => {
-          nprogress.done(true);
-          console.log('login ajax failed');
-        });
+    // ..
   }
 });

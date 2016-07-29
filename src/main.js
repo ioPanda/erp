@@ -2,6 +2,9 @@
 import Backbone from 'backbone';
 import Application from './application/application';
 
+import Aside from './component/aside/service';
+import Header from './component/header/service'
+
 import Index from './index/router';
 import Login from './login/router';
 import Group from './group/router';
@@ -10,6 +13,15 @@ import Admin from './admin/router';
 
 let app = new Application();
 
+/* init global layout */
+Aside.setup({
+    container: app.layout.aside
+});
+Header.setup({
+	container: app.layout.header
+});
+
+/* init router */
 app.index = new Index({
 	container: app.layout.content
 });
@@ -28,7 +40,8 @@ app.game = new Game({
 
 app.admin = new Admin({
 	container: app.layout.content
-})
+});
 
+/* history start */
 Backbone.history.start();
 

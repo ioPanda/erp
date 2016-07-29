@@ -10,7 +10,7 @@ var Controller = Marionette.Object.extend({
 
   show(type) {
     //var model = (new Model).get(type);
-    var model = new Model();
+    var model = new Model({ type: type });
     this.model = model;
 
     this.view = new View({ model: this.model });
