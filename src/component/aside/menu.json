@@ -1,5 +1,5 @@
 {
-	"admin": 
+	"game": 
 	[
 	    {
 		    "hasSub": false,
@@ -12,172 +12,157 @@
 		    "path": "#game/year_meeting"
 		},
 		{
-		    "hasSub": false,
+		    "hasSub": true,
 		    "text": "市场管理",
 		    "path": "#game/market",
 		    "subMenu": 
 		    [
 		        {
 			        "text": "各类市场管理",
-			        "path": "#index/market"
+			        "path": "#game/allMarket"
 			    },
 			    {
 			        "text": "广告投放&订单",
-			        "path": "#index/ads"
+			        "path": "#game/adsAndOrder"
 			    },
 			    {
 			        "text": "市场预测信息",
-			        "path": "#index/ads"
+			        "path": "#game/marketForest"
 			    }
 			]
 		},
 		{
-		    "hasSub": false,
+		    "hasSub": true,
 		    "text": "生产管理",
 		    "path": "#game/produce",
 		    "subMenu": 
 		    [
 		        {
 			        "text": "厂房管理",
-			        "path": "#index/market"
+			        "path": "#game/factory"
 			    },
 			    {
 			        "text": "产品原料构成说明",
-			        "path": "#index/ads"
+			        "path": "#game/materialIntro"
 			    }
 			]
 		},
 		{
-		    "hasSub": false,
+		    "hasSub": true,
 		    "text": "销售管理",
 		    "path": "#game/sale",
 		    "subMenu": 
 		    [
 		        {
 			        "text": "查看订单",
-			        "path": "#index/market"
+			        "path": "#game/viewOrder"
 			    },
 			    {
 			        "text": "按订单交货",
-			        "path": "#index/ads"
+			        "path": "#game/postOrder"
 			    }
 			]
 		},
 		{
-		    "hasSub": false,
+		    "hasSub": true,
 		    "text": "采购管理",
 		    "path": "#game/purchase",
 		    "subMenu": 
 		    [
 		        {
 			        "text": "购买原料",
-			        "path": "#index/market"
+			        "path": "#game/market"
 			    },
 			    {
 			        "text": "查看原料采购单",
-			        "path": "#index/ads"
+			        "path": "#game/materialOrder"
 			    }
 			]
 		},
 		{
-		    "hasSub": false,
+		    "hasSub": true,
 		    "text": "库存管理",
 		    "path": "#game/stock",
 		    "subMenu": 
 		    [
 		        {
 			        "text": "产品库存",
-			        "path": "#index/market"
+			        "path": "#game/productStock"
 			    },
 			    {
 			        "text": "原料库存",
-			        "path": "#index/ads"
+			        "path": "#game/materialStock"
 			    }
 			]
 		},
 		{
-		    "hasSub": false,
+		    "hasSub": true,
 		    "text": "产品研发&认证",
 		    "path": "#game/authenticate",
 		    "subMenu": 
 		    [
 		        {
 			        "text": "产品研发管理",
-			        "path": "#index/market"
+			        "path": "#game/productManage"
 			    },
 			    {
 			        "text": "认证管理",
-			        "path": "#index/ads"
+			        "path": "#game/authenticationManage"
 			    }
 			]
 		},
 		{
-		    "hasSub": false,
+		    "hasSub": true,
 		    "text": "财务管理",
 		    "path": "#game/finance",
 		    "subMenu": 
 		    [
 		        {
 			        "text": "查看会计分录",
-			        "path": "#index/market"
+			        "path": "#game/viewAccountingEntry"
 			    },
 			    {
 			        "text": "查看资产负债表",
-			        "path": "#index/ads"
+			        "path": "#game/viewBalanceSheet"
 			    },
 			    {
 			        "text": "查看利润表",
-			        "path": "#index/ads"
+			        "path": "#game/viewProfit"
 			    },
 			    {
 			        "text": "应收账款贴现",
-			        "path": "#index/ads"
+			        "path": "#game/discount"
 			    },
 			    {
 			        "text": "盘点现金",
-			        "path": "#index/ads"
+			        "path": "#game/checkMoney"
 			    }
 			]
 		},
 		{
-		    "hasSub": false,
+		    "hasSub": true,
 		    "text": "贷款与融资",
 		    "path": "#game/loan",
 		    "subMenu": 
 		    [
 		        {
 			        "text": "申请贷款",
-			        "path": "#index/market"
+			        "path": "#game/applyLoan"
 			    },
 			    {
 			        "text": "贷款管理",
-			        "path": "#index/ads"
+			        "path": "#game/loanManage"
 			    },
 			    {
 			        "text": "一年之内的长期负债",
-			        "path": "#index/ads"
+			        "path": "#game/loanInYear"
 			    }
 			]
 		},
 		{
 		    "hasSub": false,
 		    "text": "税金管理",
-		    "path": "#game/tax",
-		    "subMenu": 
-		    [
-		        {
-			        "text": "申请贷款",
-			        "path": "#index/market"
-			    },
-			    {
-			        "text": "贷款管理",
-			        "path": "#index/ads"
-			    },
-			    {
-			        "text": "一年之内的长期负债",
-			        "path": "#index/ads"
-			    }
-			]
+		    "path": "#game/tax"
 		},
 		{
 		    "hasSub": false,
@@ -190,41 +175,81 @@
 		    "path": "#game/exit"
 		}
 	],
-	"group": "test",
-	"game": [
+	"group": 
+	[
         {
 		    "hasSub": false,
-		    "text": "主页",
-		    "path": "#index/index"
+		    "text": "查看审核状态",
+		    "path": "#group/stateCheck"
 		},
 		{
 		    "hasSub": false,
-		    "text": "年度规划会议",
-		    "path": "#index/index"
+		    "text": "修改注册信息",
+		    "path": "#group/editPersonInfo"
 		},
 		{
 		    "hasSub": false,
-		    "text": "测试",
-		    "path": "#colors"
+		    "text": "加入小组",
+		    "path": "#group/joinGroup"
+		},
+		{
+		    "hasSub": false,
+		    "text": "创建小组",
+		    "path": "#group/createGroup"
+		},
+		{
+		    "hasSub": false,
+		    "text": "结束游戏",
+		    "path": "#group/exit"
+		}
+	],
+	"admin": [
+        {
+		    "hasSub": true,
+		    "text": "用户管理",
+		    "path": "#admin/userManage",
+		    "subMenu": 
+		    [
+		        {
+			        "text": "用户列表",
+			        "path": "#admin/userList"
+			    },
+			    {
+			        "text": "审批用户",
+			        "path": "#admin/userCheck"
+			    }
+			]
+		},
+		{
+		    "hasSub": false,
+		    "text": "管理游戏组",
+		    "path": "#admin/groupManage"
+		},
+		{
+		    "hasSub": false,
+		    "text": "企业评价",
+		    "path": "#admin/companyRate"
+		},
+		{
+		    "hasSub": false,
+		    "text": "所有者权益",
+		    "path": "#admin/ownerEquity"
 		},
 		{
 		    "hasSub": true,
-		    "text": "市场管理",
-		    "path": "#",
+		    "text": "查看历史记录",
+		    "path": "#admin/viewHistory",
 		    "subMenu": 
-		    [{
-		        "text": "各类市场管理",
-		        "path": "#index/market"
-		    },
-		    {
-		        "text": "广告投放&订单",
-		        "path": "#index/ads"
-		    }]
-		},
-		{
-		    "hasSub": false,
-		    "text": "退出",
-		    "path": "#exit"
+		    [
+		        {
+			        "text": "过往企业评价",
+			        "path": "#admin/oldCompanyRate"
+			    },
+			    {
+			        "text": "过往所有者权益",
+			        "path": "#admin/oldOwnerEquity"
+			    }
+			]
 		}
 	]
 }

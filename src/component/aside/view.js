@@ -13,9 +13,7 @@ export default ItemView.extend({
   },
 
   templateHelpers() {
-    return {
-      Menu: _.invoke(this.model, 'toJSON')
-    };
+    return _.invoke(this.model, 'toJSON');
   },
 
   ui: {

@@ -11,9 +11,6 @@ import menu from './menu.json';
 //import menu from './menu1.json';
 export default Backbone.Model.extend({
 	initialize(options = {}) {
-		this.type = options.type;
-	},
-	defaults() {
-		return menu[this.type];
+
 	}
 })

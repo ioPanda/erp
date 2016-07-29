@@ -2,6 +2,7 @@ import Marionette from 'backbone.marionette';
 import {Collection} from 'backbone';
 import Model from './model';
 import View from './view';
+import menu from './menu.json';
 
 var Controller = Marionette.Object.extend({
   setup(options = {}) {
@@ -10,7 +11,7 @@ var Controller = Marionette.Object.extend({
 
   show(type) {
     //var model = (new Model).get(type);
-    var model = new Model({ type: type });
+    var model = new Model({ Menu: menu[type]});
     this.model = model;
 
     this.view = new View({ model: this.model });
