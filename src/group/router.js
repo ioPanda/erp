@@ -1,16 +1,17 @@
 import Backbone from 'backbone';
+import {Router} from 'backbone-routing';
 import createRoute from './create/route';
 import Aside from '../component/aside/service';
 
-export default Backbone.Router.extend({
+export default Router.extend({
   initialize(options = {}) {
     this.container = options.container;
-    this.listenTo(this, 'before:enter', this.onBeforeEnter);
-    // this.on('before:enter', this.onBeforeEnter);
-    Aside.show('group');
+
+    this.on('before:enter', this.onBeforeEnter);
   },
 
   onBeforeEnter() {
+    Aside.show('group');
     console.log('group');
   },
 

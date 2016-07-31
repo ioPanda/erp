@@ -1,9 +1,9 @@
-import Marionette from 'backbone.marionette';
+import {Route} from 'backbone-routing';
 import View from './view';
 import Model from './model';
 
 
-export default Marionette.Object.extend({
+export default Route.extend({
   initialize(options = {}) {
     this.container = options.container;
 

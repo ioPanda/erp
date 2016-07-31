@@ -16,6 +16,10 @@ var Controller = Marionette.Object.extend({
 
     this.view = new View({ model: this.model });
     this.container.show(this.view);
+  },
+
+  hide() {
+    this.container.$el.hide();
   }
 });
 

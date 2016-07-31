@@ -1,16 +1,11 @@
 import Backbone from 'backbone';
+import {Router} from 'backbone-routing';
 import IndexRoute from './route';
 
-export default Backbone.Router.extend({
+export default Router.extend({
   initialize(options = {}) {
     this.container = options.container;
-
-    this.listenTo(this, 'before:enter', this.onBeforeEnter);
   },
-
-  /*onBeforeEnter() {
-    AsideService.show('admin');
-  },*/
 
   routes: {
     '': 'index'

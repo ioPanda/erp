@@ -1,11 +1,11 @@
-import Marionette from 'backbone.marionette';
+import {Route} from 'backbone-routing';
 import View from './view';
 import Model from './model';
 import Util from '../../util';
 import {history} from 'backbone';
 import nprogress from 'nprogress';
 
-export default Marionette.Object.extend({
+export default Route.extend({
   initialize(options = {}) {
     this.container = options.container;
 
