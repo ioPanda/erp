@@ -1,7 +1,7 @@
 /**
  * Created by wangxinyu11 on 2016/6/30.
  */
-import $ from 'jquery';
+
 
 export default {
 	save(model) {

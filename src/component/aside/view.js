@@ -1,12 +1,14 @@
 
 import _ from 'lodash';
+import $ from 'jquery';
 import {history} from 'backbone';
 import {ItemView} from 'backbone.marionette';
 import template from './template.hbs';
 
 export default ItemView.extend({
   template: template,
-  className: 'sidebar',
+  tagName: 'aside',
+  className: 'sidebar fixed',
 
   attributes: {
     role: 'sidebar'
@@ -18,20 +20,29 @@ export default ItemView.extend({
 
   ui: {
     collapse: '#navbar-collapse',
-    aside: 'aside',
-    mainMenu: '.main-menu',
-    wrapper : '#wrapper',
-    toggleMenu: '#sizeToggle',
+    accordion: '#accordion',
+    openableMenu: '#accordion .link',
+    sizeToggle: '#sizeToggle',
   },
 
   events: {
-    'click #sizeToggle': 'toggleMenu'
+    'click @ui.sizeToggle': 'toggleMenu',
+    'click @ui.openableMenu': 'toggleSubMenu'
   },
 
   toggleMenu(e) {
     e.preventDefault();
-    var width = this.ui.aside.width();
-    this.ui.mainMenu.toggleClass('hide');
+    
+    this.$el.toggleClass('slide-hide');
+  },
+
+  toggleSubMenu(e) {
+    var $this = $(e.target);
+    var $next = $this.next();
+    $next.slideToggle();
+    this.$('.submenu').not($next).slideUp();
+    $this.parent().toggleClass('open');
+    $this.parent().siblings().removeClass('open');
   },
 
   onCollapseShow() {
