@@ -4,17 +4,19 @@
 	    {
 		    "hasSub": false,
 		    "text": "主页",
-		    "path": "#game/index"
+		    "path": "#game/index",
+		    "icon": "glyphicon-home"
 		},
 		{
 		    "hasSub": false,
 		    "text": "年度规划会议",
-		    "path": "#game/year_meeting"
+		    "path": "#game/year_meeting",
+		    "icon": "glyphicon-home"
 		},
 		{
 		    "hasSub": true,
 		    "text": "市场管理",
-		    "id": "market",
+		    "icon": "glyphicon-map-marker",
 		    "subMenu": 
 		    [
 		        {
@@ -34,7 +36,7 @@
 		{
 		    "hasSub": true,
 		    "text": "生产管理",
-		    "id": "produce",
+		    "icon": "glyphicon-wrench",
 		    "subMenu": 
 		    [
 		        {
@@ -50,7 +52,7 @@
 		{
 		    "hasSub": true,
 		    "text": "销售管理",
-		    "id": "sale",
+		    "icon": "glyphicon-briefcase",
 		    "subMenu": 
 		    [
 		        {
@@ -66,7 +68,7 @@
 		{
 		    "hasSub": true,
 		    "text": "采购管理",
-		    "id": "purchase",
+		    "icon": "glyphicon-shopping-cart",
 		    "subMenu": 
 		    [
 		        {
@@ -82,7 +84,7 @@
 		{
 		    "hasSub": true,
 		    "text": "库存管理",
-		    "id": "stock",
+		    "icon": "glyphicon-tasks",
 		    "subMenu": 
 		    [
 		        {
@@ -98,7 +100,7 @@
 		{
 		    "hasSub": true,
 		    "text": "产品研发&认证",
-		    "id": "authenticate",
+		    "icon": "glyphicon-globe",
 		    "subMenu": 
 		    [
 		        {
@@ -114,7 +116,7 @@
 		{
 		    "hasSub": true,
 		    "text": "财务管理",
-		    "id": "finance",
+		    "icon": "glyphicon-duplicate",
 		    "subMenu": 
 		    [
 		        {
@@ -142,7 +144,7 @@
 		{
 		    "hasSub": true,
 		    "text": "贷款与融资",
-		    "id": "loan",
+		    "icon": "glyphicon-euro",
 		    "subMenu": 
 		    [
 		        {
@@ -162,17 +164,20 @@
 		{
 		    "hasSub": false,
 		    "text": "税金管理",
-		    "path": "#game/tax"
+		    "path": "#game/tax",
+		    "icon": "glyphicon-usd"
 		},
 		{
 		    "hasSub": false,
 		    "text": "时间管理",
-		    "path": "#game/time"
+		    "path": "#game/time",
+		    "icon": "glyphicon-dashboard"
 		},
 		{
 		    "hasSub": false,
 		    "text": "结束经营",
-		    "path": "#game/exit"
+		    "path": "#game/exit",
+		    "icon": "glyphicon-off"
 		}
 	],
 	"group": 

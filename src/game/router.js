@@ -1,7 +1,9 @@
 
 import Backbone from 'backbone';
 import {Router} from 'backbone-routing';
+
 import Aside from '../component/aside/service';
+import Header from '../component/header/service';
 
 import IndexRoute from './index/route';
 import YearMeetingRoute from './year_meeting/route';
@@ -26,6 +28,7 @@ export default Router.extend({
 
   	onBeforeEnter() {
   		Aside.show('game');
+      Header.show();
     	console.log('game');
   	},
 

@@ -1,22 +1,24 @@
+@headerHeight: 56px;
 @asideWidth: 200px;
 
 aside {
-  position: fixed;
+  position: absolute;
   display: block;
   float: left;
-  // width: @asideWidth;
+  width: @asideWidth;
   z-index: 100;
-  // padding-top: 66px;
+  padding-top: @headerHeight;
   bottom: 0;
   left: 0;
   height: 100%;
+  background: #FFF;
+  box-shadow: 3px 0 3px rgba(0, 0, 0, 0.15);
   transition: left .4s ease;
 }
-/*
-aside.fixed {
-  position: fixed;
-}
-*/
+
+/** =======================
+ * toggle menu
+ ===========================*/
 aside.slide-hide {
   left: -@asideWidth;
 }
@@ -25,22 +27,12 @@ aside .size-toggle {
   padding: 10px;
   position: relative;
   left: @asideWidth;
-  top: 50%;
+  top: -50%;
 }
-
 #size-toggle {
   border-radius: 50%;
   border: 1px solid #000;
   padding: 10px;
-}
-aside .size-toggle .btn {
-  background-color: transparent;
-  color: #e6f1f7;
-  transition: all 0.2s ease;
-  -webkit-transition: all 0.2s ease;
-  -moz-transition: all 0.2s ease;
-  -ms-transition: all 0.2s ease;
-  -o-transition: all 0.2s ease;
 }
 aside .size-toggle .btn .icon-bar {
   background-color: #000; // #e6f1f7;
@@ -57,65 +49,52 @@ aside .size-toggle .btn .icon-bar {
   -ms-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
 }
-aside .size-toggle .btn:hover,
-aside .size-toggle .btn:focus {
-  color: #00caab;
-  transition: all 0.2s ease;
-  -webkit-transition: all 0.2s ease;
-  -moz-transition: all 0.2s ease;
-  -ms-transition: all 0.2s ease;
-  -o-transition: all 0.2s ease;
-}
 aside .size-toggle .btn:hover .icon-bar,
 aside .size-toggle .btn:focus .icon-bar {
-  background-color: #00caab;
+  background-color: #d9534f;
   transition: all 0.2s ease;
   -webkit-transition: all 0.2s ease;
   -moz-transition: all 0.2s ease;
   -ms-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
-}
-
-ul {
-  list-style-type: none;
-}
-
-a {
-  color: #b63b4d;
-  text-decoration: none;
 }
 
 /** =======================
  * Contenedor Principal
  ===========================*/
+ul {
+  list-style-type: none;
+}
+
+a {
+  color: #d9534f;
+  text-decoration: none;
+}
+
 h1 {
   color: #FFF;
   font-size: 24px;
   font-weight: 400;
   text-align: center;
   margin-top: 80px;
- }
-
-h1 a {
-  color: #c12c42;
-  font-size: 16px;
- }
+  a {
+    color: #c12c42;
+  }
+}
 
 .accordion {
   width: 100%;
   max-width: @asideWidth;
-  background: #FFF;
+  // background: #FFF;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  position: fixed;
-  opacity: 0.85;
 }
 
 .accordion .link {
   cursor: pointer;
   display: block;
-  padding: 15px 15px 15px 42px;
+  padding: 13px 15px 13px 42px;
   color: #4D4D4D;
   font-size: 14px;
   font-weight: 700;
@@ -130,31 +109,30 @@ h1 a {
   border-bottom: 0;
 }
 
-.accordion li i {
+.accordion li span {
   position: absolute;
   top: 16px;
   left: 12px;
-  font-size: 18px;
+  font-size: 16px;
   color: #595959;
   -webkit-transition: all 0.4s ease;
   -o-transition: all 0.4s ease;
   transition: all 0.4s ease;
 }
 
-.accordion li i.fa-chevron-down {
+.accordion li span.glyphicon-menu-down {
   right: 12px;
   left: auto;
-  font-size: 16px;
+  font-size: 12px;
 }
 
-.accordion li.open .link {
-  color: #b63b4d;
+.accordion li.open .link,
+.accordion li.open span,
+.accordion li.open span + a {
+  color: #d9534f;
 }
 
-.accordion li.open i {
-  color: #b63b4d;
-}
-.accordion li.open i.fa-chevron-down {
+.accordion li.open span.glyphicon-menu-down {
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   -o-transform: rotate(180deg);
@@ -186,7 +164,7 @@ h1 a {
  }
 
  .submenu a:hover {
-  background: #b63b4d;
+  background: #d9534f;
   color: #FFF;
  }
 

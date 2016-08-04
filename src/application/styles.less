@@ -1,8 +1,18 @@
+@headerHeight: 56px;
+@asideWidth: 200px;
+
 .application {
-  padding-top: 51px;
+  padding-top: @headerHeight;
+  padding-left: @asideWidth;
+  transition: padding-left .4s ease;
+
+  &.wide {
+    padding-left: 0;
+  }
 
   &__content {
     position: relative;
+    padding: 14px 30px;
     width: 100%;
     height: 100%;
   }
