@@ -73,7 +73,7 @@
 		    [
 		        {
 			        "text": "购买原料",
-			        "path": "#game/market"
+			        "path": "#game/buyMaterial"
 			    },
 			    {
 			        "text": "查看原料采购单",
@@ -84,7 +84,7 @@
 		{
 		    "hasSub": true,
 		    "text": "库存管理",
-		    "icon": "glyphicon-tasks",
+		    "icon": "glyphicon-th",
 		    "subMenu": 
 		    [
 		        {
