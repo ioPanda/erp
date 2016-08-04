@@ -8,7 +8,7 @@ import template from './template.hbs';
 export default ItemView.extend({
   template: template,
   tagName: 'aside',
-  className: 'sidebar fixed',
+  className: 'sidebar',
 
   attributes: {
     role: 'sidebar'
@@ -19,8 +19,6 @@ export default ItemView.extend({
   },
 
   ui: {
-    collapse: '#navbar-collapse',
-    accordion: '#accordion',
     openableMenu: '#accordion .link',
     sizeToggle: '#sizeToggle',
   },
@@ -34,6 +32,7 @@ export default ItemView.extend({
     e.preventDefault();
     
     this.$el.toggleClass('slide-hide');
+    this.$el.parents('.application').toggleClass('wide');
   },
 
   toggleSubMenu(e) {
@@ -43,11 +42,5 @@ export default ItemView.extend({
     this.$('.submenu').not($next).slideUp();
     $this.parent().toggleClass('open');
     $this.parent().siblings().removeClass('open');
-  },
-
-  onCollapseShow() {
-    this.listenToOnce(history, 'route', () => {
-      this.ui.collapse.collapse('hide');
-    });
   }
 });
