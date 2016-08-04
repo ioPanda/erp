@@ -29,7 +29,6 @@ export default Router.extend({
   	onBeforeEnter() {
   		Aside.show('game');
       Header.show();
-    	console.log('game');
   	},
 
   	routes: {
