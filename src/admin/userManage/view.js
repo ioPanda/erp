@@ -1,7 +1,7 @@
 import {ItemView} from "backbone.marionette";
 import template from "./template.hbs";
 
-export default ItewView.extend({
+export default ItemView.extend({
 	template:template,
 	className:"userManage",
     

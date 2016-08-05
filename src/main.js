@@ -18,7 +18,7 @@ Aside.setup({
     container: app.layout.aside
 });
 Header.setup({
-	container: app.layo ut.header
+	container: app.layout.header
 });
 
 /* init router */
