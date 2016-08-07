@@ -3,5 +3,5 @@ import template from './template.hbs';
 
 export default ItemView.extend({
   template: template,
-  className: 'year_meeting',
+  className: '',
 });

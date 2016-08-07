@@ -24,7 +24,7 @@ gulp.task('clean', function(cb) {
 });
 
 gulp.task('fonts', function () {
-  return gulp.src('node_modules/bootstrap/fonts/*')
+  return gulp.src(['node_modules/bootstrap/fonts/*', srcRoot+'/*.woff'])
     .pipe(gulp.dest(dist + '/fonts'));
 });
 

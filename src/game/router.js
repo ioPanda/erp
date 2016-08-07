@@ -7,17 +7,20 @@ import Header from '../component/header/service';
 
 import IndexRoute from './index/route';
 import YearMeetingRoute from './year_meeting/route';
-import MarketRoute from './market/route';
-import ProduceRoute from './produce/route';
-import SaleRoute from './sale/route';
-import PurchaseRoute from './purchase/route';
-import StockRoute from './stock/route';
-import AuthenticateRoute from './authenticate/route';
-import FinanceRoute from './finance/route';
-import LoanRoute from './loan/route';
-import TaxRoute from './tax/route';
+import AllMarketRoute from './allMarket/route';
+import AdsAndOrderRoute from './adsAndOrder/route';
+import MarketForestRoute from './marketForest/route';
+import FactoryRoute from './factory/route';
+import MaterialIntroRoute from './materialIntro/route';
+import ViewOrderRoute from './viewOrder/route';
+import PostOrderRoute from './postOrder/route';
+import BuyMaterialRoute from './buyMaterial/route';
+import MaterialOrderRoute from './materialOrder/route';
+import ProductStockRoute from './productStock/route';
 import TimeRoute from './time/route';
 import ExitRoute from './exit/route';
+
+import routerTable from './routes.json';
 
 export default Router.extend({
     initialize(options = {}) {
@@ -26,28 +29,15 @@ export default Router.extend({
     	this.on('before:enter', this.onBeforeEnter);
     },
 
+    // 加载 header & aside 进来
   	onBeforeEnter() {
   		Aside.show('game');
       Header.show();
-    	console.log('game');
   	},
 
-  	routes: {
-      "game/index": "index",
-      "game/year_meeting": "yearMeeting",
-      "game/market": "market",
-      "game/produce": "produce",
-      "game/sale": "sale",
-      "game/purchase": "purchase",
-      "game/stock": "stock",
-      "game/authenticate": "authenticate",
-      "game/finance": "finance",
-      "game/loan": "loan",
-      "game/tax": "tax",
-      "game/time": "time",
-      "game/exit": "exit"
-    },
+  	routes: routerTable,
 
+    // 不同路由的实例
   	index() {
     	return new IndexRoute({
     		container: this.container
@@ -60,50 +50,8 @@ export default Router.extend({
       });
     },
 
-    market() {
-      return new MarketRoute({
-        container: this.container
-      });
-    },
-
-    produce() {
-      return new ProduceRoute({
-        container: this.container
-      });
-    },
-
-    sale() {
-      return new SaleRoute({
-        container: this.container
-      });
-    },
-
-    purchase() {
-      return new PurchaseRoute({
-        container: this.container
-      });
-    },
-
-    authenticate() {
-      return new AuthenticateRoute({
-        container: this.container
-      });
-    },
-
-    finance() {
-      return new FinanceRoute({
-        container: this.container
-      });
-    },
-
-    loan() {
-      return new LoanRoute({
-        container: this.container
-      });
-    },
-
-    tax() {
-      return new TaxRoute({
+    allMarket() {
+      return new AllMarketRoute({
         container: this.container
       });
     },
