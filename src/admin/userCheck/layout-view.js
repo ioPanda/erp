@@ -6,19 +6,19 @@ import template from './layout-template.hbs';
 
 export default LayoutView.extend({
   template: template,
-  className: 'user-list user--index',
+  className: 'check-list check--index',
 
   regions: {
-    list: '.users__list'
+    list: '.check__list'
   },
 
   initialize(options = {}) {
-    this.state = { start: 0, limit: 20 };
+    this.state = { start: 0, limit: 5 };
     this.state.start = (options.page - 1) * this.state.limit;
   },
 
-  onBeforeRender() {    
-    let filtered = _.chain(this.collection.models[0].get('data'))
+  onBeforeRender() { 
+    let filtered = _.chain(this.collection.models[0].get('check'))
       .drop(this.state.start)
       .take(this.state.limit)
       .value();
@@ -35,8 +35,11 @@ export default LayoutView.extend({
   },
 
   templateHelpers() {
-    let total   = Math.floor(this.collection.models[0].get('data').length / this.state.limit) + 1;
+    let total   = Math.floor(this.collection.models[0].get('check').length / this.state.limit) + 1;
     let current = Math.ceil(this.state.start / this.state.limit) + 1;
+
+    // alert(total);
+    // alert(JSON.stringify(this.collection));
 
     let pages = _.times(total, index => {
       return {

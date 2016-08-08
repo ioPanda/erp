@@ -1,38 +1,27 @@
 
 <div class="page-header">
   <i class="glyphicon glyphicon-menu-right"></i>
-  <span>用户列表</span>
+  <span>企业评价</span>
 </div>
 
-<div class="content">
-  <div>
+<div class="select-group">
+   <div class="selModule">
+   </div>
 
-  </div>
-  <div class="users__list">
-    
-  </div>
+   <div class="selGameGroup">
+   </div>
+
+   <div class="selGroup">
+   </div>
+
+   <div class="selYear">
+   </div>
+
+   <button class="btn btn-info">查看企业权益</button>
+
+   <hr>
 </div>
 
-<div class="text-center">
-  <ul class="pagination">
-    {{#if prev}}
-      <li><a href="#colors?page={{prev}}">&laquo;</a></li>
-    {{else}}
-      <li class="disabled"><a>&laquo;</a></li>
-    {{/if}}
 
-    {{#each pages}}
-      {{#if current}}
-        <li class="active"><a>{{page}} <span class="sr-only">(current)</span></a></li>
-      {{else}}
-        <li><a href="#colors?page={{page}}">{{page}}</a></li>
-      {{/if}}
-    {{/each}}
 
-    {{#if next}}
-      <li><a href="#colors?page={{next}}">&raquo;</a></li>
-    {{else}}
-      <li class="disabled"><a>&raquo;</a></li>
-    {{/if}}
-  </ul>
-</div>
+

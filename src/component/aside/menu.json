@@ -212,7 +212,7 @@
         {
 		    "hasSub": true,
 		    "text": "用户管理",
-		    "path": "#admin/userManage",
+		    "icon":"glyphicon-list",
 		    "subMenu": 
 		    [
 		        {
@@ -228,22 +228,25 @@
 		{
 		    "hasSub": false,
 		    "text": "管理游戏组",
-		    "path": "#admin/groupManage"
+		    "path": "#admin/groupManage",
+		    "icon":"glyphicon-screenshot"
 		},
 		{
 		    "hasSub": false,
 		    "text": "企业评价",
-		    "path": "#admin/companyRate"
+		    "path": "#admin/companyRate",
+		    "icon":"glyphicon-pencil"
 		},
 		{
 		    "hasSub": false,
 		    "text": "所有者权益",
-		    "path": "#admin/ownerEquity"
+		    "path": "#admin/ownerEquity",
+		    "icon":"glyphicon-stats"
 		},
 		{
 		    "hasSub": true,
 		    "text": "查看历史记录",
-		    "path": "#admin/viewHistory",
+		    "icon":"glyphicon-sound-stereo",
 		    "subMenu": 
 		    [
 		        {

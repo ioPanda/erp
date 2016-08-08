@@ -4,7 +4,7 @@ import template from './item-template.hbs';
 export default ItemView.extend({
   tagName: 'tr',
   template: template,
-  className: 'users__item list-group-item',
+  className: 'check__item',
 
   attributes() {
     return {
