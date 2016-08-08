@@ -14,10 +14,13 @@ export default Route.extend({
         this.layout.breadcrumb.show(new BreadcrumbView({
         	'mainNav': '主页',
         	'title': '年度规划会议',
-        	'subTitle': 'Annual Planning Meeting'
+        	'subTitle': 'Annual Planning Meeting',
+            'icon':'glyphicon-home'
         }));
 
         // 年度会议规划部分
-        this.layout.content.show(new ContentView());
+        this.layout.content.show(new ContentView({
+            'userName':'方青'
+        }));
     }
 });

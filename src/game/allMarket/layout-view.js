@@ -7,10 +7,10 @@ export default LayoutView.extend({
 
   regions: {
   	breadcrumb: '#breadcrumb',
-  	content: '.content'
+  	content: '.content_market'
   },
   
-  className: 'year_meeting',
+  className: 'allMarket',
   
   initialize(options = {}) {
     this.model = options.model;
