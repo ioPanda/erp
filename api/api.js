@@ -9,5 +9,6 @@ api.use(bodyParser.json());
 require('./books/routes')(api);
 require('./colors/routes')(api);
 require('./login/routes')(api);
+require('./admin/routes')(api);
 
 module.exports = api;
