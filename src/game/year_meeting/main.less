@@ -1,3 +1,4 @@
+@themeColor:#d9534f;
 
 .article{
 	position: relative;
@@ -5,13 +6,10 @@
 .year_meeting{
 	cursor: default;
 	color: #222;
-	
 }
-.link{
-	color: pink;
-	text-decoration: underline;
+.detail{
+	color: @themeColor;
 	cursor: pointer;
-	
 }
 .p-topic{
 	color:#999;
@@ -19,10 +17,15 @@
 .info{
 	width: 50%;
 	background-color: #999;
-	height: 200px;
+	height: auto;
 	overflow: hidden;
 	position: absolute;
-	padding:10px 10px;
+	padding:10px 10px 10px 10px;
 	bottom: 20px;
 	right: 0;
+}
+.info_topic{
+	color: @themeColor;
+	font-weight:bold;
+	font-size: 12px;
 }

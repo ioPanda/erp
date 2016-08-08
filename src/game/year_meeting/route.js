@@ -19,6 +19,8 @@ export default Route.extend({
         }));
 
         // 年度会议规划部分
-        this.layout.content.show(new ContentView());
+        this.layout.content.show(new ContentView({
+            'userName':'方青'
+        }));
     }
 });

@@ -4,15 +4,14 @@ import {Model} from 'backbone';
 
 export default LayoutView.extend({
   template: template,
+  className: 'adsAndOrder',
 
-  regions: {
-  	breadcrumb: '#breadcrumb',
-  	content: '.content'
+  regions:{
+	  breadcrumb: '#breadcrumb',
+  	  content: '.content'
   },
-  
-  className: 'year_meeting',
-  
-  initialize(options = {}) {
-    this.model = options.model;
+
+  initialize(options={}){
+  	this.model=options.model;
   }
 });
