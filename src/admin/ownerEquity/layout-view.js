@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import $ from 'jquery';
 import {LayoutView} from 'backbone.marionette';
 import CollectionView from './content/collection-view';
 import {Collection} from 'backbone';
@@ -6,7 +7,33 @@ import template from './layout-template.hbs';
 
 export default LayoutView.extend({
   template: template,
-  // className: '',
+   
+
+  ui: {
+    companyLink: '#navbar li:first',
+    gameGroupLink: '#navbar li:last',
+    companyView: '#companyView',
+    gameGroupView: '#gameGroupView'
+  },
+
+   events: {
+    'click @ui.companyLink': 'companyLink',
+    'click @ui.gameGroupLink': 'gameGroupLink'
+   },
+
+   gameGroupLink(e){
+       $('#navbar li:last').addClass('active');
+       $('#navbar li:first').removeClass('active');
+       $('#companyView').css('display','none');
+       $('#gameGroupView').css('display','block');
+   },
+   companyLink(e){
+       $('#navbar li:first').addClass('active');
+       $('#navbar li:last').removeClass('active');
+       $('#gameGroupView').css('display','none');
+       $('#companyView').css('display','block');
+   },
+
 
   regions: {
     moduleList: '.selModule',

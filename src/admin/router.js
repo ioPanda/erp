@@ -36,7 +36,7 @@ export default Router.extend({
  
 
   companyView(){
-    alert("companyView");
+    // alert("companyView");
     // $("#navbar li:last").removeClass("active");
     // $("#navbar li:first").addClass("active");
 
@@ -46,7 +46,7 @@ export default Router.extend({
   },
 
   gameGroupView(){
-    alert("gameGroupView");
+    // alert("gameGroupView");
     // $("#navbar li:first").removeClass("active");
     // $("#navbar li:last").addClass("active");
     
