@@ -36,11 +36,7 @@ export default Router.extend({
  
 
   companyView(){
-<<<<<<< HEAD
     alert("companyView");
-=======
-    // alert("companyView");
->>>>>>> 249d1031ab1a03f8c008e12210b2f49a53bfedc7
     // $("#navbar li:last").removeClass("active");
     // $("#navbar li:first").addClass("active");
 
@@ -50,11 +46,7 @@ export default Router.extend({
   },
 
   gameGroupView(){
-<<<<<<< HEAD
     alert("gameGroupView");
-=======
-    // alert("gameGroupView");
->>>>>>> 249d1031ab1a03f8c008e12210b2f49a53bfedc7
     // $("#navbar li:first").removeClass("active");
     // $("#navbar li:last").addClass("active");
     

@@ -1,5 +1,5 @@
 import {Route} from 'backbone-routing';
-import BreadcrumbView from '../../component';
+import BreadcrumbView from '../../component/breadcrumb/view';
 import ContentView from './content/view';
 import LayoutView from './layout-view';
 
@@ -15,7 +15,7 @@ export default Route.extend({
 			'mainNav':'市场管理',
 			'title':'广告投放&订单',
 			'subTitle':'Advertisement and order',
-			"icon":'glyphicon-map-marker'
+			'icon':'glyphicon-home'
 		}));
 
 		this.layout.content.show(new ContentView());

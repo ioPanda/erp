@@ -1,4 +1,4 @@
-import {LayoutView} from 'backbone.morionette';
+import {LayoutView} from 'backbone.marionette';
 import template from './template.hbs';
 import {Model} from 'backbone';
 
@@ -15,5 +15,4 @@ export default LayoutView.extend({
         	this.model=options.model;
         }
 
-	};
-});
+	});
