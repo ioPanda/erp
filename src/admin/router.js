@@ -1,5 +1,4 @@
 import Backbone from 'backbone';
-import $ from 'jQuery';  //
 import {Router} from 'backbone-routing';
 import Aside from '../component/aside/service';
 import Header from "../component/header/service";
@@ -26,16 +25,16 @@ export default Router.extend({
   	"admin/userCheck": "userCheck",
     "admin/groupManage":"groupManage",
     "admin/companyRate": "companyRate",
-    // "admin/ownerEquity": "ownerEquity",
-  	"admin/ownerEquity": "companyView",
+    "admin/ownerEquity": "ownerEquity",
+  	// "admin/ownerEquity": "companyView",
 
-    "admin/ownerEquity/companyView":"companyView",
-    "admin/ownerEquity/gameGroupView":"gameGroupView"
+    // "admin/ownerEquity/companyView":"companyView",
+    // "admin/ownerEquity/gameGroupView":"gameGroupView"
   },
 
  
 
-  companyView(){
+  /*companyView(){
     // alert("companyView");
     // $("#navbar li:last").removeClass("active");
     // $("#navbar li:first").addClass("active");
@@ -54,7 +53,7 @@ export default Router.extend({
       container: this.container
     });
   },
-
+*/
 
 
   companyRate() {

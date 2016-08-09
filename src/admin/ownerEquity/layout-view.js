@@ -7,34 +7,7 @@ import template from './layout-template.hbs';
 
 export default LayoutView.extend({
   template: template,
-   
-
-  ui: {
-    companyLink: '#navbar li:first',
-    gameGroupLink: '#navbar li:last',
-    companyView: '#companyView',
-    gameGroupView: '#gameGroupView'
-  },
-
-   events: {
-    'click @ui.companyLink': 'companyLink',
-    'click @ui.gameGroupLink': 'gameGroupLink'
-   },
-
-   gameGroupLink(e){
-       $('#navbar li:last').addClass('active');
-       $('#navbar li:first').removeClass('active');
-       $('#companyView').css('display','none');
-       $('#gameGroupView').css('display','block');
-   },
-   companyLink(e){
-       $('#navbar li:first').addClass('active');
-       $('#navbar li:last').removeClass('active');
-       $('#gameGroupView').css('display','none');
-       $('#companyView').css('display','block');
-   },
-
-
+  
   regions: {
     moduleList: '.selModule',
     gameGroupList: '.selGameGroup', 
@@ -114,24 +87,33 @@ export default LayoutView.extend({
     this.cycleList.show(this.cycleCollectionView);
   },
 
-  templateHelpers() {
-  //   let total   = Math.ceil(this.collection.length / this.state.limit) + 1;
-  //   let current = Math.ceil(this.state.start / this.state.limit) + 1;
+  templateHelpers() {},
+  
+  ui: {
+    companyLink: '#navbar li:first',
+    gameGroupLink: '#navbar li:last',
+    companyView: '#companyView',
+    gameGroupView: '#gameGroupView'
+  },
 
-  //   let pages = _.times(total, index => {
-  //     return {
-  //       current : index + 1 === current,
-  //       page    : index + 1
-  //     };
-  //   });
+   events: {
+    'click @ui.companyLink': 'companyLink',
+    'click @ui.gameGroupLink': 'gameGroupLink'
+   },
 
-  //   let prev = current - 1 > 0 ? current - 1 : false;
-  //   let next = current < total ? current + 1 : false;
-
-  //   return { total, current, pages, prev, next };
-   }
-
-    // let total=this.collection.modal[0].get('selects').length;
+   gameGroupLink(e){
+       $('#navbar li:last').addClass('active');
+       $('#navbar li:first').removeClass('active');
+       $('#companyView').css('display','none');
+       $('#gameGroupView').css('display','block');
+   },
+   companyLink(e){
+       $('#navbar li:first').addClass('active');
+       $('#navbar li:last').removeClass('active');
+       $('#gameGroupView').css('display','none');
+       $('#companyView').css('display','block');
+   },
+   
     
 });
 

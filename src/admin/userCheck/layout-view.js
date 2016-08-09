@@ -1,11 +1,15 @@
 import _ from 'lodash';
+import $ from 'jquery';
 import {LayoutView} from 'backbone.marionette';
 import CollectionView from './content/collection-view';
 import {Collection} from 'backbone';
 import template from './layout-template.hbs';
+import View from './view';
+// import Route from './route';
 
 export default LayoutView.extend({
   template: template,
+  id:'list',
   className: 'check-list check--index',
 
   regions: {
@@ -13,16 +17,25 @@ export default LayoutView.extend({
   },
 
   initialize(options = {}) {
-    this.state = { start: 0, limit: 5 };
+    this.state = { start: 0, limit: 10};
+    this.page=options.page;
     this.state.start = (options.page - 1) * this.state.limit;
   },
+  // initialize(options = {}) {
+  //   this.layoutView=options.layoutView;
+  //   this.state = options.state?options.state:{ start: 0, limit: 40 };
+  //   alert();
+  //   this.page=options.page;
+  //   this.state.start = (options.page - 1) * this.state.limit;
+  // },
 
-  onBeforeRender() { 
+  onBeforeRender() {
     let filtered = _.chain(this.collection.models[0].get('check'))
       .drop(this.state.start)
       .take(this.state.limit)
       .value();
-
+    
+    // alert(JSON.stringify(filtered));
     this.filteredCollection = new Collection(filtered);
   },
 
@@ -52,5 +65,49 @@ export default LayoutView.extend({
     let next = current < total ? current + 1 : false;
 
     return { total, current, pages, prev, next };
-  }
+  },
+
+
+
+  //页面事件绑定部分
+  ui: {
+     pageLimit: '#pageLimit',
+
+  },
+
+  events: {
+    'change @ui.pageLimit':'changeLimit',
+  },
+
+  changeLimit(e){
+     this.state.limit=$('.page select').val();
+     
+     this.view = new View({
+      collection: this.collection,
+      state: this.state,
+      page:this.page
+    });
+
+     
+     //  this.route = new Route({
+     //   collection: this.collection,
+     //   state: this.state,
+     //   page:this.page
+     // });
+
+  },
+
+
+
+
+
 });
+
+
+
+
+
+
+
+
+
