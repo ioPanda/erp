@@ -1,8 +1,5 @@
 import _ from 'lodash';
-<<<<<<< HEAD
-=======
 import $ from 'jquery';
->>>>>>> 249d1031ab1a03f8c008e12210b2f49a53bfedc7
 import {LayoutView} from 'backbone.marionette';
 import CollectionView from './content/collection-view';
 import {Collection} from 'backbone';
@@ -10,9 +7,6 @@ import template from './layout-template.hbs';
 
 export default LayoutView.extend({
   template: template,
-<<<<<<< HEAD
-  // className: '',
-=======
    
 
   ui: {
@@ -40,7 +34,6 @@ export default LayoutView.extend({
        $('#companyView').css('display','block');
    },
 
->>>>>>> 249d1031ab1a03f8c008e12210b2f49a53bfedc7
 
   regions: {
     moduleList: '.selModule',
