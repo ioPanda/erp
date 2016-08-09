@@ -38,6 +38,10 @@ export default Route.extend({
       collection: this.collection,
       page: page
     });
+    
+    // if($(this.container).find("#navbar li:last").hasClass("active")){
+    //   alert("hahaha");
+    // }
 
     this.container.show(this.layoutView);
   },
