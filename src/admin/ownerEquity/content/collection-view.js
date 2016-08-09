@@ -4,10 +4,9 @@ import ItemView from './item-view';
 import template from './collection-template.hbs';
 
 export default CompositeView.extend({
-	tagName: 'table',
-	className: 'table',
-	// className: 'list-group table',
+	tagName: 'form',
+	className: 'form-inline',
 	template: template,
 	childView: ItemView,
-	childViewContainer: 'tbody'
+	childViewContainer: 'select'
 })

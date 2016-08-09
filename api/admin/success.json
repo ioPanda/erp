@@ -178,5 +178,138 @@
 	  	"class": "0361301",
 	  	"studentId": "2013210956"
 	}
+  ],
+  "check": [
+    {
+	  	"userId": "007",
+	  	"id": 100,
+	  	"userName": "zz",
+	  	"major": "xin guan",
+	  	"class": "0361301",
+	  	"studentId": "2013210956"
+    },
+    {
+	  	"userId": "008",
+	  	"id": 200,
+	  	"userName": "zz",
+	  	"major": "xin guan",
+	  	"class": "0361301",
+	  	"studentId": "2013210956"
+	},
+	{
+	  	"userId": "009",
+	  	"id": 300,
+	  	"userName": "zz",
+	  	"major": "xin guan",
+	  	"class": "0361301",
+	  	"studentId": "2013210956"
+	}
+  ],
+  "group":[
+  	{
+  		"gName":"001",
+  		"gLeader":"zz",
+  		"gNum":10,
+  		"yearNum":6,
+  		"quarterNum":5,
+  		"nowTime":2
+  	},
+  	{
+  		"gName":"002",
+  		"gLeader":"zz",
+  		"gNum":10,
+  		"yearNum":6,
+  		"quarterNum":5,
+  		"nowTime":2
+  	},
+  	{
+  		"gName":"003",
+  		"gLeader":"zz",
+  		"gNum":10,
+  		"yearNum":6,
+  		"quarterNum":5,
+  		"nowTime":2
+  	},
+  	{
+  		"gName":"004",
+  		"gLeader":"zz",
+  		"gNum":10,
+  		"yearNum":6,
+  		"quarterNum":5,
+  		"nowTime":2
+  	},
+  	{
+  		"gName":"005",
+  		"gLeader":"zz",
+  		"gNum":10,
+  		"yearNum":6,
+  		"quarterNum":5,
+  		"nowTime":2
+  	},
+  	{
+  		"gName":"006",
+  		"gLeader":"zz",
+  		"gNum":10,
+  		"yearNum":6,
+  		"quarterNum":5,
+  		"nowTime":2
+  	},
+  	{
+  		"gName":"007",
+  		"gLeader":"zz",
+  		"gNum":10,
+  		"yearNum":6,
+  		"quarterNum":5,
+  		"nowTime":2
+  	}
+  ],
+  "moduleOptions":[
+  	{
+  		"module":"请选择分析模块"
+  	},
+  	{
+  		"module":"m1"
+  	},
+  	{
+  		"module":"m2"
+  	},
+  	{
+  		"module":"m3"
+  	},
+  	{
+  		"module":"m4"
+  	},
+  	{
+  		"module":"张峥"
+  	}
+  ],
+  "gameGroupOptions":[
+  	{
+  		"gameGroup":"请选择游戏组"
+  	},
+  	{
+  		"gameGroup":"gGroup1"
+  	},
+  	{
+  		"gameGroup":"gGroup2"
+  	},
+  	{
+  		"gameGroup":"gGroup3"
+  	}
+  ],
+  "groupOptions":[
+  	{
+  		"group":"请选择小组"
+  	}
+  ],
+  "yearOptions":[
+  	{
+  		"year":"请选择年份"
+  	}
+  ],
+  "cycleOptions":[
+  	{
+  		"cycle":"请选择周期"
+  	}
   ]
 }

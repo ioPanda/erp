@@ -1,13 +1,67 @@
-@theme: #777;
+@import "userList/main";
+@import "userCheck/main";
+@import "groupManage/main";
+@import "companyRate/main";
+@import "ownerEquity/main";
+
+@theme: #3366c2;
+@line-height:30px;
+
+
+li {
+	list-style-type: none;
+}
+
+.application__content {
+	font-size: 14px;
+	color:#000036;
+
+	table {
+		margin-top:-8px;
+		text-align:center;
+
+		thead tr th {
+			background: #ededed;
+            text-align: center;
+			height:@line-height;
+			line-height:@line-height;
+		}
+		tr td{    //要写tr td 省去 tr 没有效果
+			height:@line-height;
+			line-height:@line-height;
+		}
+		a {
+			color:#0066cc;
+		}
+	}
+
+
+}
 
 .page-header {
+	margin-top:5px;
+	color:@theme;
 	i {
 	    border: 1px solid @theme;
 	    border-radius: 50%;
-	    padding: 4px;
+	    padding: 3px;
 	    margin-right: 14px;
 	}
 	span {
-		font-size: 18px;
+		font-size: 16px;
+		font-weight: bold;
+	}
+}
+
+
+//页码设置
+.page{
+	form{
+		float:left;
+		margin: 20px 0 100px 0;
+	}
+	ul{
+		float:right;
+		margin-top: 20px;
 	}
 }
