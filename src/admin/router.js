@@ -26,39 +26,11 @@ export default Router.extend({
     "admin/groupManage":"groupManage",
     "admin/companyRate": "companyRate",
     "admin/ownerEquity": "ownerEquity",
-  	// "admin/ownerEquity": "companyView",
-
-    // "admin/ownerEquity/companyView":"companyView",
-    // "admin/ownerEquity/gameGroupView":"gameGroupView"
+  	
   },
 
  
 
-<<<<<<< HEAD
-  /*companyView(){
-    // alert("companyView");
-=======
-  companyView(){
-    alert("companyView");
->>>>>>> ca6821e48f84a66abf19af2de0b699c98ad790a9
-    // $("#navbar li:last").removeClass("active");
-    // $("#navbar li:first").addClass("active");
-
-    return new OwnerEquity({
-      container: this.container
-    });
-  },
-
-  gameGroupView(){
-    alert("gameGroupView");
-    // $("#navbar li:first").removeClass("active");
-    // $("#navbar li:last").addClass("active");
-    
-    return new OwnerEquity({
-      container: this.container
-    });
-  },
-*/
 
 
   companyRate() {
