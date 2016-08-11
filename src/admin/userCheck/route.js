@@ -3,12 +3,21 @@ import {Route} from 'backbone-routing';
 import LayoutView from './layout-view';
 import Collection from './collection';
 import Page from './page/view';
+import Aside from '../../component/aside/service';
+import Header from '../../component/header/service';
 
 
 export default Route.extend({
   initialize(options = {}) {
     this.container = options.container;
     this.collection = new Collection();
+
+    this.listenTo('before:enter', this.onBeforeEnter);
+  },
+
+  onBeforeEnter() {
+    Aside.show('admin');
+    Header.show();
   },
 
   fetch() {
@@ -42,7 +51,6 @@ export default Route.extend({
     this.layoutView.remove();
   }
 });
-
 
 
 
