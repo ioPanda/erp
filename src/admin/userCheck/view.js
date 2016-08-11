@@ -1,4 +1,4 @@
-import _ from 'lodash';
+/*import _ from 'lodash';
 import $ from 'jquery';
 import {LayoutView} from 'backbone.marionette';
 import CollectionView from './content/collection-view';
@@ -24,11 +24,9 @@ export default LayoutView.extend({
     	  .value();
 
     	// alert('onBeforeRender');
-	  this.filteredCollection = new Collection(filtered);
+	    this.filteredCollection = new Collection(filtered);
 
-
-
-	  this.collectionView = new CollectionView({
+	    this.collectionView = new CollectionView({
          collection: this.filteredCollection
       });
 
@@ -63,4 +61,4 @@ export default LayoutView.extend({
 
     }
 
-});
+});*/
