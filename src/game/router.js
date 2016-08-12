@@ -56,8 +56,8 @@ export default Router.extend({
       });
     },
 
-    viewOrder() {
-        return new ViewOrderRoute({
+    productManage() {
+        return new ProductManageRoute({
           container: this.container
         });
     },
