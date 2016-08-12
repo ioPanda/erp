@@ -15,7 +15,7 @@ export default Route.extend({
 			'mainNav':'市场管理',
 			'title':'广告投放&订单',
 			'subTitle':'Advertisement and order',
-			'icon':'glyphicon-home'
+			'icon':'glyphicon-map-market'
 		}));
 
 		this.layout.content.show(new ContentView());

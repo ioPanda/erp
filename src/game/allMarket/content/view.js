@@ -1,8 +1,17 @@
-import {ItemView} from 'backbone.marionette';
+import {LayoutView} from 'backbone.marionette';
 import template from './template.hbs';
+import {Model} from 'backbone';
 
-export default ItemView.extend({
+export default LayoutView.extend({
 	template: template,
-  className: 'markets'
-
+    
+    regions:{
+    	dlped:'#developed',
+    	dlping:'#developing',
+    	nodlp:'#not-developing'
+    },
+    
+    initialize(options={}){
+	    this.model=options.model;
+    }  
 });
