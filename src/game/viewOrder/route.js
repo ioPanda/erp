@@ -21,11 +21,6 @@ export default Route.extend({
 
         //生产管理部分
         this.layout.content.show(new ContentView());
-    },
-
-    viewOrder() {
-        return new ViewOrderRoute({
-            container: this.container
-        });
     }
+
 });

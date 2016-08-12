@@ -8,7 +8,7 @@ export default ItemView.extend({
     className: 'status',
     
     initialize(options={}){
-        this.model=new Model(options);
+        this.model = new Model(options);
     },
     // ui: {
     //     detail: ''
