@@ -56,6 +56,12 @@ export default Router.extend({
       });
     },
 
+    viewOrder() {
+        return new ViewOrderRoute({
+          container: this.container
+        });
+    },
+
     time() {
       return new TimeRoute({
         container: this.container
