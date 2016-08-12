@@ -4,13 +4,14 @@ import {Model} from 'backbone';
 
 export default LayoutView.extend({
   template: template,
-
+  className: 'produce',
+  
   regions: {
     breadcrumb: '#breadcrumb',
     content: '.content'
   },
 
-  className: 'produce',
+  
 
   initialize(options = {}) {
     this.model = options.model;
