@@ -16,7 +16,7 @@
 <div class="page">
   <form action="" class="form-inline">
      <span>本页显示</span>
-     <select name="" id="" class="form-control">
+     <select name="" id="pageLimit" class="form-control">
         <option value="10">10</option>
         <option value="20">20</option>
         <option value="40">40</option>
@@ -27,7 +27,7 @@
      <button class="btn btn-info">批量删除</button>
   </form>
 
-  <ul class="pagination">
+  <ul class="pagination" id="pagination">
     {{#if prev}}
       <li><a href="#colors?page={{prev}}">&laquo;</a></li>
     {{else}}

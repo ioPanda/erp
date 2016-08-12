@@ -1,7 +1,7 @@
 ERP 沙盘虚拟运营平台
 ====================
 
-An applicaiton built with Marionette.js.
+使用 Marionette.js 开发的应用，gulp + browserify 构建。
 
 ## 开始
 [Clone](https://github.com/ioPanda/erp.git) or [Download](https://github.com/ioPanda/erp/archive/master.zip) this repo.

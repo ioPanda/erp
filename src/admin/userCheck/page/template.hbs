@@ -1,18 +1,4 @@
 
-<div class="page-header">
-  <i class="glyphicon glyphicon-menu-right"></i>
-  <span>游戏组列表</span>
-</div>
-
-<div class="group-list-content">
-  <div>
-
-  </div>
-  <div class="group__list">
-    
-  </div>
-</div>
-
 
 <div class="page">
   <form action="" class="form-inline">
@@ -27,8 +13,8 @@
      <span>条记录数</span>
      <button class="btn btn-info">批量删除</button>
   </form>
-  
-  <ul class="pagination">
+
+  <ul class="pagination" id="pagination">
     {{#if prev}}
       <li><a href="#colors?page={{prev}}">&laquo;</a></li>
     {{else}}

@@ -19,7 +19,7 @@ export default Route.extend({
 import {Route} from 'backbone-routing';
 import LayoutView from './layout-view';
 import Collection from './collection';
-import $ from 'jQuery';
+import $ from 'jquery';
 
 export default Route.extend({
   initialize(options = {}) {

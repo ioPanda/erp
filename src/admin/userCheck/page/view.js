@@ -1,48 +1,30 @@
-
 import _ from 'lodash';
 import $ from 'jquery';
 import {LayoutView} from 'backbone.marionette';
-import CollectionView from './content/collection-view';
+import CollectionView from '../content/collection-view';
 import {Collection} from 'backbone';
-import template from './layout-template.hbs';
+import template from './template.hbs';
 
 
 export default LayoutView.extend({
   template: template,
-  id:'list',
-  className: 'check-list check--index',
-
-  regions: {
-    list: '.check__list'
-  },
+  el:'.page',
+ 
 
   initialize(options = {}) {
     this.state = { start: 0, limit: 10};
     this.page=options.page;
     this.state.start = (options.page - 1) * this.state.limit;
+    this.data=options.data;
+    // alert(JSON.stringify(this.data));
   },
  
 
-  onBeforeRender() {
-    let filtered = _.chain(this.collection.models[0].get('check'))
-      .drop(this.state.start)
-      .take(this.state.limit)
-      .value();
-  
-    this.filteredCollection = new Collection(filtered);
-  },
-
-  onAttach() {
-    this.collectionView = new CollectionView({
-      collection: this.filteredCollection
-    });
-
-    this.list.show(this.collectionView);
-  },
-
   templateHelpers() {
-    let total   = Math.floor(this.collection.models[0].get('check').length / this.state.limit) + 1;
+
+    let total   = Math.floor(this.data.length / this.state.limit) + 1;
     let current = Math.ceil(this.state.start / this.state.limit) + 1;
+
 
     let pages = _.times(total, index => {
       return {
@@ -50,11 +32,12 @@ export default LayoutView.extend({
         page    : index + 1
       };
     });
-
+   
     let prev = current - 1 > 0 ? current - 1 : false;
     let next = current < total ? current + 1 : false;
-
+    // alert(total+ current+ pages+ prev+ next );
     return { total, current, pages, prev, next };
+
   },
 
 
@@ -76,7 +59,7 @@ export default LayoutView.extend({
       // this.state.start = (this.page - 1) * this.state.limit;
       this.state.start = 0;
 
-      let filtered = _.chain(this.collection.models[0].get('check'))
+      let filtered = _.chain(this.data)
         .drop(this.state.start)
         .take(this.state.limit)
         .value();
@@ -90,7 +73,7 @@ export default LayoutView.extend({
       this.list.show(this.collectionView);
       
       //重置页码数
-      let num = Math.ceil(this.collection.models[0].get('check').length / this.state.limit);
+      let num = Math.ceil(this.data.length / this.state.limit);
       
       if($('.pagination').children().length!=(num+2)){
          $('.pagination').html('');
@@ -127,7 +110,7 @@ export default LayoutView.extend({
      this.state.start=(this.page-1)*this.state.limit;
      
      //设置列表内容
-     let filtered = _.chain(this.collection.models[0].get('check'))
+     let filtered = _.chain(this.data)
         .drop(this.state.start)
         .take(this.state.limit)
         .value();
@@ -149,15 +132,4 @@ export default LayoutView.extend({
 
 
 });
-
-
-
-
-
-
-
-
-
-
-
 
