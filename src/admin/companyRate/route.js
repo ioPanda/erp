@@ -35,7 +35,8 @@ export default Route.extend({
 
     this.layoutView = new LayoutView({
       collection: this.collection,
-      page: page
+      page: page,
+      data: this.collection.models[0]
     });
 
     this.container.show(this.layoutView);

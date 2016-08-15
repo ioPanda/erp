@@ -20,22 +20,11 @@ export default Route.extend({
    
     this.layoutView = new LayoutView({
       collection: this.collection,
-      page: page
+      page: page,
+      data: this.collection.models[0].get('check')
     });
-
-    this.container.show(this.layoutView);
-
-    
-    //页码插件
-    // this.layoutView.pageView=new Page({
-    //     collection: this.collection,
-    //     page: this.page,
-    //     data: this.collection.models[0].get('check')
-    // });
-
-    // this.layoutView.pageArea.show(this.layoutView.pageView);
-
    
+    this.container.show(this.layoutView);
   },
 
   destroy() {
