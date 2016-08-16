@@ -10,5 +10,6 @@ require('./books/routes')(api);
 require('./colors/routes')(api);
 require('./login/routes')(api);
 require('./admin/routes')(api);
+require('./markets/routes')(api);
 
 module.exports = api;
