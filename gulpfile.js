@@ -59,7 +59,7 @@ var bundler = _.memoize(function(watch) {
     _.extend(options, watchify.args);
   }
 
-  var b = browserify([srcRoot+'/plugins.js', srcRoot+'/main.js'], options);
+  var b = browserify([srcRoot+'/plugins.js',srcRoot+'/main.js'], options);
 
   if (watch) {
     b = watchify(b);
