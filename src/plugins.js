@@ -12,3 +12,5 @@ import 'babel-polyfill';
 if (window.__agent) {
   window.__agent.start(Backbone, Marionette);
 }
+
+console.log(1);
