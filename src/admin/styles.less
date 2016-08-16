@@ -5,38 +5,69 @@
 @import "ownerEquity/main";
 
 @theme: #3366c2;
-@line-height:15px;
+@line-height:50px;
 
 
 li {
 	list-style-type: none;
 }
 
+input[type="checkbox"]{
+	opacity: 1;
+}
+
 .application__content {
 	font-size: 14px;
 	color:#000036;
+}
 
-	table {
+table {
 		margin-top:-8px;
 		text-align:center;
 
 		thead tr th {
 			background: #ededed;
             text-align: center;
-			height:@line-height;
-			line-height:@line-height;
+			// height:@line-height;
+			// line-height:@line-height;
+            
+            label{
+               display:inline-block;
+               margin-bottom:5px;
+               cursor:pointer;
+
+               span{
+               	 margin-left:20px;
+               }
+            }
 		}
 		tr td{    //要写tr td 省去 tr 没有效果
-			height:@line-height;
-			line-height:@line-height;
+			// height:@line-height;
+			// line-height:@line-height;
+			label{
+               display:inline-block;
+               margin:0 0 19px 0;
+               cursor:pointer;
+            }
 		}
 		a {
 			color:#0066cc;
 		}
 	}
 
+// .item{
+// 	height:@line-height;
+// 	line-height:@line-height;
+// }
 
+
+.table > tbody > tr > td{    // 消除默认冲突
+	padding:0;
+	line-height: @line-height;
+
+	border-top: 1px solid #ddd;
 }
+
 
 .page-header {
 	margin-top:5px;
@@ -73,4 +104,5 @@ li {
 .select-group .form-control{
 	float: left;
 	margin-right: 20px;
+	font-weight: bold;
 }

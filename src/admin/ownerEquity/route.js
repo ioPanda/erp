@@ -36,13 +36,10 @@ export default Route.extend({
 
     this.layoutView = new LayoutView({
       collection: this.collection,
-      page: page
+      page: page,
+      data: this.collection.models[0]
     });
-    
-    // if($(this.container).find("#navbar li:last").hasClass("active")){
-    //   alert("hahaha");
-    // }
-
+  
     this.container.show(this.layoutView);
   },
 
