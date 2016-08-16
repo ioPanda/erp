@@ -1,4 +1,4 @@
-
+// import './plugins';
 import Backbone from 'backbone';
 import Application from './application/application';
 
