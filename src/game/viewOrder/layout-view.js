@@ -1,6 +1,6 @@
+
 import {LayoutView} from 'backbone.marionette';
 import template from './template.hbs';
-import {Model} from 'backbone';
 
 export default LayoutView.extend({
   template: template,
@@ -8,10 +8,11 @@ export default LayoutView.extend({
   
   regions: {
     breadcrumb: '#breadcrumb',
-    content: '.produce_content'
+    content: '.content'
   },
 
   
+
 
   initialize(options = {}) {
     this.model = options.model;

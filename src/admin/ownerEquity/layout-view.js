@@ -7,114 +7,152 @@ import template from './layout-template.hbs';
 
 export default LayoutView.extend({
   template: template,
+  className: 'ownerEquity',
   
   regions: {
     moduleList: '.selModule',
-    gameGroupList: '.selGameGroup', 
-    gameGroupList_2: '.selGameGroup_2',
+    gameGroupList_c: '.selGameGroup_c', 
+    gameGroupList_g: '.selGameGroup_g',
     groupList: '.selGroup',
-    yearList: '.selYear',
-    yearList_2: '.selYear_2',
+    yearList_c: '.selYear_c',
+    yearList_g: '.selYear_g',
     cycleList: '.selCycle'
   },
 
   initialize(options = {}) {
-  
+    this.data = options.data;
   },
 
   onBeforeRender() { 
-    let gGroupFiltered = _.chain(this.collection.models[0].get('gameGroupOptions'))
-    .value();
-    let gGroupFiltered_2 = _.chain(this.collection.models[0].get('gameGroupOptions'))
-    .value();
+    let gameGroup=this.data.get('gameGroup');
+    let gGroupFiltered=[{"gameGroup":"请选择游戏组"}];
+    for(let i=0;i<gameGroup.length;i++){
+       gGroupFiltered.push({"gameGroup":gameGroup[i]['gName']});
+    }
 
-    let groupFiltered = _.chain(this.collection.models[0].get('groupOptions'))
-    .value();
+    let groupFiltered=[{"group":"请选择小组"}];
 
-    let yearFiltered = _.chain(this.collection.models[0].get('yearOptions'))
-    .value(); 
-    let yearFiltered_2 = _.chain(this.collection.models[0].get('yearOptions'))
-    .value(); 
+    let yearFiltered =[{"year":"请选择年份"}];
 
-    let cycleFiltered = _.chain(this.collection.models[0].get('cycleOptions'))
-    .value();
+    let cycleFiltered =[{"year":"请选择周期"}];
 
-
-    this.gGroupFilteredCollection = new Collection(gGroupFiltered);
-    this.gGroupFilteredCollection_2 = new Collection(gGroupFiltered_2);
+    this.gGroupFilteredCollection_c = new Collection(gGroupFiltered);
+    this.gGroupFilteredCollection_g = new Collection(gGroupFiltered);
 
     this.groupFilteredCollection = new Collection(groupFiltered);
 
-    this.yearFilteredCollection = new Collection(yearFiltered); 
-    this.yearFilteredCollection_2 = new Collection(yearFiltered_2); 
+    this.yearFilteredCollection_c = new Collection(yearFiltered); 
+    this.yearFilteredCollection_g = new Collection(yearFiltered); 
 
     this.cycleFilteredCollection = new Collection(cycleFiltered);
+
+   
   },
 
   onAttach() {
-    this.gGroupCollectionView = new CollectionView({
-      collection: this.gGroupFilteredCollection
-    }); 
-    this.gGroupCollectionView_2 = new CollectionView({
-      collection: this.gGroupFilteredCollection_2
-    }); 
+    this.gGroupCollectionView_c = new CollectionView({
+       collection: this.gGroupFilteredCollection_c
+     }); 
+     this.gGroupCollectionView_g = new CollectionView({
+       collection: this.gGroupFilteredCollection_g
+     }); 
 
-    this.groupCollectionView = new CollectionView({
-      collection: this.groupFilteredCollection
-    });
+     this.groupCollectionView = new CollectionView({
+       collection: this.groupFilteredCollection
+     });
 
-    this.yearCollectionView = new CollectionView({
-      collection: this.yearFilteredCollection
-    });
-    this.yearCollectionView_2 = new CollectionView({
-      collection: this.yearFilteredCollection_2
-    });
+     this.yearCollectionView_c = new CollectionView({
+       collection: this.yearFilteredCollection_c
+     });
+     this.yearCollectionView_g = new CollectionView({
+       collection: this.yearFilteredCollection_g
+     });
 
-   this.cycleCollectionView = new CollectionView({
-      collection: this.cycleFilteredCollection
-    });
+     this.cycleCollectionView = new CollectionView({
+       collection: this.cycleFilteredCollection
+     });
+     
+     this.gameGroupList_c.show(this.gGroupCollectionView_c);
+     this.gameGroupList_g.show(this.gGroupCollectionView_g);
 
-  
-    
-    this.gameGroupList.show(this.gGroupCollectionView);
-    this.gameGroupList_2.show(this.gGroupCollectionView_2);
+     this.groupList.show(this.groupCollectionView);
 
-    this.groupList.show(this.groupCollectionView);
+     this.yearList_c.show(this.yearCollectionView_c);
+     this.yearList_g.show(this.yearCollectionView_g);
 
-    this.yearList.show(this.yearCollectionView);
-    this.yearList_2.show(this.yearCollectionView_2);
-
-    this.cycleList.show(this.cycleCollectionView);
-  },
+     this.cycleList.show(this.cycleCollectionView);
+   },
 
   templateHelpers() {},
   
   ui: {
     companyLink: '#navbar li:first',
     gameGroupLink: '#navbar li:last',
-    companyView: '#companyView',
-    gameGroupView: '#gameGroupView'
+
+    gameGroup_c: '.selGameGroup_c select',
+    gameGroup_g: '.selGameGroup_g select',
   },
 
    events: {
-    'click @ui.companyLink': 'companyLink',
-    'click @ui.gameGroupLink': 'gameGroupLink'
+    'click @ui.companyLink': 'link',
+    'click @ui.gameGroupLink': 'link',
+
+    'change @ui.gameGroup_c': 'gameGroup',
+    'change @ui.gameGroup_g': 'gameGroup'
    },
 
-   gameGroupLink(e){
-       $('#navbar li:last').addClass('active');
-       $('#navbar li:first').removeClass('active');
-       $('#companyView').css('display','none');
-       $('#gameGroupView').css('display','block');
+    link(e){
+       let left_=$(window).width(); 
+
+       $(e.target).parent().addClass('active');
+       $(e.target).parent().siblings('li').removeClass('active');
+       
+       let index=0;
+       let i=1;
+       $(e.target).text()=='按企业查看' ? index=0 : index=1;
+       $(e.target).text()=='按企业查看' ? i=1 : i=-1;
+  
+       $('.select-group').children().eq(index).animate({left: 0});
+       $('.select-group').children().eq(index).siblings('div').animate({left: i*left_},500);
    },
-   companyLink(e){
-       $('#navbar li:first').addClass('active');
-       $('#navbar li:last').removeClass('active');
-       $('#gameGroupView').css('display','none');
-       $('#companyView').css('display','block');
+  
+   gameGroup(e){
+     let index=e.target.selectedIndex-1;    //第 0 个不考虑
+     let $$=$(e.target).parent().parent().parent();
+
+     if(index>=0){
+        let groups = this.data.get('gameGroup')[index]['group'];
+        let years = this.data.get('gameGroup')[index]['year'];
+        let cycles = this.data.get('gameGroup')[index]['cycle'];
+        
+        if($$.find('.selGroup').size()!=0){
+          $('.selGroup select').html('<option>请选择小组</option>');
+          for(let i=0;i<groups.length;i++){
+             let option = new Option(groups[i],groups[i]);
+             $('.selGroup select').get(0).add(option,undefined);
+          } 
+        }
+
+        if($$.find('.year').size()!=0){
+          $$.find('.year select').html('<option>请选择年份</option>');
+          for(let i=0;i<years.length;i++){
+             let option = new Option(years[i],years[i]);
+             $$.find('.year select').get(0).add(option,undefined);
+          }
+        }
+        
+        if($$.find('.selCycle').size()!=0){
+          $$.find('.selCycle select').html('<option>请选择周期</option>');
+          for(let i=0;i<cycles.length;i++){
+             let option = new Option(cycles[i],cycles[i]);
+             $$.find('.selCycle select').get(0).add(option,undefined);
+          }
+        }
+     }
+
    },
-   
-    
+
+ 
 });
 
 

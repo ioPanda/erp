@@ -10,14 +10,16 @@ export default Route.extend({
         this.layout = new LayoutView();
         this.container.show(this.layout);
 
-        // 面包屑
+        //面包屑
         this.layout.breadcrumb.show(new BreadcrumbView({
-        	'mainNav': '主页',
-        	'title': '年度规划会议',
-        	'subTitle': 'Annual Planning Meeting'
+            'mainNav' : '生产管理',
+            'title' : '厂房管理',
+            'subTitle' : 'Workshop management',
+            'icon' : 'glyphicon-home'
         }));
 
-        // 年度会议规划部分
+        //生产管理部分
         this.layout.content.show(new ContentView());
     }
+
 });
