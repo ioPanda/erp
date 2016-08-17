@@ -6,19 +6,19 @@
 			{
 				"beginTime":"",
 				"endTime":"",
-				"lastStatus":"上期已维护",
+				"lastStatus":"0",
 				"maintainCost":"0.25",
 				"marketName":"本地市场",
-				"status":"正在维护",
+				"status":"1",
 				"userUnique":""
 			},
 			{
 		        "beginTime":"",
 				"endTime":"",
-				"lastStatus":"上期已维护",
+				"lastStatus":"1",
 				"maintainCost":"0.25",
 				"marketName":"国内市场",
-				"status":"正在维护",
+				"status":"1",
 				"userUnique":""
 			}
 		]
@@ -34,7 +34,7 @@
 				"researchCost":"1",
 				"maintainCost":"0.25",
 				"marketName":"区域市场",
-				"status":"正在开拓",
+				"status":"1",
 				"userUnique":"",
 				"researchPeriod":"2"
 			}

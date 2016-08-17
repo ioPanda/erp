@@ -1,6 +1,6 @@
 import {Route} from 'backbone-routing';
 import BreadcrumbView from '../../component/breadcrumb/view';
-import ContentView from './content/view';
+import 
 import LayoutView from './layout-view';
 
 
@@ -18,7 +18,11 @@ export default Route.extend({
 			'icon':'glyphicon-map-marker'
 		}));
 
-		this.layout.orderSetup.show();
-		this.layout.talkroom.show();
-	}
+		this.layout.navStep = new 
+
+		this.layout.step.show();
+
+		this.layout.talkRoom.show();
+	},
+
 });

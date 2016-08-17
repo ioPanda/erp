@@ -8,7 +8,9 @@ export default LayoutView.extend({
 
 		regions:{
 			breadcrumb:'#breadcrumb',
-			content:'.content_ads'
+			nav:'#navStep',
+			step:'#step',
+			talkRoom:'#talkRoom'
 		},
         
         initialize(options={}){
