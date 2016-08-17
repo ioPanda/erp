@@ -1,18 +1,16 @@
 import {LayoutView} from 'backbone.marionette';
 import template from './template.hbs';
-import {Model} from 'backbone';
 
 export default LayoutView.extend({
   template: template,
 
   regions: {
   	breadcrumb: '#breadcrumb',
-  	content: '.content_market'
+  	done:'#done',
+  	doing:'#doing',
+  	todo:'#todo'
   },
   
-  className: 'allMarket',
-  
-  initialize(options = {}) {
-    this.model = options.model;
-  }
+  className: 'allMarket'
+
 });

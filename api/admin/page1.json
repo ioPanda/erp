@@ -1,0 +1,86 @@
+{
+  "code": 1,
+  "msg": 3,
+  "data": [
+    {
+	  	"userId": "111",
+	  	"id": 1,
+	  	"userName": "wangxinyu",
+	  	"major": "xin guan",
+	  	"class": "0361301",
+	  	"studentId": "2013210956"
+    },
+    {
+	  	"userId": "222",
+	  	"id": 2,
+	  	"userName": "wangxinyu",
+	  	"major": "xin guan",
+	  	"class": "0361301",
+	  	"studentId": "2013210956"
+	},
+	{
+	  	"userId": "333",
+	  	"id": 3,
+	  	"userName": "wangxinyu",
+	  	"major": "xin guan",
+	  	"class": "0361301",
+	  	"studentId": "2013210956"
+	},
+	{
+	  	"userId": "444",
+	  	"id": 4,
+	  	"userName": "wangxinyu",
+	  	"major": "xin guan",
+	  	"class": "0361301",
+	  	"studentId": "2013210956"
+	},
+	{
+	  	"userId": "555",
+	  	"id": 5,
+	  	"userName": "wangxinyu",
+	  	"major": "xin guan",
+	  	"class": "0361301",
+	  	"studentId": "2013210956"
+	},
+	{
+	  	"userId": "666",
+	  	"id": 6,
+	  	"userName": "wangxinyu",
+	  	"major": "xin guan",
+	  	"class": "0361301",
+	  	"studentId": "2013210956"
+	},
+	{
+	  	"userId": "777",
+	  	"id": 7,
+	  	"userName": "wangxinyu",
+	  	"major": "xin guan",
+	  	"class": "0361301",
+	  	"studentId": "2013210956"
+	},
+	{
+	  	"userId": "888",
+	  	"id": 8,
+	  	"userName": "wangxinyu",
+	  	"major": "xin guan",
+	  	"class": "0361301",
+	  	"studentId": "2013210956"
+	},
+	{
+	  	"userId": "999",
+	  	"id": 9,
+	  	"userName": "wangxinyu",
+	  	"major": "xin guan",
+	  	"class": "0361301",
+	  	"studentId": "2013210956"
+	},
+	{
+	  	"userId": "000",
+	  	"id": 10,
+	  	"userName": "wangxinyu",
+	  	"major": "xin guan",
+	  	"class": "0361301",
+	  	"studentId": "2013210956"
+	}
+  ]
+}
