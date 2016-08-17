@@ -14,6 +14,7 @@ export default LayoutView.extend({
   },
 
   initialize(options = {}) {
+    this.collection = options.collection;
     this.data = options.data;
     this.state = { start: 0, limit: 10 };
     this.state.start = (options.page - 1) * this.state.limit;
@@ -59,13 +60,19 @@ export default LayoutView.extend({
   ui: {
      pageLimit: '#pageLimit',
      checkAll : '#all',
-     check    : 'td input'
+     check    : 'td input',
+     update   : '.update',
+     delete   : '.delete',
+     deleteMore: '.btn'
   },
 
   events: {
     'change @ui.pageLimit':'changeLimit',
     'click @ui.checkAll'  : 'checkAll',
-    'click @ui.check'     : 'check'
+    'click @ui.check'     : 'check',
+    'click @ui.update'    : 'update',
+    'click @ui.delete'    : 'delete',
+    'click @ui.deleteMore': 'deleteMore'
   },
 
   changeLimit(e){
@@ -115,6 +122,23 @@ export default LayoutView.extend({
       // alert($('td input').eq(0).prop('checked'));
       // alert($('td input').size());
       // alert($(e.target).prop('checked'));
+  },
+
+  update(){
+    alert('haha');
+  },
+
+  delete(){
+    alert('hahahhahahah');
+    // this.model.destroy();
+    
+    // alert(this.collection.models[0].get('nihao'));
+
+    // alert(_.chain(this.collection.models[0].get('data')).value());
+  },
+
+  deleteMore(){
+    alert('aaaaaaaaaaaa');
   }
 
   

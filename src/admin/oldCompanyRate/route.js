@@ -1,7 +1,7 @@
 
 import {Route} from 'backbone-routing';
-import LayoutView from './layout-view';
-import Collection from './collection';
+import LayoutView from '../companyRate/layout-view';
+import Collection from '../companyRate/collection';
 
 export default Route.extend({
   initialize(options = {}) {
@@ -10,7 +10,7 @@ export default Route.extend({
   },
 
   fetch() {
-  	return this.collection.fetch();
+    return this.collection.fetch();
   },
 
   render(params) {
@@ -19,15 +19,14 @@ export default Route.extend({
     this.layoutView = new LayoutView({
       collection: this.collection,
       page: page,
-      data: this.collection.models[0].get('data')
+      moduleData: this.collection.models[0].get('moduleOptions'),
+      gameGroupData: this.collection.models[0].get('oldGameGroup')
     });
 
     this.container.show(this.layoutView);
   },
 
   destroy() {
-  	this.layoutView.remove();
+    this.layoutView.remove();
   }
 });
-
-

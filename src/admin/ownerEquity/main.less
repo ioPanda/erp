@@ -1,5 +1,5 @@
 @theme: #777;
-
+@nav-height: 15px;
 .page-header {
 	i {
 	    border: 1px solid @theme;
@@ -40,4 +40,26 @@
 	border-top: 1px solid #ddd;
 }
 
+#navbar{
+	line-height: @nav-height;
+}
 
+.nav-tabs > li > a {
+    line-height: @nav-height;
+    border: none;
+    border-radius: 0;
+}
+
+
+ .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
+ 	font-weight: bold;
+    border-top: solid 3px #49a4de;
+ }
+
+
+.nav > li > a:hover, .nav > li > a:focus {
+    border: 1px solid transparent;
+    background-color: #f9f9f9;
+    border: none;
+    color: #555555;
+}
