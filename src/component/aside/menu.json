@@ -25,7 +25,7 @@
 			    },
 			    {
 			        "text": "广告投放&订单",
-			        "path": "#game/adsAndOrder"
+			        "path": "#game/adsAndOrder/step1"
 			    },
 			    {
 			        "text": "市场预测信息",
