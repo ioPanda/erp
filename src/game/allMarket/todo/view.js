@@ -18,4 +18,30 @@ export default ItemView.extend({
     	}
     },
 
+    ui:{
+        startRes:'.startRes'
+    },
+
+    events:{
+        'mouseover @ui.startRes':'moveIn',
+        'mouseout @ui.startRes':'moveOut',
+        'click @ui.startRes':'todo'
+    },
+
+    moveIn (e) {
+        let $this=$(e.target);
+        $this.css({'background-color':'pink',
+                   'font-size':'20px'});
+    },
+    
+    moveOut (e) {
+        let $this=$(e.target);
+        $this.css({'background-color':'#dbdad6',
+                   'font-size':'18px'}); 
+    },
+
+    todo (e) {
+        
+    }
+
 });

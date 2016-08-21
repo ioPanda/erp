@@ -15,5 +15,26 @@ export default ItemView.extend({
     	return {
     		"developingMarket":this.collection.models[0].get('developingMarket')
     	}
+    },
+
+    ui:{
+        stopRes:'.stopRes'
+    },
+
+    events:{
+        'mouseover @ui.stopRes':'moveIn',
+        'mouseout @ui.stopRes':'moveOut'
+    },
+
+    moveIn (e) {
+        let $this=$(e.target);
+        $this.css({'background-color':'pink',
+                   'font-size':'20px'});
+    },
+    
+    moveOut (e) {
+        let $this=$(e.target);
+        $this.css({'background-color':'#dbdad6',
+                   'font-size':'18px'}); 
     }
 });
