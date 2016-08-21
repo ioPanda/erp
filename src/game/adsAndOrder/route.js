@@ -6,6 +6,7 @@ import Router from './router.js';
 
 export default Route.extend({
 	initialize(options={}){
+		console.log(options.step);
 		this.container=options.container;
 
 		this.layout=new LayoutView();

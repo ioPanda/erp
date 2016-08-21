@@ -74,8 +74,9 @@ export default Router.extend({
       });
     },
     
-    adsAndOrder() {
+    adsAndOrder(step) {
       return new AdsAndOrderRoute({
+        step     : step,
         container:this.container
       });
     },
