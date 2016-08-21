@@ -36,13 +36,10 @@ export default Route.extend({
 
     this.layoutView = new LayoutView({
       collection: this.collection,
-      page: page
+      page: page,
+      gameGroupData: this.collection.models[0].get('gameGroup')
     });
-    
-    // if($(this.container).find("#navbar li:last").hasClass("active")){
-    //   alert("hahaha");
-    // }
-
+  
     this.container.show(this.layoutView);
   },
 

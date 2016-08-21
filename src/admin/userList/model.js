@@ -5,6 +5,7 @@ export default Model.extend({
   urlRoot: '/userManagerController/getUserList.do',
 
   defaults: {
-  	active: false
+  	active: false,
+  	// nihao: 'nihao'
   }
 });

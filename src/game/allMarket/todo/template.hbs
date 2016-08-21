@@ -1,0 +1,18 @@
+
+	    <div class="title">
+		    <span class="topic">为开拓市场</span>
+		    <span class="line"><hr></span>
+	    </div>
+	    {{#each unDevelopMarket}}
+	    
+	    <div class="row">
+		    <div class="col-md-1" id="{{marketN marketName}}"></div>
+		    <div class="col-md-10">
+		    	<div class="col-md-3"><h4>市场名称</h4><br><h3>{{marketName}}</h3></div>
+		    	<div class="col-md-3"><h4>开拓所需总期数</h4><br><h3>{{researchPeriod}}</h3></div>
+		    	<div class="col-md-3"><h4>每期开拓费用</h4><br><h3>{{researchCost}}</h3></div>
+		    	<div class="col-md-3"><h4>每期维护费用</h4><br><h3>{{maintainCost}}</h3></div>	
+		    </div>
+		    <div class="col-md-1 btn startRes">进行开拓</div>
+	    </div>
+	    {{/each}}

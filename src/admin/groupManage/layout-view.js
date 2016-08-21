@@ -16,10 +16,11 @@ export default LayoutView.extend({
   initialize(options = {}) {
     this.state = { start: 0, limit: 10};
     this.state.start = (options.page - 1) * this.state.limit;
+    this.data = options.data;
   },
 
-  onBeforeRender() {    
-    let filtered = _.chain(this.collection.models[0].get('group'))
+  onBeforeRender() { 
+    let filtered = _.chain(this.data)
       .drop(this.state.start)
       .take(this.state.limit)
       .value();
@@ -33,10 +34,15 @@ export default LayoutView.extend({
     });
 
     this.list.show(this.collectionView);
+
+    $('.group__item').unwrap();   // 去除 <tr class=''> 外部包含的 <tr class="">  -----表格布局
+
+    $('.details').hide();
+    
   },
 
   templateHelpers() {
-    let total   = Math.floor(this.collection.models[0].get('group').length / this.state.limit) + 1;
+    let total   = Math.floor(this.data.length / this.state.limit) + 1;
     let current = Math.ceil(this.state.start / this.state.limit) + 1;
 
     let pages = _.times(total, index => {
@@ -54,12 +60,17 @@ export default LayoutView.extend({
 
   //页面事件绑定部分
   ui: {
-     pageLimit: '#pageLimit',
-
+     pageLimit : '#pageLimit',
+     details   : '.glyphicon-plus',
+     delete    : '.delete',
+     addHistroy: '.addHistroy'
   },
 
   events: {
-    'change @ui.pageLimit':'changeLimit',
+    'change @ui.pageLimit': 'changeLimit',
+    'click @ui.details'   : 'toggleDetails',
+    'click @ui.delete'    : 'delete',
+    'click @ui.addHistroy': 'addHistroy'
   },
 
   changeLimit(e){
@@ -67,7 +78,7 @@ export default LayoutView.extend({
       this.state.limit=$('.page select').val();
       this.state.start = (this.page - 1) * this.state.limit;
 
-      let filtered = _.chain(this.collection.models[0].get('group'))
+      let filtered = _.chain(this.data)
         .drop(this.state.start)
         .take(this.state.limit)
         .value();
@@ -79,9 +90,13 @@ export default LayoutView.extend({
       });
 
       this.list.show(this.collectionView);
+
+       $('.group__item').unwrap();   // 去除 <tr class=''> 外部包含的 <tr class="">  -----表格布局
+
+       $('.details').hide();
       
       //重置页码数
-      let num = Math.ceil(this.collection.models[0].get('group').length / this.state.limit);
+      let num = Math.ceil(this.data.length / this.state.limit);
       
       if($('.pagination').children().length!=(num+2)){
          $('.pagination').html('');
@@ -96,6 +111,27 @@ export default LayoutView.extend({
          $('.pagination').children().length=3 ? $('.pagination').children().last().addClass('disabled') : '';
       }
 
+  },
+
+  toggleDetails(e){
+    var $this = $(e.target).parent().parent();
+    var $next = $this.nextUntil('.item');
+
+    $next.slideToggle('slow');
+
+    $(e.target).toggleClass('glyphicon-minus');
+    
+    // $next.eq(0).slideToggle('normal',function(){
+    //   $next.eq(1).slideToggle('normal');
+    // });
+  },
+
+  delete(){
+    alert('delete');
+  },
+
+  addHistroy(){
+    alert('addHistroy');
   }
 
 });

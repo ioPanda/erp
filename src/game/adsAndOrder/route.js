@@ -1,23 +1,30 @@
 import {Route} from 'backbone-routing';
 import BreadcrumbView from '../../component/breadcrumb/view';
-import ContentView from './content/view';
 import LayoutView from './layout-view';
-
+import NavView from './nav/view.js';
+import Router from './router.js';
 
 export default Route.extend({
 	initialize(options={}){
+		console.log(options.step);
 		this.container=options.container;
 
 		this.layout=new LayoutView();
+        this.router= new Router();
 		this.container.show(this.layout);
 
-		this.layout.breadcrumb.show(new BreadcrumbView({
+        this.layout.breadcrumb.show(new BreadcrumbView({
 			'mainNav':'市场管理',
 			'title':'广告投放&订单',
-			'subTitle':'Advertisement and order',
-			'icon':'glyphicon-home'
-		}));
+			'subTitle':'Advertisement And Order',
+			'icon':'glyphicon-map-marker'
+		}));	
 
-		this.layout.content.show(new ContentView());
+        this.layout.nav.show(new NavView());
+        
+        // this.layout.step.show(new Router({container:this.layout.step}));
+        
+
 	}
+
 });

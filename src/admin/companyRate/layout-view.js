@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import $ from 'jquery';
 import {LayoutView} from 'backbone.marionette';
 import CollectionView from './content/collection-view';
 import {Collection} from 'backbone';
@@ -6,7 +7,7 @@ import template from './layout-template.hbs';
 
 export default LayoutView.extend({
   template: template,
-  // className: '',
+  className: 'companyRate',
 
   regions: {
     moduleList: '.selModule',
@@ -16,21 +17,23 @@ export default LayoutView.extend({
   },
 
   initialize(options = {}) {
-  
+    this.moduleData = options.moduleData;
+    this.gameGroupData = options.gameGroupData;
   },
 
   onBeforeRender() {    
-    let mFiltered = _.chain(this.collection.models[0].get('moduleOptions'))
+    let mFiltered = _.chain(this.moduleData)
       .value();
+    
+    let gameGroup=this.gameGroupData;
+    let gGroupFiltered=[{"gameGroup":"请选择游戏组"}];
+    for(let i=0;i<gameGroup.length;i++){
+       gGroupFiltered.push({"gameGroup":gameGroup[i]['gName']});
+    }
 
-    let gGroupFiltered = _.chain(this.collection.models[0].get('gameGroupOptions'))
-    .value();
+    let groupFiltered=[{"group":"请选择小组"}];
 
-    let groupFiltered = _.chain(this.collection.models[0].get('groupOptions'))
-    .value();
-
-    let yearFiltered = _.chain(this.collection.models[0].get('yearOptions'))
-    .value();
+    let yearFiltered =[{"year":"请选择年份"}];
 
     this.mFilteredCollection = new Collection(mFiltered);
 
@@ -42,50 +45,69 @@ export default LayoutView.extend({
   },
 
   onAttach() {
-    this.mCollectionView = new CollectionView({
-      collection: this.mFilteredCollection
-    });
 
-    this.gGroupCollectionView = new CollectionView({
-      collection: this.gGroupFilteredCollection
-    }); 
-
-    this.groupCollectionView = new CollectionView({
-      collection: this.groupFilteredCollection
-    });
-
-   this.yearCollectionView = new CollectionView({
-      collection: this.yearFilteredCollection
-    });
-
-    this.moduleList.show(this.mCollectionView);
+    this.moduleList.show(new CollectionView({
+        collection: this.mFilteredCollection
+    }));
     
-    this.gameGroupList.show(this.gGroupCollectionView);
+    this.gameGroupList.show(new CollectionView({
+        collection: this.gGroupFilteredCollection
+    }));
 
-    this.groupList.show(this.groupCollectionView);
+    this.groupList.show(new CollectionView({
+        collection: this.groupFilteredCollection
+    }));
 
-    this.yearList.show(this.yearCollectionView);
+    this.yearList.show(new CollectionView({
+        collection: this.yearFilteredCollection
+    }));
   },
 
-  templateHelpers() {
-  //   let total   = Math.ceil(this.collection.length / this.state.limit) + 1;
-  //   let current = Math.ceil(this.state.start / this.state.limit) + 1;
+  templateHelpers() {},
 
-  //   let pages = _.times(total, index => {
-  //     return {
-  //       current : index + 1 === current,
-  //       page    : index + 1
-  //     };
-  //   });
+  ui: {
+    module   : '.selModule select',
+    gameGroup: '.selGameGroup select'
+  },
 
-  //   let prev = current - 1 > 0 ? current - 1 : false;
-  //   let next = current < total ? current + 1 : false;
+  events: {
+    'change @ui.module'    : 'module',
+    'change @ui.gameGroup': 'gameGroup'
+  },
 
-  //   return { total, current, pages, prev, next };
-   }
+  module(e){
+    // alert(e.target.selectedIndex);
+    let index=e.target.selectedIndex;
 
-    // let total=this.collection.modal[0].get('selects').length;
+    this.moduleData[index]['hasGroup']==false ? $('.selGroup select').css('display','none') : $('.selGroup select').css('display','block');
+
+    this.moduleData[index]['hasYear']==false ? $('.selYear select').css('display','none') : $('.selYear select').css('display','block');
+       
+
+  },
+
+  gameGroup(e){
+    $('.selGroup select').html('<option>请选择小组</option>');
+    $('.selYear select').html('<option>请选择年份</option>');
+
+    let index=e.target.selectedIndex-1;    //第 0 个不考虑
     
+    if(index>=0){
+       let groups = this.gameGroupData[index]['group'];
+       let years = this.gameGroupData[index]['year'];
+
+       for(let i=0;i<groups.length;i++){
+          let option = new Option(groups[i],groups[i]);
+          $('.selGroup select').get(0).add(option,undefined);
+       } 
+       for(let i=0;i<years.length;i++){
+          let option = new Option(years[i],years[i]);
+          $('.selYear select').get(0).add(option,undefined);
+       }
+    }
+  }
+
+
 });
 
 

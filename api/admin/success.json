@@ -429,14 +429,24 @@
 	  	"studentId": "2013210956"
 	}
   ],
-  "group":[
+  "gameGroup":[
   	{
   		"gName":"001",
   		"gLeader":"zz",
   		"gNum":10,
   		"yearNum":6,
   		"quarterNum":5,
-  		"nowTime":2
+  		"nowTime":2,
+
+  		"identifier":"zhangzheng",
+  		"time":"fafal",
+  		"gameState":222,
+  		"advState":11,
+  		"orderState":11,
+
+  		"group":["1_1","1_2","1_3","1_4"],
+  		"year":["第一年1"],
+  		"cycle":["第一周期1"]
   	},
   	{
   		"gName":"002",
@@ -444,7 +454,11 @@
   		"gNum":10,
   		"yearNum":6,
   		"quarterNum":5,
-  		"nowTime":2
+  		"nowTime":2,
+
+  		"group":["2_1","2_2","2_3","2_4"],
+  		"year":["第一年2","第二年","第三年","第四年"],
+  		"cycle":["第一周期2","第二周期","第三周期","第四周期"]
   	},
   	{
   		"gName":"003",
@@ -452,7 +466,11 @@
   		"gNum":10,
   		"yearNum":6,
   		"quarterNum":5,
-  		"nowTime":2
+  		"nowTime":2,
+
+  		"group":["3_1","3_2","3_3","3_4"],
+  		"year":["第一年3","第二年","第三年","第四年"],
+  		"cycle":["第一周期3","第二周期","第三周期","第四周期"]
   	},
   	{
   		"gName":"004",
@@ -460,7 +478,11 @@
   		"gNum":10,
   		"yearNum":6,
   		"quarterNum":5,
-  		"nowTime":2
+  		"nowTime":2,
+
+  		"group":["4_1","4_2","4_3","4_4"],
+  		"year":["第一年4","第二年","第三年","第四年"],
+  		"cycle":["第一周期4","第二周期","第三周期","第四周期"]
   	},
   	{
   		"gName":"005",
@@ -468,7 +490,11 @@
   		"gNum":10,
   		"yearNum":6,
   		"quarterNum":5,
-  		"nowTime":2
+  		"nowTime":2,
+
+  		"group":["5_1","5_2","5_3","5_4"],
+  		"year":["第一年5","第二年","第三年","第四年"],
+  		"cycle":["第一周期5","第二周期","第三周期","第四周期"]
   	},
   	{
   		"gName":"006",
@@ -476,7 +502,11 @@
   		"gNum":10,
   		"yearNum":6,
   		"quarterNum":5,
-  		"nowTime":2
+  		"nowTime":2,
+
+  		"group":["6_1","6_2","6_3","6_4"],
+  		"year":["第一年6","第二年","第三年","第四年"],
+  		"cycle":["第一周期6","第二周期"]
   	},
   	{
   		"gName":"007",
@@ -484,112 +514,219 @@
   		"gNum":10,
   		"yearNum":6,
   		"quarterNum":5,
-  		"nowTime":2
+  		"nowTime":2,
+
+  		"group":["7_1","7_2","7_3","7_4"],
+  		"year":["第一年7","第二年","第三年","第四年"],
+  		"cycle":["第一周期7"]
   	},
   	{
-  		"gName":"001",
+  		"gName":"008",
   		"gLeader":"zz",
   		"gNum":10,
   		"yearNum":6,
   		"quarterNum":5,
-  		"nowTime":2
+  		"nowTime":2,
+
+  		"group":["8_1","8_2","8_3","8_4"],
+  		"year":["第一年8"],
+  		"cycle":["第一周期8","第二周期","第三周期","第四周期"]
   	},
   	{
-  		"gName":"002",
+  		"gName":"009",
   		"gLeader":"zz",
   		"gNum":10,
   		"yearNum":6,
   		"quarterNum":5,
-  		"nowTime":2
+  		"nowTime":2,
+
+  		"group":["9_1","9_2","9_3","9_4"],
+  		"year":["第一年9","第二年","第三年","第四年"],
+  		"cycle":["第一周期9","第二周期","第三周期"]
   	},
   	{
-  		"gName":"003",
+  		"gName":"010",
   		"gLeader":"zz",
   		"gNum":10,
   		"yearNum":6,
   		"quarterNum":5,
-  		"nowTime":2
+  		"nowTime":2,
+
+  		"group":["10_1","10_2","10_3","10_4"],
+  		"year":["第一年10","第二年","第三年","第四年","第五年"],
+  		"cycle":["第一周期10","第二周期"]
   	},
   	{
-  		"gName":"004",
+  		"gName":"011",
   		"gLeader":"zz",
   		"gNum":10,
   		"yearNum":6,
   		"quarterNum":5,
-  		"nowTime":2
+  		"nowTime":2,
+
+  		"group":["11_1","11_2","11_3","11_4"],
+  		"year":["第一年11","第二年"],
+  		"cycle":["第一周期11","第二周期","第三周期","第四周期"]
   	},
   	{
-  		"gName":"005",
+  		"gName":"012",
   		"gLeader":"zz",
   		"gNum":10,
   		"yearNum":6,
   		"quarterNum":5,
-  		"nowTime":2
+  		"nowTime":2,
+
+  		"group":["12_1","12_2","12_3","12_4"],
+  		"year":["第一年12","第二年","第三年"],
+  		"cycle":["第一周期12","第二周期","第三周期"]
   	},
   	{
-  		"gName":"006",
+  		"gName":"013",
   		"gLeader":"zz",
   		"gNum":10,
   		"yearNum":6,
   		"quarterNum":5,
-  		"nowTime":2
+  		"nowTime":2,
+
+  		"group":["13_1","13_2","13_3","13_4"],
+  		"year":["第一年13","第二年","第三年"],
+  		"cycle":["第一周期13","第二周期","第三周期","第四周期"]
   	},
   	{
-  		"gName":"007",
+  		"gName":"014",
   		"gLeader":"zz",
   		"gNum":10,
   		"yearNum":6,
   		"quarterNum":5,
-  		"nowTime":2
+  		"nowTime":2,
+
+  		"group":["14_1","14_2","14_3","14_4"],
+  		"year":["第一年14","第二年","第三年","第四年","第五年"],
+  		"cycle":["第一周期14","第二周期","第三周期","第四周期","第五周期"]
   	}
   ],
   "moduleOptions":[
   	{
-  		"module":"请选择分析模块"
+  		"module":"请选择分析模块",
+  		"hasGroup":true,
+  		"hasYear":false
   	},
   	{
-  		"module":"m1"
+  		"module":"综合市场占有率分析",
+  		"hasGroup":true,
+  		"hasYear":false
   	},
   	{
-  		"module":"m2"
+  		"module":"产品市场占有率分析",
+  		"hasGroup":true,
+  		"hasYear":false
   	},
   	{
-  		"module":"m3"
+  		"module":"成本费用占销售比例分析",
+  		"hasGroup":true,
+  		"hasYear":false
   	},
   	{
-  		"module":"m4"
+  		"module":"成本费用占销售比例变化分析",
+  		"hasGroup":true,
+  		"hasYear":false
   	},
   	{
-  		"module":"张峥"
+  		"module":"产品贡献利润分析",
+  		"hasGroup":true,
+  		"hasYear":true
+  	},
+  	{
+  		"module":"生产能力分析",
+  		"hasGroup":false,
+  		"hasYear":false
   	}
   ],
-  "gameGroupOptions":[
+  "oldGameGroup":[
   	{
-  		"gameGroup":"请选择游戏组"
+  		"gName":"old_1",
+  		
+  		"group":["1_1","1_2","1_3","1_4"],
+  		"year":["第一年1"],
+  		"cycle":["第一周期1"]
   	},
   	{
-  		"gameGroup":"gGroup1"
+  		"gName":"old_2",
+  		
+
+  		"group":["2_1","2_2","2_3","2_4"],
+  		"year":["第一年2","第二年","第三年","第四年"],
+  		"cycle":["第一周期2","第二周期","第三周期","第四周期"]
   	},
   	{
-  		"gameGroup":"gGroup2"
+  		"gName":"old_3",
+
+  		"group":["3_1","3_2","3_3","3_4"],
+  		"year":["第一年3","第二年","第三年","第四年"],
+  		"cycle":["第一周期3","第二周期","第三周期","第四周期"]
   	},
   	{
-  		"gameGroup":"gGroup3"
-  	}
-  ],
-  "groupOptions":[
+  		"gName":"old_4",
+
+  		"group":["4_1","4_2","4_3","4_4"],
+  		"year":["第一年4","第二年","第三年","第四年"],
+  		"cycle":["第一周期4","第二周期","第三周期","第四周期"]
+  	},
   	{
-  		"group":"请选择小组"
-  	}
-  ],
-  "yearOptions":[
+  		"gName":"old_5",
+
+  		"group":["5_1","5_2","5_3","5_4"],
+  		"year":["第一年5","第二年","第三年","第四年"],
+  		"cycle":["第一周期5","第二周期","第三周期","第四周期"]
+  	},
   	{
-  		"year":"请选择年份"
-  	}
-  ],
-  "cycleOptions":[
+  		"gName":"old_6",
+
+  		"group":["6_1","6_2","6_3","6_4"],
+  		"year":["第一年6","第二年","第三年","第四年"],
+  		"cycle":["第一周期6","第二周期"]
+  	},
   	{
-  		"cycle":"请选择周期"
+  		"gName":"old_7",
+
+  		"group":["7_1","7_2","7_3","7_4"],
+  		"year":["第一年7","第二年","第三年","第四年"],
+  		"cycle":["第一周期7"]
+  	},
+  	{
+  		"gName":"old_8",
+
+  		"group":["8_1","8_2","8_3","8_4"],
+  		"year":["第一年8"],
+  		"cycle":["第一周期8","第二周期","第三周期","第四周期"]
+  	},
+  	{
+  		"gName":"old_9",
+
+  		"group":["9_1","9_2","9_3","9_4"],
+  		"year":["第一年9","第二年","第三年","第四年"],
+  		"cycle":["第一周期9","第二周期","第三周期"]
+  	},
+  	{
+  		"gName":"old_10",
+
+  		"group":["10_1","10_2","10_3","10_4"],
+  		"year":["第一年10","第二年","第三年","第四年","第五年"],
+  		"cycle":["第一周期10","第二周期"]
+  	},
+  	{
+  		"gName":"old_11",
+
+  		"group":["11_1","11_2","11_3","11_4"],
+  		"year":["第一年11","第二年"],
+  		"cycle":["第一周期11","第二周期","第三周期","第四周期"]
+  	},
+  	{
+  		"gName":"old_12",
+
+  		"group":["12_1","12_2","12_3","12_4"],
+  		"year":["第一年12","第二年","第三年"],
+  		"cycle":["第一周期12","第二周期","第三周期"]
   	}
   ]
 }

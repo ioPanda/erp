@@ -2,7 +2,7 @@
 import {Route} from 'backbone-routing';
 import LayoutView from './layout-view';
 import Collection from './collection';
-import Page from './page/view';
+
 
 
 export default Route.extend({
@@ -17,32 +17,20 @@ export default Route.extend({
 
   render(params) {
     let page = params && parseFloat(params.page) || 1;
-   
+
     this.layoutView = new LayoutView({
       collection: this.collection,
-      page: page
+      page: page,
+      data: this.collection.models[0].get('check')
     });
 
     this.container.show(this.layoutView);
-
-    
-    //页码插件
-    // this.layoutView.pageView=new Page({
-    //     collection: this.collection,
-    //     page: this.page,
-    //     data: this.collection.models[0].get('check')
-    // });
-
-    // this.layoutView.pageArea.show(this.layoutView.pageView);
-
-   
   },
 
   destroy() {
     this.layoutView.remove();
   }
 });
-
 
 
 
@@ -57,8 +45,9 @@ export default Route.extend({
 import {Route} from 'backbone-routing';
 import LayoutView from './layout-view';
 import Collection from './collection';
-
-
+import Page from './page/view';
+import template from './layout-template.hbs';
+import template_item from './content/item-template.hbs';
 
 export default Route.extend({
   initialize(options = {}) {
@@ -72,12 +61,15 @@ export default Route.extend({
 
   render(params) {
     let page = params && parseFloat(params.page) || 1;
-
+   
     this.layoutView = new LayoutView({
+      template: template,
+      template_item: template_item,
       collection: this.collection,
-      page: page
+      page: page,
+      data: this.collection.models[0].get('check')
     });
-
+   
     this.container.show(this.layoutView);
   },
 
@@ -89,3 +81,8 @@ export default Route.extend({
 
 
 */
+
+
+
+
+

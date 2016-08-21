@@ -8,11 +8,8 @@ export default LayoutView.extend({
 
 		regions:{
 			breadcrumb:'#breadcrumb',
-			content:'.content_ads'
-		},
-        
-        initialize(options={}){
-        	this.model=options.model;
-        }
-
+			nav:'#navStep',
+			step:'#step',
+			talkRoom:'#talkRoom'
+		}
 	});

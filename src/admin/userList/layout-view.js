@@ -14,12 +14,14 @@ export default LayoutView.extend({
   },
 
   initialize(options = {}) {
+    this.collection = options.collection;
+    this.data = options.data;
     this.state = { start: 0, limit: 10 };
     this.state.start = (options.page - 1) * this.state.limit;
   },
 
   onBeforeRender() {    
-    let filtered = _.chain(this.collection.models[0].get('data'))
+    let filtered = _.chain(this.data)
       .drop(this.state.start)
       .take(this.state.limit)
       .value();
@@ -36,7 +38,7 @@ export default LayoutView.extend({
   },
 
   templateHelpers() {
-    let total   = Math.floor(this.collection.models[0].get('data').length / this.state.limit) + 1;
+    let total   = Math.floor(this.data.length / this.state.limit) + 1;
     let current = Math.ceil(this.state.start / this.state.limit) + 1;
 
     let pages = _.times(total, index => {
@@ -57,11 +59,20 @@ export default LayoutView.extend({
   //页面事件绑定部分
   ui: {
      pageLimit: '#pageLimit',
-
+     checkAll : '#all',
+     check    : 'td input',
+     update   : '.update',
+     delete   : '.delete',
+     deleteMore: '.btn'
   },
 
   events: {
     'change @ui.pageLimit':'changeLimit',
+    'click @ui.checkAll'  : 'checkAll',
+    'click @ui.check'     : 'check',
+    'click @ui.update'    : 'update',
+    'click @ui.delete'    : 'delete',
+    'click @ui.deleteMore': 'deleteMore'
   },
 
   changeLimit(e){
@@ -69,7 +80,7 @@ export default LayoutView.extend({
       this.state.limit=$('.page select').val();
       this.state.start = (this.page - 1) * this.state.limit;
 
-      let filtered = _.chain(this.collection.models[0].get('data'))
+      let filtered = _.chain(this.data)
         .drop(this.state.start)
         .take(this.state.limit)
         .value();
@@ -83,7 +94,7 @@ export default LayoutView.extend({
       this.list.show(this.collectionView);
       
       //重置页码数
-      let num = Math.ceil(this.collection.models[0].get('data').length / this.state.limit);
+      let num = Math.ceil(this.data.length / this.state.limit);
       
       if($('.pagination').children().length!=(num+2)){
          $('.pagination').html('');
@@ -97,6 +108,46 @@ export default LayoutView.extend({
          $('.pagination').children().eq(1).addClass('active');
          $('.pagination').children().length=3 ? $('.pagination').children().last().addClass('disabled') : '';
       }
+  },
+
+  checkAll(e){
+     $('#all').prop('checked')==true ? 
+     $('td input').prop('checked',true) : 
+     $('td input').prop('checked',false);
+  },
+  check(e){
+     $(e.target).prop('checked')==true ? 
+     $(e.target).prop('checked',true) : 
+     $(e.target).prop('checked',false);
+      // alert($('td input').eq(0).prop('checked'));
+      // alert($('td input').size());
+      // alert($(e.target).prop('checked'));
+  },
+
+  update(){
+    var jqXHR=$.ajax({
+      type:'GET',
+      url:'/userManagerController/getUserList.do'
+    });
+    jqXHR.done(function(response){
+      alert(response[0]['data'][0]['userId']);
+    });
+    jqXHR.fail(function(xhr,errorText,errorStatus){
+      alert('hhh');
+    });
+  },
+
+  delete(){
+    alert('hahahhahahah');
+    // this.model.destroy();
+    
+    // alert(this.collection.models[0].get('nihao'));
+
+    // alert(_.chain(this.collection.models[0].get('data')).value());
+  },
+
+  deleteMore(){
+    alert('aaaaaaaaaaaa');
   }
 
   

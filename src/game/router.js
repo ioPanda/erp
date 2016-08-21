@@ -73,5 +73,18 @@ export default Router.extend({
       return new ExitRoute({
         container: this.container
       });
+    },
+    
+    adsAndOrder(step) {
+      return new AdsAndOrderRoute({
+        step     : step,
+        container:this.container
+      });
+    },
+    
+    marketForest() {
+      return new MarketForestRoute({
+        container:this.container
+      });
     }
 });

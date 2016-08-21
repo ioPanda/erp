@@ -1,0 +1,20 @@
+
+        <div class="title">
+	        <span class="topic">开拓中市场</span>
+	        <span class="line"><hr></span>
+        </div>
+        {{#each developingMarket}}
+        <div class="row">
+        	<div class="col-md-1" id="{{marketN marketName}}"></div>
+        	<div class="col-md-10">
+        		<div class="col-md-2"><h4>市场名称</h4><br><h3 class="marketName">{{marketName}}</h3></div>
+        		<div class="col-md-2"><h4>开拓周期</h4><br><h3>{{researchPeriod}}</h3></div>
+        		<div class="col-md-2"><h4>每期开拓费用</h4><br><h3>{{researchCost}}</h3></div>
+        		<div class="col-md-2"><h4>已完成周期</h4><br><h3>{{finishedPeriod}}</h3></div>
+        		<div class="col-md-2"><h4>开拓开始时间</h4><br><h3>{{beginTime}}</h3></div>
+        		<div class="col-md-2"><h4>当前状态</h4><br><h3>{{Status status}}</h3></div>        		
+        	</div>
+        	<div class="col-md-1 btn stopRes">暂停开拓</div>
+        </div>
+        {{/each}}
+	

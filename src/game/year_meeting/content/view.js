@@ -13,8 +13,8 @@ export default ItemView.extend({
   },
 
   events:{
-    'mouseover @ui.detail':'onMoveover',
-    'mouseout @ui.detail':'onMoveout'
+    'mouseenter @ui.detail':'onMoveover',
+    'mouseleave @ui.detail':'onMoveout'
   },
   
   initialize(options={}){
