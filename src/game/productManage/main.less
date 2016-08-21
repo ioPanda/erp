@@ -23,12 +23,13 @@ em {
     width: 225px;
     height: 30px;
     border-radius: 0;
-    outline: none;
+    outline: none !important;
     margin-right: 16px;
 }
 .inquire {
     width: 70px;
     height: 26px;
+    line-height: 26px;
     background-color: #DBDAD6;
     color: #000;
     border: 0;
@@ -52,7 +53,7 @@ em {
     margin-top: 20px;
     .house-build {
         width: 100%;
-        overflow: hidden;
+        // overflow: hidden;
         margin-bottom: 16px;
         .show-img:before {
             display: block;
@@ -61,7 +62,7 @@ em {
             height: 0;
             position: absolute;
             top: 0;
-            left: 0;
+            left: -10px;
             border: 6px solid transparent;
             border-top-color: #666666;
         }
@@ -70,6 +71,12 @@ em {
             height: 70px;
             float: left;
             position: relative;
+            margin-left: 10px;
+            img {
+                display: block;
+                width: 70px;
+                height: 70px;
+            }
         }
         .show-message {
             width: 1030px;
@@ -78,6 +85,14 @@ em {
             float: left;
         }
     }
+}
+.clearfix:after {
+    visibility:hidden;
+    display:block;
+    font-size:0;
+    content:" ";
+    clear:both;
+    height:0;
 }
 .show-ul {
     overflow: hidden;
@@ -125,9 +140,16 @@ em {
         color: #9A9A9A;
     }
     .inquire {
-        width: 70px;
+        width: 60px;
+        height: 26px;
+        text-align: center;
+        line-height: 26px;
         background-color: #DBDAD6;
         margin-top: 8px;
+        margin-left: 12px;
+        float: left;
+        cursor: pointer;
+        position: relative;
     }
 }
 .house-detail {
@@ -138,6 +160,11 @@ em {
             table-layout: fixed;
             padding-right: 35px;
             text-align: left;
+            img {
+                display: block;
+                width: 30px;
+                height: 30px;
+            }
             p {
                 margin-top: 15px;
                 font-weight: bold;
@@ -149,6 +176,10 @@ em {
                 margin-left: 40px;
             }
         }
+        .first-td {
+            padding-right: 10px;
+            padding-left: 10px;
+        }
     }
 }
 .build-status {
@@ -159,6 +190,63 @@ em {
     }
 }
 .show-ul-sub {
-    margin-right: 5px;
-    margin-left: 5px;
+    width: 90px;
+}
+.btn-hover {
+    background-color: #D7D6BA;
+    opacity: 0.9;
+    position: absolute;
+    z-index: 5;
+    top: 27px;
+    left: -72px;
+}
+.btnView-hover {
+    width: 285px;
+    height: 332px;
+    line-height: 12px;
+    text-align: left;
+    border: 1px solid #EEEEEC;
+    p {
+        padding-left: 5px;
+        letter-spacing: -1px;
+    }
+}
+.view-detail {
+    width: 272px;
+    margin: 0 auto;
+}
+.view-top {
+    border-bottom: 1px solid #000;
+    border-top: 1px solid #000;
+    margin-top: 5px;
+}
+.view-blow {
+    border-bottom: 1px solid #000;
+}
+.inquire {
+    background-color: #D6D5B7;
+}
+.btnConvers-hover {
+    width: 276px;
+    height: 110px;
+    .canvers-input {
+        margin: 0 auto;
+        input {
+            width: 170px;
+            height: 30px;
+            border-radius: 0;
+            outline: none;
+            border: 1px solid #BEBDC2;
+        }
+    }
+    button {
+        display: block;
+        width: 130px;
+        height: 30px;
+        margin: 0 auto;
+        border: 0;
+        text-align: center;
+        line-height: 30px;
+        background-color: #D1BA74;
+    }
 }
