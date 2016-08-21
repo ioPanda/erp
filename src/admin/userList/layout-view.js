@@ -125,7 +125,16 @@ export default LayoutView.extend({
   },
 
   update(){
-    alert('haha');
+    var jqXHR=$.ajax({
+      type:'GET',
+      url:'/userManagerController/getUserList.do'
+    });
+    jqXHR.done(function(response){
+      alert(response[0]['data'][0]['userId']);
+    });
+    jqXHR.fail(function(xhr,errorText,errorStatus){
+      alert('hhh');
+    });
   },
 
   delete(){
