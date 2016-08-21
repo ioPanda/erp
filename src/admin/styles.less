@@ -5,6 +5,7 @@
 @import "ownerEquity/main";
 
 @theme: #3366c2;
+// @theme: #49a4de;
 @line-height:50px;
 
 
@@ -55,11 +56,6 @@ table {
 		}
 	}
 
-// .item{
-// 	height:@line-height;
-// 	line-height:@line-height;
-// }
-
 
 .table > tbody > tr > td{    // 消除默认冲突
 	padding:0;
@@ -70,16 +66,17 @@ table {
 
 
 .page-header {
+	border-bottom: 2px solid #49a4de;
 	margin-top:5px;
 	color:@theme;
 	i {
 	    border: 1px solid @theme;
 	    border-radius: 50%;
-	    padding: 3px;
-	    margin-right: 14px;
+	    padding: 2px;
+	    margin-right: 5px;
 	}
 	span {
-		font-size: 16px;
+		font-size: 15px;
 		font-weight: bold;
 	}
 }

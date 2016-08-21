@@ -20,11 +20,11 @@ export default LayoutView.extend({
   },
 
   initialize(options = {}) {
-    this.data = options.data;
+    this.gameGroupData = options.gameGroupData;
   },
 
   onBeforeRender() { 
-    let gameGroup=this.data.get('gameGroup');
+    let gameGroup=this.gameGroupData;
     let gGroupFiltered=[{"gameGroup":"请选择游戏组"}];
     for(let i=0;i<gameGroup.length;i++){
        gGroupFiltered.push({"gameGroup":gameGroup[i]['gName']});
@@ -103,15 +103,15 @@ export default LayoutView.extend({
 
     link(e){
        let left_=$(window).width(); 
-
-       $(e.target).parent().addClass('active');
+       
        $(e.target).parent().siblings('li').removeClass('active');
+       $(e.target).parent().addClass('active');
        
        let index=0;
        let i=1;
        $(e.target).text()=='按企业查看' ? index=0 : index=1;
        $(e.target).text()=='按企业查看' ? i=1 : i=-1;
-  
+       
        $('.select-group').children().eq(index).animate({left: 0});
        $('.select-group').children().eq(index).siblings('div').animate({left: i*left_},500);
    },
@@ -121,9 +121,9 @@ export default LayoutView.extend({
      let $$=$(e.target).parent().parent().parent();
 
      if(index>=0){
-        let groups = this.data.get('gameGroup')[index]['group'];
-        let years = this.data.get('gameGroup')[index]['year'];
-        let cycles = this.data.get('gameGroup')[index]['cycle'];
+        let groups = this.gameGroupData[index]['group'];
+        let years = this.gameGroupData[index]['year'];
+        let cycles = this.gameGroupData[index]['cycle'];
         
         if($$.find('.selGroup').size()!=0){
           $('.selGroup select').html('<option>请选择小组</option>');

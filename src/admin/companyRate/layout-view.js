@@ -17,14 +17,15 @@ export default LayoutView.extend({
   },
 
   initialize(options = {}) {
-    this.data = options.data;
+    this.moduleData = options.moduleData;
+    this.gameGroupData = options.gameGroupData;
   },
 
   onBeforeRender() {    
-    let mFiltered = _.chain(this.data.get('moduleOptions'))
+    let mFiltered = _.chain(this.moduleData)
       .value();
     
-    let gameGroup=this.data.get('gameGroup');
+    let gameGroup=this.gameGroupData;
     let gGroupFiltered=[{"gameGroup":"请选择游戏组"}];
     for(let i=0;i<gameGroup.length;i++){
        gGroupFiltered.push({"gameGroup":gameGroup[i]['gName']});
@@ -78,9 +79,9 @@ export default LayoutView.extend({
     // alert(e.target.selectedIndex);
     let index=e.target.selectedIndex;
 
-    this.data.get('moduleOptions')[index]['hasGroup']==false ? $('.selGroup select').css('display','none') : $('.selGroup select').css('display','block');
+    this.moduleData[index]['hasGroup']==false ? $('.selGroup select').css('display','none') : $('.selGroup select').css('display','block');
 
-    this.data.get('moduleOptions')[index]['hasYear']==false ? $('.selYear select').css('display','none') : $('.selYear select').css('display','block');
+    this.moduleData[index]['hasYear']==false ? $('.selYear select').css('display','none') : $('.selYear select').css('display','block');
        
 
   },
@@ -92,8 +93,8 @@ export default LayoutView.extend({
     let index=e.target.selectedIndex-1;    //第 0 个不考虑
     
     if(index>=0){
-       let groups = this.data.get('gameGroup')[index]['group'];
-       let years = this.data.get('gameGroup')[index]['year'];
+       let groups = this.gameGroupData[index]['group'];
+       let years = this.gameGroupData[index]['year'];
 
        for(let i=0;i<groups.length;i++){
           let option = new Option(groups[i],groups[i]);

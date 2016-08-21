@@ -1,4 +1,4 @@
-import {Routing} from 'backbone-routing';
+import {Route} from 'backbone-routing';
 import View from './view.js';
 import template from './template.hbs';
 

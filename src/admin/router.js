@@ -6,7 +6,9 @@ import UserListRoute from './userList/route';
 import UserCheckRoute from './userCheck/route';
 import GroupManageRoute from './groupManage/route';
 import CompanyRateRoute from './companyRate/route';
-import OwnerEquity from './ownerEquity/route';
+import OwnerEquityRoute from './ownerEquity/route';
+import OldCompanyRateRoute from './oldCompanyRate/route';
+import OldOwnerEquityRoute from './oldOwnerEquity/route';
 
 export default Router.extend({
   initialize(options = {}) {
@@ -26,7 +28,8 @@ export default Router.extend({
     "admin/groupManage":"groupManage",
     "admin/companyRate": "companyRate",
     "admin/ownerEquity": "ownerEquity",
-  	
+  	"admin/oldCompanyRate": "oldCompanyRate",
+    "admin/oldOwnerEquity": "oldOwnerEquity"
   },
 
  
@@ -58,7 +61,19 @@ export default Router.extend({
   },
 
   ownerEquity() {
-    return new OwnerEquity({
+    return new OwnerEquityRoute({
+      container: this.container
+    })
+  },
+
+  oldCompanyRate(){
+    return new OldCompanyRateRoute({
+      container: this.container
+    })
+  },
+
+  oldOwnerEquity() {
+    return new OldOwnerEquityRoute({
       container: this.container
     })
   }

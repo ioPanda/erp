@@ -60,13 +60,17 @@ export default LayoutView.extend({
 
   //页面事件绑定部分
   ui: {
-     pageLimit: '#pageLimit',
-     details  : '.glyphicon-plus'
+     pageLimit : '#pageLimit',
+     details   : '.glyphicon-plus',
+     delete    : '.delete',
+     addHistroy: '.addHistroy'
   },
 
   events: {
     'change @ui.pageLimit': 'changeLimit',
-    'click @ui.details'   : 'toggleDetails'
+    'click @ui.details'   : 'toggleDetails',
+    'click @ui.delete'    : 'delete',
+    'click @ui.addHistroy': 'addHistroy'
   },
 
   changeLimit(e){
@@ -120,6 +124,14 @@ export default LayoutView.extend({
     // $next.eq(0).slideToggle('normal',function(){
     //   $next.eq(1).slideToggle('normal');
     // });
+  },
+
+  delete(){
+    alert('delete');
+  },
+
+  addHistroy(){
+    alert('addHistroy');
   }
 
 });

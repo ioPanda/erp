@@ -11,10 +11,5 @@ export default LayoutView.extend({
 			nav:'#navStep',
 			step:'#step',
 			talkRoom:'#talkRoom'
-		},
-        
-        initialize(options={}){
-        	this.model=options.model;
-        }
-
+		}
 	});
