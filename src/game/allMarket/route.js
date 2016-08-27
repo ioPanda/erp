@@ -12,13 +12,9 @@ export default Route.extend({
     initialize(options = {}) {
         this.container = options.container;
         this.collection = new Collection();
-
-        
-        this.listenTo(this.collection, 'add', this.change);
     },
     
     fetch () {
-        add:true;
         return this.collection.fetch();
     },
 
@@ -34,13 +30,12 @@ export default Route.extend({
             'icon':'glyphicon-map-marker'
         }));
 
-        let filter= _.chain(this.collection.models[0].get('DevelopedMarket')).value(),
-            filterO = _.chain(this.collection.models[0].get('DevelopingMarket')).value(),
-            filterT = _.chain(this.collection.models[0].get('UnDevelopMarket')).value();
-        var test = _.chain(this.collection.models[0].get('DevelopingMarket')).value().developingMarket
+        let filter= _.chain(this.collection.models[0].get('DevelopedMarket')).value().developedMarket,
+            filterO = _.chain(this.collection.models[0].get('DevelopingMarket')).value().developingMarket,
+            filterT = _.chain(this.collection.models[0].get('UnDevelopMarket')).value().unDevelopMarket;
 
         this.done = new Collection(filter);
-        this.doing = new Collection(test);//(filterO);
+        this.doing = new Collection(filterO);
         this.todo  = new Collection(filterT);
         
         // console.log(filter, test);
@@ -48,12 +43,5 @@ export default Route.extend({
         this.layout.done.show(new DoneView({collection:this.done}));
         this.layout.doing.show(new DoingView({collection:this.doing}));
         this.layout.todo.show(new TodoView({collection:this.todo}));
-    },
-
-    change () {
-        console.log('change');
-        // this.render();
     }
-
-    
 });

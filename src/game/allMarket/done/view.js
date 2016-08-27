@@ -1,6 +1,7 @@
 import {ItemView} from 'backbone.marionette';
 import template from './template.hbs';
 import $ from 'jquery';
+import _ from 'lodash';
 
 export default ItemView.extend({
 	template:template,
@@ -14,7 +15,7 @@ export default ItemView.extend({
     
     serializeData() {
     	return {
-    		"developedMarket": this.collection.models[0].get('developedMarket')
+    		"developedMarket": _.invoke(this.collection, 'toJSON')
     	}
     },
 
@@ -27,7 +28,7 @@ export default ItemView.extend({
         'mouseout @ui.stopSer':'moveOut',
         'click @ui.stopSer':'stopSerFun'
     },
-
+// moveIn & moveOut -> css, do not use js
     moveIn (e) {
         let $this=$(e.target);
         $this.css({'background-color':'pink',

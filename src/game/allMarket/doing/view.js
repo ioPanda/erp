@@ -1,6 +1,7 @@
 import {ItemView} from 'backbone.marionette';
 import template from './template.hbs';
 import $ from 'jquery';
+import _ from 'lodash';
 import Backbone from 'backbone';
 
 export default ItemView.extend({
@@ -27,14 +28,9 @@ export default ItemView.extend({
     },
 
     serializeData () {
-        console.log(this.collection.models);
     	return {
-    		"developingMarket": this.collection.models//[0].get('developingMarket')
+    		"developingMarket": _.invoke(this.collection, 'toJSON')//[0].get('developingMarket')
     	}
-        // console.log(this.collection.models)
-        // return {
-            // "developingMarket": this.collection.models
-        // }
     },
 
     ui:{
