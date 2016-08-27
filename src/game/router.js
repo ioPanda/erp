@@ -19,6 +19,7 @@ import MaterialOrderRoute from './materialOrder/route';
 import ProductStockRoute from './productStock/route';
 import TimeRoute from './time/route';
 import ExitRoute from './exit/route';
+import ProductManageRoute from './productManage/route';
 
 import routerTable from './routes.json';
 

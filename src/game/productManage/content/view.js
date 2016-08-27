@@ -10,7 +10,23 @@ export default ItemView.extend({
     initialize(options={}){
         this.model = new Model(options);
     },
-    // ui: {
-    //     detail: ''
-    // }
+
+    ui: {
+        btnInquire: '.btnInquire'
+    },
+
+    events:{
+        'mouseover @ui.btnInquire':'moveIn',
+        'mouseout @ui.btnInquire':'moveOut'
+    },
+
+    moveIn (e) {
+        let $this = $(e.target);
+        $this.children().css('display', 'block');
+    },
+
+    moveOut (e) {
+        let $this=$(e.target);
+        $this.children().css('display', 'none');  
+    }
 });

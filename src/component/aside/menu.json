@@ -41,7 +41,7 @@
 		    [
 		        {
 			        "text": "厂房管理",
-			        "path": "#game/factory"
+			        "path": "#game/productManage"
 			    },
 			    {
 			        "text": "产品原料构成说明",
@@ -105,7 +105,7 @@
 		    [
 		        {
 			        "text": "产品研发管理",
-			        "path": "#game/productManage"
+			        "path": "#game/factory"
 			    },
 			    {
 			        "text": "认证管理",
