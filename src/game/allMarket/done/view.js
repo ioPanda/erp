@@ -24,7 +24,8 @@ export default ItemView.extend({
 
     events:{
         'mouseover @ui.stopSer':'moveIn',
-        'mouseout @ui.stopSer':'moveOut'
+        'mouseout @ui.stopSer':'moveOut',
+        'click @ui.stopSer':'stopSerFun'
     },
 
     moveIn (e) {
@@ -37,6 +38,23 @@ export default ItemView.extend({
         let $this=$(e.target);
         $this.css({'background-color':'#dbdad6',
                    'font-size':'18px'}); 
+    },
+
+    stopSerFun (e) {
+        let $this = $(e.target),
+            $text = $this.text(),
+            $statu = $this.prev().find('.status').find('h3'),
+            statu = $statu.text();
+            // console.log(statu);
+        if($text == '暂停维护' && statu == '正在维护'){
+            $this.text('进行维护');
+            $statu.text('暂停维护');
+            //ajax
+        }else if($text == '进行维护' && statu == '暂停维护'){
+            $this.text('暂停维护');
+            $statu.text('正在维护');
+            //ajax
+        }
     }
 
 });

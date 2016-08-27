@@ -1,7 +1,9 @@
 import {Route} from 'backbone-routing';
 import LayoutView from './layout-view';
 import BreadcrumbView from '../../component/breadcrumb/view';
-
+import PriceView from './price/view';
+import RequestView from './request/view';
+import CheckedView from './checked/view';
 
 export default Route.extend({
     initialize(options = {}) {
@@ -16,6 +18,8 @@ export default Route.extend({
         	'subTitle':'Market Forest',
         	'icon':'glyphicon-map-marker'
         }));
+
+        this.layout.select.show(new CheckedView());
 
     }
 });

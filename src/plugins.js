@@ -52,6 +52,19 @@ Handlebars.registerHelper('Status',function(status) {
 	};
 });
 
+Handlebars.registerHelper('StatusOne',function(status) {
+	switch (status){
+	    case '1' :
+		    return '正在开拓';
+		    break;
+		case '0' :
+			return '暂停开拓';
+			break;
+		default:
+			break;
+	};
+});
+
 Handlebars.registerHelper('lastStatus',function(lastStatus) {
 	switch (lastStatus){
 	    case '1' :
@@ -64,3 +77,5 @@ Handlebars.registerHelper('lastStatus',function(lastStatus) {
 			break;
 	};
 });
+
+

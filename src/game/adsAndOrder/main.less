@@ -1,5 +1,6 @@
 #navStep{
 	width: 70%;
+	float: left;
 	.ads-nav{
 		width: 100%;
 		height: 40px;
@@ -13,27 +14,231 @@
 				line-height: 40px;
 				background-color: green;
 				li{
-					width: 17%;	
+					width: 20%;	
 					font-size:16px;
-					letter-spacing: 2px;
-					text-align: center;
+					letter-spacing: 2px;	
 					float: left;
 					background-color: #e3e3e3;
-				}	
+					position: relative;
+					span{
+						display: inline-block;
+						width: 85%;
+						height: 100%;
+						text-align: center;
+					}
+					.s,.stt{
+						width:0;
+						height:0; 
+						line-height:0; 
+						font-size:0; 
+						border:20px solid red;
+						border-color:transparent transparent transparent #fff; 
+						position:absolute;
+					}
+					.s{
+						right:-18px;
+						top:0;
+					}
+					.stt{ 
+						border-left-color:#e3e3e3; 
+						right:-16px; 
+						top:0;
+					}
+					.active{
+						background-color: yellow;
+					}
+					.active_1{
+						border-left-color: yellow;
+					}
+				}
+
+
 			}
-			
 		}
-	}
-	.triangle_left
-	{
-	  height:0px; width:0px;
-	  border-left:20px solid #e3e3e3;
-	  border-top:20px solid transparent;
-	  border-bottom:20px solid transparent;
-	  float:left;
 	}
 }
 
 #step{
 	width: 70%;
+	float: left;
+	margin-top: 10px;
+	.panel{
+		border-color: #e3e3e3;
+		.panel-heading{
+			background-color: #e3e3e3;
+			h4{
+				margin-top: 0;
+				color:#fff;
+			}
+			.item{
+				color: #FFF;
+			}
+			span{
+			margin-top: 0;
+			margin-right: 20px;
+			font-size:15px;
+			color:#989898;
+			}
+		}
+		.step-four{
+			padding-left: 10%;
+			padding-right: 10%;
+		    text-align: center;
+		    ul{
+		    	width: 100%;
+		    	height: auto;
+                li{ 
+                    width: 50%;
+                	float: left;
+                	padding-right: 20px;
+                	.panel-item{
+                		table{
+                			border: 0;
+                		}
+                	}
+                }
+		    }
+		}
+		.panel-body{
+			h4{
+				margin-top: 0;
+				color:#989898;
+			}
+			select{
+				width:100px;
+				height:40px;
+			}
+			table{
+				margin-top: 15px;
+				th{
+					text-align: center;
+					color: #989898;
+					font-size: 16px;
+					font-weight: normal;
+				}
+			}
+			.next{
+				position: absolute;
+				right: 20px;
+				a{
+					color: #fff;
+					border-color: #fff;
+				}
+			}
+			.back{
+				
+				a{
+					color: #fff;
+					border-color: #fff;
+				}
+			}
+			.userList{
+				margin: 0;
+				padding: 0;
+				li{
+					float: left;
+					height: 180px;
+					width: 20%;
+					padding: 20px 20px 0px 0px;
+					img{
+                        width: 100%;
+                        height: 80%;
+					}
+					h4{
+						text-align: center;
+						margin-top: 5px;
+					}
+				}
+			}
+
+	    }
+	    .panel-five{
+	    	padding: 30px 0px 0px 250px;
+	    	height: 300px;
+	    	.ok{
+	    		font-size: 40px;
+	    		color: red;
+	    		text-indent: 110px;
+	    	}
+	    	h3{
+	    		margin:25px 0px 10px 60px;
+	    		font-weight: normal;
+	    	}
+	    	h4{
+	            font-size: 14px;
+	            color:#989898;
+	            a{
+	            	text-decoration: underline;
+	            	color: #989898;
+	            }
+	    	}
+	    }
+	   
+    }
 }
+#talkRoom{
+	width: 30%;
+	margin-left: 800px;
+	padding-left: 25px;
+	.talk{
+		width: 100%;
+		height: auto;
+		border: 1px solid #989898;
+		form{
+			fieldset{
+				legend{
+					background-color: #333333;
+					text-align: center;
+					color:#fff;
+					line-height: 40px;
+					width: 100%;
+					font-size: 14px;
+					height: 40px;
+					letter-spacing: 5px;
+					margin-bottom: 0;
+				}
+				.display{
+					padding:5px 5px 0px 5px;
+					margin-bottom: 0;
+					textarea{
+	                    resize:none;
+
+					}
+				}
+				.input{
+					margin-bottom: 5px;
+					padding: 0px 0px 0px 5px;
+					float: left;
+					width: 80%;
+					input[type="text"]{
+						width: 100%;
+						height: 80px;
+						line-height: 20px;
+						border: 1px solid #989898;
+					    outline: none;
+                         
+					}
+					
+				}
+				.send{
+					margin-bottom: 5px;
+					float: right;
+					width: 20%;
+					padding:0px 5px 0px 5px;
+					button{
+						width: 100%;
+						height: 80px;
+					}
+				}
+			}
+		}
+	}
+
+}
+
+
+
+
+
+
+
