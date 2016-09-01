@@ -11,5 +11,7 @@ require('./colors/routes')(api);
 require('./login/routes')(api);
 require('./admin/routes')(api);
 require('./markets/routes')(api);
+require('./user/router')(api);
+require('./marketForset/routes')(api);
 
 module.exports = api;

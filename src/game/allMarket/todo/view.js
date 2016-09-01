@@ -10,7 +10,6 @@ export default ItemView.extend({
 
     initialize(options={}){
     	this.collection=options.collection;
-
     },
     
     //返回渲染数据
@@ -30,18 +29,6 @@ export default ItemView.extend({
         'click @ui.startRes':'todoFun'
     },
 
-    moveIn (e) {
-        let $this=$(e.target);
-        $this.css({'background-color':'pink',
-                   'font-size':'20px'});
-    },
-    
-    moveOut (e) {
-        let $this=$(e.target);
-        $this.css({'background-color':'#dbdad6',
-                   'font-size':'18px'}); 
-    },
-
     todoFun (e) {
         let $this = $(e.target),
             $parent = $this.parent(),
@@ -53,9 +40,9 @@ export default ItemView.extend({
         let model = {"marketName":marketName,
                      "researchPeriod":researchPeriod,
                      "researchCost":researchCost,
-                     "finishedPeriod":0,
-                     "beginTime":0,
-                     "status":1
+                     "finishedPeriod":"0",
+                     "beginTime":"0",
+                     "status":"1"
                     };
 
         // console.log(model);

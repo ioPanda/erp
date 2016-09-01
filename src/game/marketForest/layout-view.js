@@ -8,8 +8,7 @@ export default  LayoutView.extend({
        regions:{
 	       	breadcrumb:"#breadcrumb",
 	       	select:'#checked',
-	       	request:'#request',
-	       	price:'#price'
+	       	chart:'#chart'
        }
        
 });
