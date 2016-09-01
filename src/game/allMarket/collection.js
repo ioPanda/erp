@@ -5,4 +5,5 @@ export default Collection.extend({
 	url:'/yangqing.do',
 
 	model:Model
+
 });

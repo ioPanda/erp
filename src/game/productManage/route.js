@@ -15,7 +15,7 @@ export default Route.extend({
             'mainNav' : '生产管理',
             'title' : '厂房管理',
             'subTitle' : 'Workshop management',
-            'icon' : 'glyphicon-home'
+            'icon' : 'glyphicon-wrench'
         }));
 
         //生产管理部分

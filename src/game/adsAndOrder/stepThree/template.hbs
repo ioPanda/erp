@@ -1,4 +1,15 @@
-//步骤3 等候大厅
-<div>
-lllllllllll
-	</div>
+{{!步骤3 等候大厅}}
+<div class="panel panel-default">
+    <div class="panel-heading">
+	    <h4>等待大厅&nbsp;&nbsp;&nbsp;<span class="item"> >> </span></h4>
+    </div>
+    <div class="panel-body">
+	    <ul class="userList">
+	    {{#each}}
+	    	<li>
+	    		<h4>{{userName}}</h4>
+	    	</li>
+	    {{/each}}
+	    </ul>
+    </div>
+</div>

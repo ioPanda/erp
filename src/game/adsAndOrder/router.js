@@ -9,18 +9,10 @@ import stepOneRoute from './stepOne/route';
 
 export default Router.extend({
 	initialize(options={}){
+        this.step = options.step;
 	    this.container=options.container;
 	},
     
-    routes:{
-        'game/adsAndOrder':'stepOne',
-    	'game/adsAndOrder/stepOne':'stepOne',
-    	'game/adsAndOrder/stepTwo':'stepTwo',
-    	'game/adsAndOrder/stepThree':'stepThree',
-    	'game/adsAndOrder/stepFour':'stepFour',
-    	'game/adsAndOrder/stepFive':'stepFive'
-    },
-
     stepOne () {
     	return new stepOneRoute({
     		container:this.container
