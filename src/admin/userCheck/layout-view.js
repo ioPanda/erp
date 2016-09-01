@@ -161,6 +161,8 @@ export default LayoutView.extend({
      $(e.target).prop('checked')==true ? 
      $(e.target).prop('checked',true) : 
      $(e.target).prop('checked',false);
+
+     // $(e.target).parent().parent().parent().find('img').attr('src','region_icon.gif');
   },
 
   agree(){

@@ -15,18 +15,22 @@
 
 
 #companyView{
-	// margin-top: 10px;
 	position: relative;
 	top: 15px;
+	select:first-child{
+		margin-left: 20px;
+	}
 }
 
 
 #gameGroupView{
-	// margin-top: 10px;
-	// display:none;
-	position: relative;
+	position:absolute;
 	left: 2000px;
-	top: -19px;
+	top: 70px;
+	margin-left:40px;
+	select:first-child{
+	   margin-left: 20px;
+	}
 }
 
 .select-group{
@@ -34,7 +38,7 @@
 }
 
 .ownerEquity hr{
-	margin-top: 0px;
+	margin-top: 20px;
 	margin-bottom: 20px;
 	border: 0;
 	border-top: 1px solid #ddd;
@@ -43,8 +47,7 @@
 #navbar{
 	line-height: @nav-height;
 }
-
-.nav-tabs > li > a {
+ .nav-tabs > li > a {
     line-height: @nav-height;
     border: none;
     border-radius: 0;
@@ -52,14 +55,15 @@
 
 
  .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
- 	font-weight: bold;
+ 	// font-weight: bold;
     border-top: solid 3px #49a4de;
  }
 
 
 .nav > li > a:hover, .nav > li > a:focus {
-    border: 1px solid transparent;
+    // border: 1px solid transparent;
     background-color: #f9f9f9;
     border: none;
     color: #555555;
-}
+} 
+
