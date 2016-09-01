@@ -37,7 +37,8 @@ export default Route.extend({
     this.layoutView = new LayoutView({
       collection: this.collection,
       page: page,
-      gameGroupData: this.collection.models[0].get('gameGroup')
+      gameGroupData: this.collection.models[0].get('gameGroup'),
+      ownerEquity: this.collection.models[0].get('ownerEquity')
     });
   
     this.container.show(this.layoutView);

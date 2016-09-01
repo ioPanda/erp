@@ -4,6 +4,7 @@ import {LayoutView} from 'backbone.marionette';
 import CollectionView from './content/collection-view';
 import {Collection} from 'backbone';
 import template from './layout-template.hbs';
+import echarts from 'echarts';
 
 export default LayoutView.extend({
   template: template,
@@ -21,6 +22,8 @@ export default LayoutView.extend({
 
   initialize(options = {}) {
     this.gameGroupData = options.gameGroupData;
+    this.ownerEquity = options.ownerEquity;
+    this.view = 'company';
   },
 
   onBeforeRender() { 
@@ -88,17 +91,17 @@ export default LayoutView.extend({
   ui: {
     companyLink: '#navbar li:first',
     gameGroupLink: '#navbar li:last',
-
     gameGroup_c: '.selGameGroup_c select',
     gameGroup_g: '.selGameGroup_g select',
+    viewOwnEquity: '.select-group button'
   },
 
    events: {
     'click @ui.companyLink': 'link',
     'click @ui.gameGroupLink': 'link',
-
     'change @ui.gameGroup_c': 'gameGroup',
-    'change @ui.gameGroup_g': 'gameGroup'
+    'change @ui.gameGroup_g': 'gameGroup',
+    'click @ui.viewOwnEquity': 'viewOwnEquity'
    },
 
     link(e){
@@ -111,6 +114,7 @@ export default LayoutView.extend({
        let i=1;
        $(e.target).text()=='按企业查看' ? index=0 : index=1;
        $(e.target).text()=='按企业查看' ? i=1 : i=-1;
+       $(e.target).text()=='按企业查看' ? this.view='company' : this.view='gameGroup';
        
        $('.select-group').children().eq(index).animate({left: 0});
        $('.select-group').children().eq(index).siblings('div').animate({left: i*left_},500);
@@ -151,6 +155,86 @@ export default LayoutView.extend({
      }
 
    },
+
+   viewOwnEquity(){
+      let a = this.view==='company' ? $('#companyView select:visible') : $('#gameGroupView select:visible');
+      let arr = [];
+      for(let i=0;i<a.length;i++){
+        if(a[i].selectedIndex === 0){
+           alert('请选择必要的选项'+i);
+           return;
+        }else{
+           arr.push(a[i].selectedIndex);
+        }
+      }
+
+      let myChart = this.view==='company' ? echarts.init($('#view-company').get(0)) : echarts.init($('#view-gameGroup').get(0));
+
+      let ser = [];
+      let series = this.ownerEquity[arr[0]-1]['series'];
+     
+      if(this.view === 'company'){
+        ser = series[arr[2]][arr[1]-1]['data'];
+      }else{
+         let datas = [];
+         for(let j=0;j<series[arr[1]].length;j++){
+            datas.push(series[arr[1]][j].data[arr[2]-1]);
+         }
+         // alert(s.data); //特定游戏组 特定年份 特定周期的 一组游戏组成员的数据
+         ser = datas;        
+      }
+      let option = {
+        title: {
+          text: '所有者权益',
+          left: 'left'
+        },
+
+        legend: {
+          data: []
+        },
+
+        toolbox: {
+          show: true,
+          feature: {
+            dataZoom: {
+              show: true
+            },
+            dataView: {
+              show: true
+            },
+            magicType: {
+              type: ['line','bar']
+            },
+            restore: {
+              show: true
+            },
+            saveAsImage: {
+              show: true
+            }
+          }
+        },
+
+        tooltip: {
+          trigger: 'axis'
+        },
+
+        xAxis: {
+          data: this.view === 'company' 
+          ? this.gameGroupData[arr[0]-1]['cycle']
+          : this.gameGroupData[arr[0]-1]['group']
+        },
+
+        yAxis: {},
+
+        series: [{
+          type: 'bar',
+          data: ser
+        }]
+      };
+      myChart.setOption(option);
+      // alert('heheh'+option.xAxis.data);
+      // alert('series'+option.series[0].data);
+   }
 
  
 });

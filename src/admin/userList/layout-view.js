@@ -54,8 +54,6 @@ export default LayoutView.extend({
     return { total, current, pages, prev, next };
   },
 
-  
-
   //页面事件绑定部分
   ui: {
      pageLimit: '#pageLimit',
@@ -115,6 +113,7 @@ export default LayoutView.extend({
      $('td input').prop('checked',true) : 
      $('td input').prop('checked',false);
   },
+
   check(e){
      $(e.target).prop('checked')==true ? 
      $(e.target).prop('checked',true) : 
@@ -126,8 +125,8 @@ export default LayoutView.extend({
 
   update(){
     var jqXHR=$.ajax({
-      type:'GET',
-      url:'/userManagerController/getUserList.do'
+      type: 'GET',
+      url: '/userManagerController/getUserList.do'
     });
     jqXHR.done(function(response){
       alert(response[0]['data'][0]['userId']);
@@ -137,17 +136,38 @@ export default LayoutView.extend({
     });
   },
 
-  delete(){
-    alert('hahahhahahah');
-    // this.model.destroy();
-    
-    // alert(this.collection.models[0].get('nihao'));
-
-    // alert(_.chain(this.collection.models[0].get('data')).value());
+  delete(e){
+    var del = $(e.target).parent().parent();
+    var jqXHR=$.ajax({
+      type: 'GET',
+      url: '/userManagerController/getUserList.do',
+      data: del
+    });
+    jqXHR.done(function(response){
+      alert(del.get(0));
+    });
+    jqXHR.fail(function(xhr,errorText,errorStatus){
+      alert('there is a error in delete');
+    });
   },
 
   deleteMore(){
-    alert('aaaaaaaaaaaa');
+     let arr=[];
+     for(let i=0;i<$('tbody input').length;i++){
+        $('tbody input').eq(i).prop('checked')==true ? arr.push($('tbody input').eq(i)) : '';
+     }
+     // alert(arr.length);
+     var jqXHR=$.ajax({
+      type: 'GET',
+      url: '/userManagerController/getUserList.do',
+      data: arr
+    });
+    jqXHR.done(function(response){
+      alert(arr.length);
+    });
+    jqXHR.fail(function(xhr,errorText,errorStatus){
+      alert('there is a error in deleteMore');
+    });
   }
 
   
