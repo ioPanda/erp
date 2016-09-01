@@ -8,14 +8,23 @@ import stepThreeView from './stepThree/view';
 import stepFourView from './stepFour/view';
 import stepFiveView from './stepFive/view';
 import TalkroomView from './talkroom/view';
+import UserName from './model';
 
 export default Route.extend({
 	initialize(options={}){
 		console.log(options.step);
 		this.step = options.step;
+		this.username=new UserName();
 		this.container=options.container;
+    },
+    //fetch behind initialize before render
+    fetch () {
+    	return this.username.fetch();
+    },
 
-		this.layout=new LayoutView();
+    render () {
+
+    	this.layout=new LayoutView();
 		this.container.show(this.layout);
         this.layout.breadcrumb.show(new BreadcrumbView({
 			'mainNav':'市场管理',
@@ -46,8 +55,9 @@ export default Route.extend({
 			default :
 				break;
         };
-        
-      this.layout.talkRoom.show(new TalkroomView());  
+      console.log(this.username);
+      this.layout.talkRoom.show(new TalkroomView({model:this.username}));  
 	}
-
+    
+    
 });

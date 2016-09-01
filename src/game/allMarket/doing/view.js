@@ -16,20 +16,16 @@ export default ItemView.extend({
 
     changeRneder () {
         this.render();
-        console.log(1);
     },
     
     append (model) {
         console.log(model);
         this.collection.add(model);
-        // console.log(this.collection);
-        // console.log(this.collection);
-        // this.collection.listenTo('add', this.serializeData);
     },
 
     serializeData () {
     	return {
-    		"developingMarket": _.invoke(this.collection, 'toJSON')//[0].get('developingMarket')
+    		"developingMarket": _.invoke(this.collection, 'toJSON')
     	}
     },
 
@@ -39,28 +35,14 @@ export default ItemView.extend({
     },
 
     events:{
-        'mouseover @ui.stopRes':'moveIn',
-        'mouseout @ui.stopRes':'moveOut',
         'click @ui.stopRes':'stopResFun'
-    },
-
-    moveIn (e) {
-        let $this=$(e.target);
-        $this.css({'background-color':'pink',
-                   'font-size':'20px'});
-    },
-    
-    moveOut (e) {
-        let $this=$(e.target);
-        $this.css({'background-color':'#dbdad6',
-                   'font-size':'18px'});
     },
 
     stopResFun (e) {
         let $this = $(e.target),
             // console.log($text);
             $text = $this.text(),
-            $statu = $this.prev().find('.status').find('h3'),
+            $statu = $this.prev().find('.statu').find('h3'),
             statu = $statu.text();
             // console.log(statu);
         if($text == '暂停开拓' && statu == '正在开拓'){
