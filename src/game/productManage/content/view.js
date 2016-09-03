@@ -22,11 +22,11 @@ export default ItemView.extend({
 
     moveIn (e) {
         let $this = $(e.target);
-        $this.children().css('display', 'block');
+        $this.find('.btn-hover').css('display', 'block');
     },
 
     moveOut (e) {
         let $this=$(e.target);
-        $this.children().css('display', 'none');  
+        $this.find('.btn-hover').css('display', 'none');  
     }
 });

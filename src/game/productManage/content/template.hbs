@@ -5,342 +5,479 @@
         请选择市场：<input type="text" placeholder="本地/区域/国内/亚洲/国际" >
         <button class="inquire">查询</button>
     </div>
-    <p class="newBuild">
+    <div class="newBuild">
         <button class="house">新建厂房</button>
         <button class="house rent">租用厂房</button>
-    </p>
+    </div>
+</div>
+<div class="house-build">
+   <div class="build-content">
+       <div class="content-title">新建厂房</div>
+       <div class="content-container"></div>
+   </div>
 </div>
 <div class="house-status">
     <div class="house-build">
         <div class="house-show">
-            <div class="show-img">
+            <div class="clearfix"></div>
+            <div class="show-img show-img show-img-tri-tri">
                 <img src="imgs/game/productManage/imgs/fac2.jpg">
             </div>
             <div class="show-message">
-                <table class="show-ul">
-                    <td class="show-table-td">
+                <ul class="show-ul">
+                    <li class="show-table-td">
                         <p>状态</p>
                         <em>已建成</em>
-                    </td>
-                    <td class="show-table-td">
+                    </li>
+                    <li class="show-table-td">
                         <p>厂房编号</p>
                         <em>MAK009</em>
-                    </td>
-                    <td class="show-table-td">
+                    </li>
+                    <li class="show-table-td">
                         <p>所在市场</p>
                         <em>本地市场</em>
-                    </td>
-                    <td class="show-table-td">
+                    </li>
+                    <li class="show-table-td">
                         <p>厂房类型</p>
                         <em>大厂房</em>
-                    </td>
-                    <td class="show-table-td td-leave">
+                    </li>
+                    <li class="show-table-td td-leave">
                         <p>残值</p>
                         <em>0.0</em>
-                    </td>
-                    <td class="show-table-td">
+                    </li>
+                    <li class="show-table-td">
                         <p>开工时间</p>
                         <em>1</em>
-                    </td>
-                    <td class="show-table-td last-second">
+                    </li>
+                    <li class="show-table-td last-second">
                         <p>已完成建造周期</p>
                         <em>3</em>
-                    </td>
-                    <td class="show-table-td last-first">
+                    </li>
+                    <li class="show-table-td addmore last-first">
                         <p>生产线数量</p>
-                        <em>4/6</em>
-                    </td>
-                    <td class="last-btn" id="build-active">出售</td>
-                </table>
+                        <em>4/6
+                            <span>+</span>
+                        </em>
+                    </li>
+                    <li class="last-btn" id="build-active">出售</li>
+                </ul>
             </div>
         </div>
         <div class="house-hide">
-            <table class="house-detail">
-                <tr>
-                    <td class="first-td">
-                        <img src="imgs/game/productManage/imgs/hand_line.jpg">
-                    </td>
-                    <td>
-                        <p>手动生产线</p>
-                    </td>
-                    <td>
-                        <p><em>编号：</em>PRO867</p>
-                    </td>
-                    <td>
-                        <p><em>状态：</em>生产中</p>
-                    </td>
-                    <td>
-                        <p><em>正在生产的产品：</em>P1</p>
-                    </td>
-                    <td>
-                        <div class="inquire btnInquire">查看
-                            <div class="btn-hover btnView-hover" style="display: none;"> 
-                                <div class="view-detail view-top">
-                                    <div class="view-detail-p">
-                                        <p>在制作品已经完成的生产周期：1</p>
-                                        <p>生产线当前价值：2.5</p>
-                                    </div>
+            <ul class="house-detail">
+                <div class="clearfix"></div>
+                <li class="first-td">
+                    <img src="imgs/game/productManage/imgs/hand_line.jpg">
+                </li>
+                <li>
+                    <p>手动生产线</p>
+                </li>
+                <li>
+                    <p><em>编号：</em>PRO867</p>
+                </li>
+                <li>
+                    <p><em>状态：</em>生产中</p>
+                </li>
+                <li>
+                    <p><em>正在生产的产品：</em>P1</p>
+                </li>
+                <li>
+                    <div class="inquire btnInquire">查看
+                        <div class="btn-hover btnView-hover" style="display: none;"> 
+                            <div class="view-detail view-top">
+                                <div class="view-detail-p">
+                                    <p>在制作品已经完成的生产周期：1</p>
+                                    <p>生产线当前价值：2.5</p>
                                 </div>
-                                <div class="view-detail view-blow">
-                                    <div class="view-detail-p">
-                                        <p>安装周期：1</p>
-                                        <p>安装每期所需费用：5.0</p>
-                                        <p>转产周期：0</p>
-                                        <p>转产每期所需费用：0.0</p>
-                                        <p>生产效率：3</p>
-                                        <p>生产线开始使用后每期维护所需费用：0.25</p>
-                                        <p>生产线开始使用后每期的折旧费用：0.25</p>
-                                        <p>残值数额：1.0</p>
-                                        <p>出售生产线后资金到账的账期：1</p>
-                                    </div>
+                            </div>
+                            <div class="view-detail view-blow">
+                                <div class="view-detail-p">
+                                    <p>安装周期：1</p>
+                                    <p>安装每期所需费用：5.0</p>
+                                    <p>转产周期：0</p>
+                                    <p>转产每期所需费用：0.0</p>
+                                    <p>生产效率：3</p>
+                                    <p>生产线开始使用后每期维护所需费用：0.25</p>
+                                    <p>生产线开始使用后每期的折旧费用：0.25</p>
+                                    <p>残值数额：1.0</p>
+                                    <p>出售生产线后资金到账的账期：1</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="inquire btnInquire">转产
-                            <div class="btn-hover btnConvers-hover" style="display: none;">
-                                <div class="canvers-input">
-                                    <p>转产产品：<input type="text"></p>
-                                </div>
-                                <button>确认转产</button>
+                    </div>
+                    <div class="inquire btnInquire">转产
+                        <div class="btn-hover btnConvers-hover" style="display: none;">
+                            <div class="canvers-input">
+                                <p>转产产品：<input type="text"></p>
+                            </div>
+                            <button>确认转产</button>
+                        </div>
+                    </div>
+                    <div class="inquire btnInquire">配置
+                        <div class="btn-hover btnMake"  style="display: none;">
+                            <div class="inputs">
+                                <button>开始生产</button>
+                                <button>暂停生产</button>
+                                <button>恢复生产</button>
+                                <button>暂停安装</button>
+                                <button>恢复安装</button>
+                                <button>暂停转产</button>
+                                <button>继续转产</button>
                             </div>
                         </div>
-                        <div class="inquire btnInquire">配置
-                            <div class="btn-hover btnMake"></div>
+                    </div>
+                </li>
+                <li class="inquire btnInquire">出售</li>
+            </ul>
+            <div class="house-detail">
+                <div class="clearfix"></div>
+                <li class="first-td">
+                    <img src="imgs/game/productManage/imgs/mid_auto_line.jpg">
+                </li>
+                <li>
+                    <p>半自动生产线</p>
+                </li>
+                <li>
+                    <p><em>编号：</em>PRO867</p>
+                </li>
+                <li>
+                    <p><em>状态：</em>生产中</p>
+                </li>
+                <li>
+                    <p><em>正在生产的产品：</em>P1</p>
+                </li>
+                <li>
+                    <div class="inquire btnInquire">查看
+                        <div class="btn-hover btnView-hover" style="display: none;"> 
+                            <div class="view-detail view-top">
+                                <div class="view-detail-p">
+                                    <p>在制作品已经完成的生产周期：1</p>
+                                    <p>生产线当前价值：2.5</p>
+                                </div>
+                            </div>
+                            <div class="view-detail view-blow">
+                                <div class="view-detail-p">
+                                    <p>安装周期：1</p>
+                                    <p>安装每期所需费用：5.0</p>
+                                    <p>转产周期：0</p>
+                                    <p>转产每期所需费用：0.0</p>
+                                    <p>生产效率：3</p>
+                                    <p>生产线开始使用后每期维护所需费用：0.25</p>
+                                    <p>生产线开始使用后每期的折旧费用：0.25</p>
+                                    <p>残值数额：1.0</p>
+                                    <p>出售生产线后资金到账的账期：1</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="inquire btnInquire">出售
-                            <div class="btn-hover btnSell"></div>
+                    </div>
+                    <div class="inquire btnInquire">转产
+                        <div class="btn-hover btnConvers-hover" style="display: none;">
+                            <div class="canvers-input">
+                                <p>转产产品：<input type="text"></p>
+                            </div>
+                            <button>确认转产</button>
                         </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="first-td">
-                        <img src="imgs/game/productManage/imgs/mid_auto_line.jpg">
-                    </td>
-                    <td>
-                        <p>半自动生产线</p>
-                    </td>
-                    <td>
-                        <p><em>编号：</em>PRO867</p>
-                    </td>
-                    <td>
-                        <p><em>状态：</em>生产中</p>
-                    </td>
-                    <td>
-                        <p><em>正在生产的产品：</em>P1</p>
-                    </td>
-                    <td>
-                        <div class="inquire btnInquire">查看</div>
-                        <div class="inquire btnInquire">转产</div>
-                        <div class="inquire btnInquire">配置</div>
-                        <div class="inquire btnInquire">出售</div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="first-td">
-                        <img src="imgs/game/productManage/imgs/full_auto_line.jpg">
-                    </td>
-                    <td>
-                        <p>全自动生产线</p>
-                    </td>
-                    <td>
-                        <p><em>编号：</em>PRO867</p>
-                    </td>
-                    <td>
-                        <p><em>状态：</em>生产中</p>
-                    </td>
-                    <td>
-                        <p><em>正在生产的产品：</em>P1</p>
-                    </td>
-                    <td>
-                        <div class="inquire btnInquire">查看</div>
-                        <div class="inquire btnInquire">转产</div>
-                        <div class="inquire btnInquire">配置</div>
-                        <div class="inquire btnInquire">出售</div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="first-td">
-                        <img src="imgs/game/productManage/imgs/fra_line.jpg">
-                    </td>
-                    <td>
-                        <p>柔性生产线</p>
-                    </td>
-                    <td>
-                        <p><em>编号：</em>PRO867</p>
-                    </td>
-                    <td>
-                        <p><em>状态：</em>生产中</p>
-                    </td>
-                    <td>
-                        <p><em>正在生产的产品：</em>P1</p>
-                    </td>
-                    <td>
-                        <div class="inquire btnInquire">查看</div>
-                        <div class="inquire btnInquire">转产</div>
-                        <div class="inquire btnInquire">配置</div>
-                        <div class="inquire btnInquire">出售</div>
-                    </td>
-                </tr>
-            </table>
+                    </div>
+                    <div class="inquire btnInquire">配置
+                        <div class="btn-hover btnMake"  style="display: none;">
+                            <div class="inputs">
+                                <button>开始生产</button>
+                                <button>暂停生产</button>
+                                <button>恢复生产</button>
+                                <button>暂停安装</button>
+                                <button>恢复安装</button>
+                                <button>暂停转产</button>
+                                <button>继续转产</button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </div>
+            <div class="house-detail">
+                <div class="clearfix"></div>
+                <li class="first-td">
+                    <img src="imgs/game/productManage/imgs/full_auto_line.jpg">
+                </li>
+                <li>
+                    <p>全自动生产线</p>
+                </li>
+                <li>
+                    <p><em>编号：</em>PRO867</p>
+                </li>
+                <li>
+                    <p><em>状态：</em>生产中</p>
+                </li>
+                <li>
+                    <p><em>正在生产的产品：</em>P1</p>
+                </li>
+                <li>
+                    <div class="inquire btnInquire">查看
+                        <div class="btn-hover btnView-hover" style="display: none;"> 
+                            <div class="view-detail view-top">
+                                <div class="view-detail-p">
+                                    <p>在制作品已经完成的生产周期：1</p>
+                                    <p>生产线当前价值：2.5</p>
+                                </div>
+                            </div>
+                            <div class="view-detail view-blow">
+                                <div class="view-detail-p">
+                                    <p>安装周期：1</p>
+                                    <p>安装每期所需费用：5.0</p>
+                                    <p>转产周期：0</p>
+                                    <p>转产每期所需费用：0.0</p>
+                                    <p>生产效率：3</p>
+                                    <p>生产线开始使用后每期维护所需费用：0.25</p>
+                                    <p>生产线开始使用后每期的折旧费用：0.25</p>
+                                    <p>残值数额：1.0</p>
+                                    <p>出售生产线后资金到账的账期：1</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="inquire btnInquire">转产
+                        <div class="btn-hover btnConvers-hover" style="display: none;">
+                            <div class="canvers-input">
+                                <p>转产产品：<input type="text"></p>
+                            </div>
+                            <button>确认转产</button>
+                        </div>
+                    </div>
+                    <div class="inquire btnInquire">配置
+                        <div class="btn-hover btnMake"  style="display: none;">
+                            <div class="inputs">
+                                <button>开始生产</button>
+                                <button>暂停生产</button>
+                                <button>恢复生产</button>
+                                <button>暂停安装</button>
+                                <button>恢复安装</button>
+                                <button>暂停转产</button>
+                                <button>继续转产</button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </div>
+            <div class="house-detail">
+                <div class="clearfix"></div>
+                <li class="first-td">
+                    <img src="imgs/game/productManage/imgs/fra_line.jpg">
+                </li>
+                <li>
+                    <p>柔性生产线</p>
+                </li>
+                <li>
+                    <p><em>编号：</em>PRO867</p>
+                </li>
+                <li>
+                    <p><em>状态：</em>生产中</p>
+                </li>
+                <li>
+                    <p><em>正在生产的产品：</em>P1</p>
+                </li>
+                <li>
+                    <div class="inquire btnInquire">查看
+                        <div class="btn-hover btnView-hover" style="display: none;"> 
+                            <div class="view-detail view-top">
+                                <div class="view-detail-p">
+                                    <p>在制作品已经完成的生产周期：1</p>
+                                    <p>生产线当前价值：2.5</p>
+                                </div>
+                            </div>
+                            <div class="view-detail view-blow">
+                                <div class="view-detail-p">
+                                    <p>安装周期：1</p>
+                                    <p>安装每期所需费用：5.0</p>
+                                    <p>转产周期：0</p>
+                                    <p>转产每期所需费用：0.0</p>
+                                    <p>生产效率：3</p>
+                                    <p>生产线开始使用后每期维护所需费用：0.25</p>
+                                    <p>生产线开始使用后每期的折旧费用：0.25</p>
+                                    <p>残值数额：1.0</p>
+                                    <p>出售生产线后资金到账的账期：1</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="inquire btnInquire">转产
+                        <div class="btn-hover btnConvers-hover" style="display: none;">
+                            <div class="canvers-input">
+                                <p>转产产品：<input type="text"></p>
+                            </div>
+                            <button>确认转产</button>
+                        </div>
+                    </div>
+                    <div class="inquire btnInquire">配置
+                        <div class="btn-hover btnMake"  style="display: none;">
+                            <div class="inputs">
+                                <button>开始生产</button>
+                                <button>暂停生产</button>
+                                <button>恢复生产</button>
+                                <button>暂停安装</button>
+                                <button>恢复安装</button>
+                                <button>暂停转产</button>
+                                <button>继续转产</button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </div>
         </div>
         <div class="clearfix"></div>
     </div>
     <div class="house-build house-rent">
         <div class="house-show">
-            <div class="show-img">
+            <div class="clearfix"></div>
+            <div class="show-img show-img-tri">
                 <img src="imgs/game/productManage/imgs/fac3.jpg">
             </div>
             <div class="show-message">
-                <table class="show-ul">
-                    <tr>
-                        <td class="show-table-td">
-                            <p>状态</p>
-                            <em>已租用</em>
-                        </td>
-                        <td class="show-table-td">
-                            <p>厂房编号</p>
-                            <em>MAK009</em>
-                        </td>
-                        <td class="show-table-td">
-                            <p>所在市场</p>
-                            <em>本地市场</em>
-                        </td>
-                        <td class="show-table-td">
-                            <p>厂房类型</p>
-                            <em>大厂房</em>
-                        </td>
-                        <td class="show-table-td td-leave">
-                            <p>残值</p>
-                            <em>0.0</em>
-                        </td>
-                        <td class="show-table-td">
-                            <p>开工时间</p>
-                            <em>1</em>
-                        </td>
-                        <td class="show-table-td last-second">
-                            <p>完工时间</p>
-                            <em>1</em>
-                        </td>
-                        <td class="show-table-td last-first">
-                            <p>生产线数量</p>
-                            <em>4/6</em>
-                        </td>
-                        <td class="last-btn">停止租用</td>
-                    </tr>
-                </table>
+                <ul class="show-ul">
+                    <li class="show-table-td">
+                        <p>状态</p>
+                        <em>已租用</em>
+                    </li>
+                    <li class="show-table-td">
+                        <p>厂房编号</p>
+                        <em>MAK009</em>
+                    </li>
+                    <li class="show-table-td">
+                        <p>所在市场</p>
+                        <em>本地市场</em>
+                    </li>
+                    <li class="show-table-td">
+                        <p>厂房类型</p>
+                        <em>大厂房</em>
+                    </li>
+                    <li class="show-table-td td-leave">
+                        <p>残值</p>
+                        <em>0.0</em>
+                    </li>
+                    <li class="show-table-td">
+                        <p>开工时间</p>
+                        <em>1</em>
+                    </li>
+                    <li class="show-table-td last-second">
+                        <p>完工时间</p>
+                        <em>1</em>
+                    </li>
+                    <li class="show-table-td addmore last-first">
+                        <p>生产线数量</p>
+                        <em>4/6
+                            <span>+</span>
+                        </em>
+                    </li>
+                    <li class="last-btn">停止租用</li>
+                </ul>
             </div>
         </div>
         <div class="clearfix"></div>
     </div>
     <div class="house-build house-building">
         <div class="house-show">
+            <div class="clearfix"></div>
             <div class="show-img">
                 <img src="imgs/game/productManage/imgs/fac1.jpg">
             </div>
             <div class="show-message show-message-last">
-                <table class="show-ul">
-                    <tr>
-                    <td class="show-table-td">
+                <ul class="show-ul">
+                    <li class="show-table-td">
                         <p>状态</p>
                         <em>修建中</em>
-                    </td>
-                    <td class="show-table-td">
+                    </li>
+                    <li class="show-table-td">
                         <p>厂房编号</p>
                         <em>MAK009</em>
-                    </td>
-                    <td class="show-table-td">
+                    </li>
+                    <li class="show-table-td">
                         <p>所在市场</p>
                         <em>本地市场</em>
-                    </td>
-                    <td class="show-table-td">
+                    </li>
+                    <li class="show-table-td">
                         <p>厂房类型</p>
                         <em>大厂房</em>
-                    </td>
-                    <td class="show-table-td td-leave">
+                    </li>
+                    <li class="show-table-td td-leave">
                         <p>建造厂房的付款方式</p>
                         <em>按期支付建造资金</em>
-                    </td>
-                    <td class="show-table-td">
+                    </li>
+                    <li class="show-table-td">
                         <p>开工时间</p>
                         <em>1</em>
-                    </td>
-                    <td class="show-table-td last-second">
+                    </li>
+                    <li class="show-table-td last-second">
                         <p>完工时间</p>
                         <em>1</em>
-                    </td>
-                    <td class="show-table-td last-first">
-                        <table>
-                            <td>
+                    </li>
+                    <li class="show-table-td last-first">
+                        <ul>
+                            <li>
                                 <p>总建造周期</p>
                                 <em>4</em>
-                            </td>
-                            <td class="td-line">
+                            </li>
+                            <li class="td-line">
                                 <p>能容纳生产线</p>
                                 <em>6</em>
-                            </td>
-                        </table>
-                    </td>   
+                            </li>
+                        </ul>
+                    </li>   
                     
-                    <td class="last-btn">暂停修建</td>
+                    <li class="last-btn">暂停修建</li>
 
-                    </tr>
-                </table>
+                </ul>
             </div>
         </div>
         <div class="clearfix"></div>
     </div>
     <div class="house-build house-stop">
         <div class="house-show">
+            <div class="clearfix"></div>
             <div class="show-img">
                 <img src="imgs/game/productManage/imgs/fac1.jpg">
             </div>
             <div class="show-message show-message-last">
-                <table class="show-ul">
-                    <tr>
-                    <td class="show-table-td">
+                <ul class="show-ul">
+                    <li class="show-table-td">
                         <p>状态</p>
                         <em>已停用</em>
-                    </td>
-                    <td class="show-table-td">
+                    </li>
+                    <li class="show-table-td">
                         <p>厂房编号</p>
                         <em>MAK009</em>
-                    </td>
-                    <td class="show-table-td">
+                    </li>
+                    <li class="show-table-td">
                         <p>所在市场</p>
                         <em>本地市场</em>
-                    </td>
-                    <td class="show-table-td">
+                    </li>
+                    <li class="show-table-td">
                         <p>厂房类型</p>
                         <em>大厂房</em>
-                    </td>
-                    <td class="show-table-td td-leave">
+                    </li>
+                    <li class="show-table-td td-leave">
                         <p>建造厂房的付款方式</p>
                         <em>按期支付建造资金</em>
-                    </td>
-                    <td class="show-table-td">
+                    </li>
+                    <li class="show-table-td">
                         <p>开工时间</p>
                         <em>1</em>
-                    </td>
-                    <td class="show-table-td last-second">
+                    </li>
+                    <li class="show-table-td last-second">
                         <p>已完成建造周期</p>
                         <em>3</em>
-                    </td>
-
-                    <td class="show-table-td last-first">
-                        <table>
-                            <td>
+                    </li>
+                    <li class="show-table-td last-first">
+                        <ul>
+                            <li>
                                 <p>总建造周期</p>
                                 <em>4</em>
-                            </td>
-                            <td class="td-line">
+                            </li>
+                            <li class="td-line">
                                 <p>能容纳生产线</p>
                                 <em>6</em>
-                            </td>
-                        </table>
-                    </td>                            
-                    <td class="last-btn">继续修建</td>
-                    </tr>
-                </table>
+                            </li>
+                        </ul>
+                    </li>                            
+                    <li class="last-btn">继续修建</li>
+                </ul>
             </div>
         </div>
         <div class="clearfix"></div>
