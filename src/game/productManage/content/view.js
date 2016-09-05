@@ -2,6 +2,7 @@ import {ItemView} from 'backbone.marionette';
 import template from './template.hbs';
 import $ from 'jquery';
 import {Model} from 'backbone';
+import houseBuild from '../../../component/popUp/houseBuild/view.js';
 
 export default ItemView.extend({
     template: template,
@@ -12,12 +13,16 @@ export default ItemView.extend({
     },
 
     ui: {
-        btnInquire: '.btnInquire'
+        btnInquire: '.btnInquire',
+        // houseBuild: '.build',
+        // houseRent: 'rent'
     },
 
     events:{
-        'mouseover @ui.btnInquire':'moveIn',
-        'mouseout @ui.btnInquire':'moveOut'
+        'mouseover @ui.btnInquire': 'moveIn',
+        'mouseout @ui.btnInquire': 'moveOut'
+        // 'click @ui.houseBuild':'popBuild',
+        // 'click @ui.houseRent':'popRent'
     },
 
     moveIn (e) {
@@ -29,4 +34,12 @@ export default ItemView.extend({
         let $this=$(e.target);
         $this.find('.btn-hover').css('display', 'none');  
     }
+
+    // popBuild (e) {
+    //     this.layout = new houseBuild();
+    // },
+
+    // popRent (e) {
+
+    // }
 });
