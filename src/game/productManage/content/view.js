@@ -13,24 +13,23 @@ export default ItemView.extend({
     },
 
     ui: {
-        btnInquire: '.btnInquire',
-        houseBuild: '.build',
-        houseRent: '.rent'
+        btnInquire: '.btnInquire'
     },
 
     events:{
-        'mouseover @ui.btnInquire': 'moveIn',
-        'mouseout @ui.btnInquire': 'moveOut'
+        'mouseenter @ui.btnInquire': 'moveIn',
+        'mouseleave @ui.btnInquire': 'moveOut'
     },
 
     moveIn (e) {
+        console.log('hhh');
         let $this = $(e.target);
         $this.find('.btn-hover').css('display', 'block');
     },
 
     moveOut (e) {
         let $this=$(e.target);
-        $this.find('.btn-hover').css('display', 'none');  
+        $this.find('.btn-hover').css('display', 'none');
     }
 
 });
