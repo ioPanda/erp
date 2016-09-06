@@ -15,12 +15,10 @@ export default Route.extend({
     },
     
     fetch () {
-        add:true;
         return this.collection.fetch();
     },
 
     render () {
-
         this.layout = new LayoutView();
         this.container.show(this.layout);
         
@@ -31,20 +29,19 @@ export default Route.extend({
             'subTitle': 'Kinds Of Market Manager',
             'icon':'glyphicon-map-marker'
         }));
-        
-        let filter= _.chain(this.collection.models[0].get('DevelopedMarket')).value(),
-            filterO = _.chain(this.collection.models[0].get('DevelopingMarket')).value(),
-            filterT = _.chain(this.collection.models[0].get('UnDevelopMarket')).value();
-        
+
+        let filter= _.chain(this.collection.models[0].get('DevelopedMarket')).value().developedMarket,
+            filterO = _.chain(this.collection.models[0].get('DevelopingMarket')).value().developingMarket,
+            filterT = _.chain(this.collection.models[0].get('UnDevelopMarket')).value().unDevelopMarket;
+
         this.done = new Collection(filter);
         this.doing = new Collection(filterO);
         this.todo  = new Collection(filterT);
-        console.log(this.done);
-
+        
+        // console.log(filter, test);
+        
         this.layout.done.show(new DoneView({collection:this.done}));
         this.layout.doing.show(new DoingView({collection:this.doing}));
         this.layout.todo.show(new TodoView({collection:this.todo}));
     }
-
-    
 });

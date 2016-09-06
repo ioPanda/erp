@@ -1,7 +1,8 @@
 import {ItemView} from 'backbone.marionette';
 import template from './template.hbs';
 import $ from 'jquery';
-
+import _ from 'lodash';
+import Backbone from 'backbone';
 
 export default ItemView.extend({
 	template:template,
@@ -14,7 +15,7 @@ export default ItemView.extend({
     //返回渲染数据
     serializeData () {
     	return {
-    		"unDevelopMarket":this.collection.models[0].get('unDevelopMarket')
+    		"unDevelopMarket":_.invoke(this.collection, 'toJSON')
     	}
     },
 
@@ -25,23 +26,51 @@ export default ItemView.extend({
     events:{
         'mouseover @ui.startRes':'moveIn',
         'mouseout @ui.startRes':'moveOut',
-        'click @ui.startRes':'todo'
+        'click @ui.startRes':'todoFun'
     },
 
-    moveIn (e) {
-        let $this=$(e.target);
-        $this.css({'background-color':'pink',
-                   'font-size':'20px'});
-    },
-    
-    moveOut (e) {
-        let $this=$(e.target);
-        $this.css({'background-color':'#dbdad6',
-                   'font-size':'18px'}); 
-    },
-
-    todo (e) {
+    todoFun (e) {
+        let $this = $(e.target),
+            $parent = $this.parent(),
+            marketName = $this.prev().find('.name').find('h3').text(),
+            researchPeriod = $this.prev().find('.period').find('h3').text(),
+            researchCost = $this.prev().find('.creatFee').find('h3').text(),
+            maintainCost = $this.prev().find('.serFee').find('h3').text();
         
+        let model = {"marketName":marketName,
+                     "researchPeriod":researchPeriod,
+                     "researchCost":researchCost,
+                     "finishedPeriod":"0",
+                     "beginTime":"0",
+                     "status":"1"
+                    };
+
+        // console.log(model);
+        $parent.remove();
+        Backbone.trigger('append', [model]);
     }
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

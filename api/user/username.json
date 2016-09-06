@@ -1,0 +1,33 @@
+{
+	"record":
+	[
+		{
+			"ChatRoom":
+			{
+				"groupName":"1234",
+				"id":12,
+				"record":"hahahahahaha",
+				"userName":"周军"
+			}
+		},
+        {
+        	"ChatRoom":
+        	{
+        		"groupName":"1234",
+        		"id":13,
+        		"record":"wefnfinfknvo",
+        		"userName":"杨青"
+        	}
+        },
+        {
+        	"ChatRoom":
+        	{
+        		"groupName":"1234",
+        		"id":13,
+        		"record":"22errfrgg",
+        		"userName":"张峥"
+        	}
+        }
+	],
+    "username":"方青"
+}

@@ -4,6 +4,7 @@ import {LayoutView} from 'backbone.marionette';
 import CollectionView from './content/collection-view';
 import {Collection} from 'backbone';
 import template from './layout-template.hbs';
+import echarts from 'echarts';
 
 export default LayoutView.extend({
   template: template,
@@ -66,13 +67,15 @@ export default LayoutView.extend({
   templateHelpers() {},
 
   ui: {
-    module   : '.selModule select',
-    gameGroup: '.selGameGroup select'
+    module     : '.selModule select',
+    gameGroup  : '.selGameGroup select',
+    viewComRate: '.select-group button'
   },
 
   events: {
     'change @ui.module'    : 'module',
-    'change @ui.gameGroup': 'gameGroup'
+    'change @ui.gameGroup' : 'gameGroup',
+    'click @ui.viewComRate': 'viewComRate'
   },
 
   module(e){
@@ -105,7 +108,101 @@ export default LayoutView.extend({
           $('.selYear select').get(0).add(option,undefined);
        }
     }
+  },
+
+  viewComRate(e){
+    let a = $('.select-group select:visible');
+    let arr = [];
+    for(let i=0;i<a.length;i++){
+        if(a[i].selectedIndex===0){
+          alert('请选择必要的选项'+i);
+          return;
+        }else{
+          arr.push(a[i].selectedIndex);   //保存每一个选中下拉列表的索引
+        }
+    }
+    
+    let myChart = echarts.init($('#view-comRate').get(0));
+    
+    let ser = [];
+    let legend = this.moduleData[arr[0]]['legend'];
+    let type = this.moduleData[arr[0]]['type'];
+    let stack = this.moduleData[arr[0]]['stack'];
+    let series = this.moduleData[arr[0]]['series'];
+    // alert(stack);
+    if(arr.length === 3 && arr[0]!== 5){
+       let k = series[arr[1]][arr[2]];
+       for(let i=0;i<k.length;i++){
+         let s = {};
+         arr[0] === 2 ? s.name = legend[i].name : s.name = legend[i];
+         stack !== undefined ? s.stack = stack :'';
+         s.type = type;
+         s.data = k[i].data;
+         ser.push(s);                   
+       }
+    }
+    else if(arr[0] === 5){
+       let datas = series[arr[1]]; // 选出 选中游戏组的那一组数据
+      
+       for(let j=0;j<legend.length;j++){
+          let s = {};
+          s.name = legend[j];
+          s.type = type;
+          s.data = [];
+          for(let i in datas){
+             s.data.push(datas[i][j].data[arr[2]-1]);
+          }
+          // alert(s.data);
+          ser.push(s);
+       }
+    }
+    else if(arr.length === 2){
+       let k = series[arr[1]];
+       let s = {};
+       s.name = legend;
+       s.type = type;
+       s.data = k.data;
+       ser.push(s);
+    }
+    
+    let option = {
+        title: {
+            text: this.moduleData[arr[0]]['module'],
+            subtext: '游戏组：'+this.gameGroupData[arr[1]-1]['gName'],
+            left: 'left'
+        },
+
+        toolbox: {
+            show: true,
+            feature: {
+                mark: {show: true},
+                // dataZoom: {show: true},
+                dataView: {show: true},
+                magicType: {type: ['line','bar']},
+                restore: {show: true},
+                saveAsImage: {show: true}
+            }
+        },
+
+        tooltip: {trigger: 'axis'},
+
+        legend: {data: legend},
+
+        xAxis: {
+            data: this.moduleData[arr[0]]['xAxis']==='group' 
+            ? this.gameGroupData[arr[1]-1]['group']
+            : this.gameGroupData[arr[1]-1]['year']
+        },
+
+        yAxis: {},
+        
+        series: ser
+        
+    };
+
+    myChart.setOption(option);
   }
+  
 
 
 });

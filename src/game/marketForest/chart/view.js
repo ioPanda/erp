@@ -3,5 +3,10 @@ import template from './template.hbs';
 
 export default ItemView.extend({
   template: template,
-  className: '',
+  className: 'request_content',
+  
+  initialize(options={}){
+  	this.colletion=options.colletion;
+  	
+  }
 });

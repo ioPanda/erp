@@ -7,7 +7,8 @@ export default  LayoutView.extend({
 
        regions:{
 	       	breadcrumb:"#breadcrumb",
-	       	content:'.content_forest'
+	       	select:'#checked',
+	       	chart:'#chart'
        }
        
 });

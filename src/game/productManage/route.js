@@ -2,7 +2,7 @@ import {Route} from 'backbone-routing';
 import LayoutView from './layout-view';
 import BreadcrumbView from '../../component/breadcrumb/view';
 import ContentView from './content/view';
-import HouseBuildView from '../../component/popUp/houseBuild/view.js';
+import HouseBuildView from '../../component/popUp/houseBuild/view';
 
 export default Route.extend({
     initialize(options = {}) {
