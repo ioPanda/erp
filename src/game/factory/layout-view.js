@@ -7,10 +7,10 @@ export default LayoutView.extend({
 
   regions: {
   	breadcrumb: '#breadcrumb',
-  	content: '.authentic-container'
+  	content: '.factory-container'
   },
   
-  className: 'authentic',
+  className: 'factory',
   
   initialize(options = {}) {
     this.model = options.model;
