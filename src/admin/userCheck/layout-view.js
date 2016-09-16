@@ -1,12 +1,10 @@
-
 import _ from 'lodash';
 import $ from 'jquery';
 import {LayoutView} from 'backbone.marionette';
 import CollectionView from './content/collection-view';
 import {Collection} from 'backbone';
 import template from './layout-template.hbs';
-
-
+import ModalService from '../../component/modal/service';
 export default LayoutView.extend({
   template: template,
   id:'list',
@@ -23,7 +21,6 @@ export default LayoutView.extend({
     this.state.start = (options.page - 1) * this.state.limit;
   },
  
-
   onBeforeRender() {
     let filtered = _.chain(this.data)
       .drop(this.state.start)
@@ -60,14 +57,14 @@ export default LayoutView.extend({
 
   //页面事件绑定部分
   ui: {
-     pageLimit: '#pageLimit',
-     page     : '#pagination li a',
-     checkAll : '#all',
-     check    : 'td input',
-     agree    : '.agree',
-     refuse   : '.refuse',
-     delete   : '.page button'
-
+     pageLimit  : '#pageLimit',
+     page       : '#pagination li a',
+     checkAll   : '#all',
+     check      : 'td input',
+     agree      : 'a.agree',
+     refuse     : 'a.refuse',
+     agreeMore  : 'button.agree',
+     refuseMore : 'button.refuse'
   },
 
   events: {
@@ -77,10 +74,11 @@ export default LayoutView.extend({
     'click @ui.check'     : 'check',
     'click @ui.agree'     : 'agree',
     'click @ui.refuse'    : 'refuse',
-    'click @ui.delete'    : 'delete'
+    'click @ui.agreeMore' : 'agree',
+    'click @ui.refuseMore': 'refuse'
   },
  
-  changeLimit(e){
+  changeLimit(e) {
       //重置列表内容
       this.state.limit = $('.page select').val();
       this.state.start = 0;
@@ -116,7 +114,7 @@ export default LayoutView.extend({
       }
   },
 
-  changePage(e){
+  changePage(e) {
     var $$=$('.pagination').children();
     if(($(e.target).text()==$$.eq(0).text())&&(!$$.eq(0).hasClass('disabled'))){
        this.page-=1;
@@ -151,13 +149,13 @@ export default LayoutView.extend({
      this.page==($$.length-2) ? $$.last().addClass('disabled') : $$.last().removeClass('disabled');
   },
 
-  checkAll(e){
+  checkAll(e) {
      $('#all').prop('checked')==true ? 
      $('td input').prop('checked',true) : 
      $('td input').prop('checked',false);
   },
 
-  check(e){
+  check(e) {
      $(e.target).prop('checked')==true ? 
      $(e.target).prop('checked',true) : 
      $(e.target).prop('checked',false);
@@ -165,30 +163,69 @@ export default LayoutView.extend({
      // $(e.target).parent().parent().parent().find('img').attr('src','region_icon.gif');
   },
 
-  agree(){
-    alert('agree');
+  agree(e) {
+    ModalService.request('confirm', {
+      title : '',
+      text: '是否同意添加该用户？'
+    }).then(confirmed => {
+      if (!confirmed) {
+        return;
+      } else {
+        let arr = [];
+        // alert(e.target.tagName.toLowerCase());
+        if(e.target.tagName.toLowerCase() === 'a') {
+           let agreeId = $(e.target).parent().parent().children().eq(1).html();
+           arr.push(agreeId);
+        }else {
+           for(let i=0;i<$('tbody input').length;i++) {
+              $('tbody input').eq(i).prop('checked') === true ? arr.push($('tbody').children().eq(i).children().eq(1).html()) : '';       
+           }
+        }
+        
+        let jqXHR = $.ajax({
+          type: 'GET',
+          url: './userManagerController/getUserList.do',
+          data: arr
+        });
+        jqXHR.done(function(response){
+          alert(arr + ' agree');
+        });
+      }
+    }); 
+    
   },
 
-  refuse(){
-    alert('refuse');
-  },
+  refuse(e) {
+     ModalService.request('confirm', {
+      title : '',
+      text: '是否拒绝添加该用户？'
+    }).then(confirmed => {
+      if (!confirmed) {
+        return;
+      } else {
+        let arr = [];
+        // alert(e.target.tagName.toLowerCase());
+        if(e.target.tagName.toLowerCase() === 'a') {
+           let refuseId = $(e.target).parent().parent().children().eq(1).html();
+           arr.push(refuseId);
+        }else {
+           for(let i=0;i<$('tbody input').length;i++) {
+              $('tbody input').eq(i).prop('checked') === true ? arr.push($('tbody').children().eq(i).children().eq(1).html()) : '';       
+           }
+        }
 
-  delete(){
-     // let arr=$('td input');
-     // var a=[];
-     // for(var i=0;i<arr.size();i++){
-     //     if(arr.eq(i).prop('checked')==true){
-     //         a.push(arr.eq(i));
-     //         // alert(JSON.stringify(this.data[i]));
-     //     }
-     // }
-     // if(a.length==0){
-     //   alert('qingxuanze');
-     // }
-      
-      // alert(typeof this.collection.model);
-     // this.model.destroy();
+        let jqXHR = $.ajax({
+          type: 'GET',
+          url: './userManagerController/getUserList.do',
+          data: arr
+        });
+        jqXHR.done(function(response){
+          alert(arr + ' refuse');
+        });
+      }
+    });     
   }
+
 
 
 });

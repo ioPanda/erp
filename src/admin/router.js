@@ -22,7 +22,7 @@ export default Router.extend({
   	Header.show();
   },
 
-  routes:{
+  routes: {
     "admin/userList": "userList",
   	"admin/userCheck": "userCheck",
     "admin/groupManage":"groupManage",
@@ -31,10 +31,6 @@ export default Router.extend({
   	"admin/oldCompanyRate": "oldCompanyRate",
     "admin/oldOwnerEquity": "oldOwnerEquity"
   },
-
- 
-
-
 
   companyRate() {
   	return new CompanyRateRoute({
@@ -66,7 +62,7 @@ export default Router.extend({
     })
   },
 
-  oldCompanyRate(){
+  oldCompanyRate() {
     return new OldCompanyRateRoute({
       container: this.container
     })
