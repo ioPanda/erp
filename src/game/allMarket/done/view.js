@@ -30,15 +30,14 @@ export default ItemView.extend({
             $text = $this.text(),
             $statu = $this.prev().find('.statu').find('h3'),
             statu = $statu.text();
-            // console.log(statu);
         if($text == '暂停维护' && statu == '正在维护'){
             $this.text('进行维护');
             $statu.text('暂停维护');
-            //ajax
+            //ajax--stopDevelopedMarket
         }else if($text == '进行维护' && statu == '暂停维护'){
             $this.text('暂停维护');
             $statu.text('正在维护');
-            //ajax
+            //ajax--startDevelopedMarket
         }
     }
 
