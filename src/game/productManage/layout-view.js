@@ -7,8 +7,7 @@ export default LayoutView.extend({
 
   regions: {
     breadcrumb: '#breadcrumb',
-    content: '.produce_content',
-    body: 'body'
+    content: '.produce_content'
   },
 
   className: 'produce',

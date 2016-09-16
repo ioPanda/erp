@@ -3,11 +3,10 @@ import template from './template.hbs';
 import $ from 'jquery';
 import {Model} from 'backbone';
 import ModalService from '../../../component/modal/service';
-// import houseBuild from '../../../component/popUp/houseBuild/view.js';
 
 export default ItemView.extend({
     template: template,
-    className: 'status',
+    className: 'house-status',
     
     initialize(options={}){
         this.model = new Model(options);
@@ -23,18 +22,11 @@ export default ItemView.extend({
     },
 
     moveIn (e) {
-
-        // test
-        ModalService.request('confirm', {
-          title : '新建厂房',
-          text  : '这里是测试'
-        }).then(confirmed => {
-          if (!confirmed) {
-            return;
-          }
-        });
+        // ModalService.request('houseBuild');
+         ModalService.request('confirm');
 
         let $this = $(e.target);
+        $('.btn-hover').css('display', 'none');
         $this.find('.btn-hover').css('display', 'block');
     },
 
