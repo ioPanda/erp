@@ -3,7 +3,8 @@ import Backbone from 'backbone';
 import Application from './application/application';
 
 import Aside from './component/aside/service';
-import Header from './component/header/service'
+import Header from './component/header/service';
+import Modal from './component/modal/service';
 
 import Index from './index/router';
 import Login from './login/router';
@@ -19,6 +20,9 @@ Aside.setup({
 });
 Header.setup({
 	container: app.layout.header
+});
+Modal.setup({
+   container: app.layout.overlay
 });
 
 /* init router */

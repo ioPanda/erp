@@ -2,10 +2,11 @@ import {ItemView} from 'backbone.marionette';
 import template from './template.hbs';
 import $ from 'jquery';
 import {Model} from 'backbone';
+import ModalService from '../../../component/modal/service';
 
 export default ItemView.extend({
     template: template,
-    className: 'status',
+    className: 'house-status',
     
     initialize(options={}){
         this.model = new Model(options);
@@ -16,17 +17,22 @@ export default ItemView.extend({
     },
 
     events:{
-        'mouseover @ui.btnInquire':'moveIn',
-        'mouseout @ui.btnInquire':'moveOut'
+        'mouseenter @ui.btnInquire': 'moveIn',
+        'mouseleave @ui.btnInquire': 'moveOut'
     },
 
     moveIn (e) {
+        // ModalService.request('houseBuild');
+         ModalService.request('confirm');
+
         let $this = $(e.target);
-        $this.children().css('display', 'block');
+        $('.btn-hover').css('display', 'none');
+        $this.find('.btn-hover').css('display', 'block');
     },
 
     moveOut (e) {
         let $this=$(e.target);
-        $this.children().css('display', 'none');  
+        $this.find('.btn-hover').css('display', 'none');
     }
+
 });

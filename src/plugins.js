@@ -1,3 +1,4 @@
+import 'bootstrap';
 /*import Backbone from 'backbone';
 import $ from 'jquery';
 Backbone.$ = $;
@@ -5,7 +6,7 @@ import Marionette from 'backbone.marionette';
 import 'bootstrap';
 import 'backbone.syphon';
 import 'backbone-query-parameters';
-import 'babel-polyfill';*/
+import 'babel-polyfill';
 
 
 // start the marionette inspector

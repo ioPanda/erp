@@ -881,6 +881,7 @@
   		"hasYear":true,
   		"type":"bar",
   		"xAxis":"group",
+  		"stack":"成本",
   		"legend":["直接成本","广告","经营费","管理费","折旧","利息"],
   		"series": {
   			"1":{

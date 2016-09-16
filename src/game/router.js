@@ -20,6 +20,8 @@ import ProductStockRoute from './productStock/route';
 import TimeRoute from './time/route';
 import ExitRoute from './exit/route';
 import ProductManageRoute from './productManage/route';
+import materialIntroRoute from './materialIntro/route';
+
 
 import routerTable from './routes.json';
 
@@ -59,6 +61,12 @@ export default Router.extend({
 
     productManage() {
         return new ProductManageRoute({
+          container: this.container
+        });
+    },
+
+    materialIntro() {
+        return new materialIntroRoute({
           container: this.container
         });
     },

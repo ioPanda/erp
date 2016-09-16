@@ -127,13 +127,15 @@ export default LayoutView.extend({
     let ser = [];
     let legend = this.moduleData[arr[0]]['legend'];
     let type = this.moduleData[arr[0]]['type'];
+    let stack = this.moduleData[arr[0]]['stack'];
     let series = this.moduleData[arr[0]]['series'];
-
+    // alert(stack);
     if(arr.length === 3 && arr[0]!== 5){
        let k = series[arr[1]][arr[2]];
        for(let i=0;i<k.length;i++){
          let s = {};
-         legend[i] !==undefined ? s.name = legend[i].name : s.name = legend[i];
+         arr[0] === 2 ? s.name = legend[i].name : s.name = legend[i];
+         stack !== undefined ? s.stack = stack :'';
          s.type = type;
          s.data = k[i].data;
          ser.push(s);                   

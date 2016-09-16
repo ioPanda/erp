@@ -44,7 +44,7 @@ export default ItemView.extend({
   },
 
   onCollapseShow() {
-    this.listenToOnce(history, 'route', () => {
+      this.listenToOnce(history, 'route', () => {
       this.ui.collapse.collapse('hide');
     });
   }

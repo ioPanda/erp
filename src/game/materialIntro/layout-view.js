@@ -7,12 +7,13 @@ export default LayoutView.extend({
 
   regions: {
     breadcrumb: '#breadcrumb',
-    content: '.produce_content'
+    content: '.loan_content'
   },
 
-  className: 'produce',
+  className: 'loan',
 
   initialize(options = {}) {
     this.model = options.model;
   }
 });
+
