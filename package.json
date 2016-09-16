@@ -67,7 +67,8 @@
     "jquery": "^2.1.4",
     "lodash": "^4.13.1",
     "nprogress": "^0.2.0",
-    "requirejs": "^2.2.0"
+    "requirejs": "^2.2.0",
+    "xcharts": "^0.3.0"
   },
   "browser": {
     "bootstrap": "./node_modules/bootstrap/dist/js/bootstrap.js"

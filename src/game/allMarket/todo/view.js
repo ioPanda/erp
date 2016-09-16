@@ -44,8 +44,7 @@ export default ItemView.extend({
                      "beginTime":"0",
                      "status":"1"
                     };
-
-        // console.log(model);
+        //ajax--startUndevelopMarket
         $parent.remove();
         Backbone.trigger('append', [model]);
     }

@@ -40,19 +40,18 @@ export default ItemView.extend({
 
     stopResFun (e) {
         let $this = $(e.target),
-            // console.log($text);
             $text = $this.text(),
             $statu = $this.prev().find('.statu').find('h3'),
             statu = $statu.text();
-            // console.log(statu);
         if($text == '暂停开拓' && statu == '正在开拓'){
             $this.text('进行开拓');
             $statu.text('暂停开拓');
-            //ajax
+            //ajax--startDevelopingMarket
+            
         }else if($text == '进行开拓' && statu == '暂停开拓'){
             $this.text('暂停开拓');
             $statu.text('正在开拓');
-            //ajax
+            //ajax--stopDevelopingMarket
         }
     }
 

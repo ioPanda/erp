@@ -11,7 +11,6 @@ export default ItemView.extend({
 	initialize(options={}){
 		this.model = options.model;
         this.name = _.invoke(this.model, 'toJSON');//toJSON json.stringlify
-        console.log(this.name)
 		// _.bindAll(this,'addMessage');
 	},
 
@@ -19,7 +18,6 @@ export default ItemView.extend({
 		return {
 			"record" :this.name.record
 		}
-		console.log(record);
 	},
 
 	ui:{
