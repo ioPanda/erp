@@ -46,7 +46,6 @@ export default LayoutView.extend({
   },
 
   onAttach() {
-
     this.moduleList.show(new CollectionView({
         collection: this.mFilteredCollection
     }));
@@ -82,11 +81,9 @@ export default LayoutView.extend({
     // alert(e.target.selectedIndex);
     let index=e.target.selectedIndex;
 
-    this.moduleData[index]['hasGroup']==false ? $('.selGroup select').css('display','none') : $('.selGroup select').css('display','block');
+    this.moduleData[index]['hasGroup']===false ? $('.selGroup select').css('display','none') : $('.selGroup select').css('display','block');
 
-    this.moduleData[index]['hasYear']==false ? $('.selYear select').css('display','none') : $('.selYear select').css('display','block');
-       
-
+    this.moduleData[index]['hasYear']===false ? $('.selYear select').css('display','none') : $('.selYear select').css('display','block');
   },
 
   gameGroup(e){
@@ -118,17 +115,18 @@ export default LayoutView.extend({
           alert('请选择必要的选项'+i);
           return;
         }else{
-          arr.push(a[i].selectedIndex);   //保存每一个选中下拉列表的索引
+          arr.push(a[i].selectedIndex);   //保存每一个下拉列表的选中项的索引
         }
     }
     
     let myChart = echarts.init($('#view-comRate').get(0));
     
     let ser = [];
-    let legend = this.moduleData[arr[0]]['legend'];
-    let type = this.moduleData[arr[0]]['type'];
-    let stack = this.moduleData[arr[0]]['stack'];
-    let series = this.moduleData[arr[0]]['series'];
+    let selModule = this.moduleData[arr[0]]; // selModule 是被选定的某一个 模块
+    let legend = selModule['legend'];
+    let type = selModule['type'];
+    let stack = selModule['stack'];
+    let series = selModule['series'];    
     // alert(stack);
     if(arr.length === 3 && arr[0]!== 5){
        let k = series[arr[1]][arr[2]];

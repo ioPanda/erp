@@ -1,9 +1,6 @@
-
 import {Route} from 'backbone-routing';
 import LayoutView from './layout-view';
 import Collection from './collection';
-
-
 
 export default Route.extend({
   initialize(options = {}) {
@@ -32,55 +29,6 @@ export default Route.extend({
   }
 });
 
-
-
-
-
-
-
-
-
-
-/*
-import {Route} from 'backbone-routing';
-import LayoutView from './layout-view';
-import Collection from './collection';
-import Page from './page/view';
-import template from './layout-template.hbs';
-import template_item from './content/item-template.hbs';
-
-export default Route.extend({
-  initialize(options = {}) {
-    this.container = options.container;
-    this.collection = new Collection();
-  },
-
-  fetch() {
-    return this.collection.fetch();
-  },
-
-  render(params) {
-    let page = params && parseFloat(params.page) || 1;
-   
-    this.layoutView = new LayoutView({
-      template: template,
-      template_item: template_item,
-      collection: this.collection,
-      page: page,
-      data: this.collection.models[0].get('check')
-    });
-   
-    this.container.show(this.layoutView);
-  },
-
-  destroy() {
-    this.layoutView.remove();
-  }
-});
-
-
-
-*/
 
 
 

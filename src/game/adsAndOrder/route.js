@@ -12,16 +12,16 @@ import UserName from './model';
 
 export default Route.extend({
 	initialize(options={}){
-		console.log(options.step);
 		this.step = options.step;
 		this.username=new UserName();
 		this.container=options.container;
     },
-    //fetch behind initialize before render
+    //fetch behind initialize && before render
     fetch () {
     	return this.username.fetch();
     },
-
+    //ajax--UserStatusOfAdvertisement
+    //this.step = ??
     render () {
 
     	this.layout=new LayoutView();
@@ -38,24 +38,23 @@ export default Route.extend({
         //step路由
         switch(this.step){
         	case '1' :
-	        	this.layout.step.show(new stepOneView());
+	        	this.layout.step.show(new stepOneView({step:this.step}));
 	        	break;
 	        case '2' :
-		        this.layout.step.show(new stepTwoView());
+		        this.layout.step.show(new stepTwoView({step:this.step}));
 		        break;
 		    case '3' :
-			    this.layout.step.show(new stepThreeView());
+			    this.layout.step.show(new stepThreeView({step:this.step}));
 			    break;
             case '4' :
-	            this.layout.step.show(new stepFourView());
+	            this.layout.step.show(new stepFourView({step:this.step}));
 	            break;
 	        case '5' :
-		        this.layout.step.show(new stepFiveView());
+		        this.layout.step.show(new stepFiveView({step:this.step}));
 			    break;
 			default :
 				break;
         };
-      console.log(this.username);
       this.layout.talkRoom.show(new TalkroomView({model:this.username}));  
 	}
     

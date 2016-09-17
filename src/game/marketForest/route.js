@@ -17,6 +17,7 @@ export default Route.extend({
     },
 
     render () {
+        console.log(this.collection);
         this.container.show(this.layout);
         
         this.layout.breadcrumb.show(new BreadcrumbView({
