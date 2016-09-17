@@ -2,7 +2,7 @@ import {Collection} from 'backbone';
 import Model from './model';
 
 export default Collection.extend({
-	url:'/yangqing.do',
+	url:'/erp/market/getAllMarkets.do',
 
 	model:Model
 
