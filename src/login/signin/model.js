@@ -2,11 +2,15 @@ import Backbone from 'backbone';
 
 export default Backbone.Model.extend({
   // ajax
-  urlRoot: '/api/signinService',
+  urlRoot: '/erp/loginController/login.do',
 
   defaults: {
-    name: 'admin',
-    password: ''
+    loginInfo: {
+      password: '',
+      username: 'admin',
+    },
+    identity: 'teacher',
+    ckeckcode: ''
   },
 
   validate(attrs = {}) {
@@ -18,6 +22,14 @@ export default Backbone.Model.extend({
 
     if (attrs.password === '') {
       errors.push('password cannot be empty.');
+    }
+
+    if (attrs.identity === '') {
+      errors.push('identity cannot be empty.');
+    }
+
+    if (attrs.checkcode === '') {
+      errors.push('ckeckcode cannot be empty.');
     }
 
     return errors.length > 0 ? errors : undefined;

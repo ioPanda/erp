@@ -178,18 +178,16 @@ export default LayoutView.extend({
        if (!confirmed) {
          return;
        } else {
-         let arr = [];    // 保存要删除的  userId
          let deleteId = rowData.eq(1).html();
-         arr.push(deleteId);
          
          let jqXHR = $.ajax({
              type: 'GET',
              url: '/userManagerController/getUserList.do',
-             data: arr
+             data: deleteId
          });
 
          jqXHR.done(function(response) {
-             alert(arr + ' delete');
+             alert(deleteId + ' delete');
          });
 
          jqXHR.fail(function(xhr, errorText, errorStatus) {
@@ -207,19 +205,17 @@ export default LayoutView.extend({
     }).then(confirmed => {
        if (!confirmed) {
          return;
-       } else {
-         let arr = [];    
+       } else { 
          let deleteId = rowData.eq(1).html();
-         arr.push(deleteId);
          
          let jqXHR = $.ajax({
              type: 'GET',
              url: '/userManagerController/getUserList.do',
-             data: arr
+             data: deleteId
          });
 
          jqXHR.done(function(response) {
-             alert(arr + ' addHistory');
+             alert(deleteId + ' addHistory');
          });
 
          jqXHR.fail(function(xhr, errorText, errorStatus) {

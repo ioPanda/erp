@@ -25,6 +25,27 @@
   </div>
 
   <div class="form-group">
+    <label class="col-sm-1 control-label" for="identity">Role</label>
+    <div class="col-sm-11">
+      <input id="identity" class="form-control" name="identity" type="text" value="teacher">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-1 control-label" for="checkcode">Code</label>
+    <div class="col-sm-3">
+      <input id="checkcode" class="form-control" name="checkcode" type="text">
+    </div>
+    <div class="col-sm-3">
+      <a href="javascript:;">
+        {{#if codePic}}
+          {{this}}
+        {{/if}}
+      </a>
+    </div>
+  </div>
+
+  <div class="form-group">
     <div class="col-sm-offset-1 col-sm-11">
       <button type="submit" class="btn btn-default">Submit</button>
     </div>
