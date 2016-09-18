@@ -2,7 +2,7 @@ import Backbone from 'backbone';
 
 export default Backbone.Model.extend({
   // ajax
-  urlRoot: '/erp/loginController/login.do',
+  urlRoot: '/erp/user/login.do',
 
   defaults: {
     loginInfo: {

@@ -42,10 +42,10 @@ export default ItemView.extend({
   },
 
   onGetCode() {
-    var getCodeUrl = '/erp/getSecurityCode.do';
+    var getCodeUrl = '/erp/securityCodeImage/getSecurityCode.do';
     Util
       .ajax('GET', getCodeUrl)
-      .then((data) => {
+      .then((rsp) => {
         console.log(rsp);
         this.codePic = rsp.data;
       });
