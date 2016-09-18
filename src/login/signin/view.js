@@ -11,30 +11,44 @@ import nprogress from 'nprogress';
 
 export default ItemView.extend({
   template: template,
-  className: 'wangxinyu',
+  className: 'wangxinyu--test',
 
   behaviors: {
     form: { behaviorClass: FormBehavior }
   },
-  /*initialize(options = {}) {
-    console.log(template());
-  },*/
+
+  initialize(options = {}) {
+    this.onGetCode();
+  },
 
   ui: {
     inputName: '#name',
-    inputPsw: '#password'
+    inputPsw: '#password',
+    inputRole: '#identity',
+    inputCode: '#checkcode'
   },
 
   events: {
     'blur @ui.inputName': 'onNameChange',
     'blur @ui.inputPsw' : 'onPswChange',
-    'submit form'         : 'handleSubmit'
+    'submit form'       : 'handleSubmit'
   },
 
   serializeData() {
     return {
-      errors: this.errors
+      errors: this.errors,
+      codePic: this.codePic
     }
+  },
+
+  onGetCode() {
+    var getCodeUrl = '/erp/getSecurityCode.do';
+    Util
+      .ajax('GET', getCodeUrl)
+      .then((data) => {
+        console.log(rsp);
+        this.codePic = rsp.data;
+      });
   },
 
   onInputChange(inputItem, cb) {
