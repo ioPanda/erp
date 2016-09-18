@@ -1,25 +1,29 @@
 .material-all {
     width: 100%;
     margin-bottom: 18px;
+    .all-content {
+        margin: 10px 0 0 120px;
+        overflow: hidden;
+    }
+}
+.title-line {
+    width: 100%;
+    overflow: hidden;
     h4 {
         display: inline;
         padding-right: 22px;
         color: #8C8C8C;
-        position: relative;
-        &:after {
-            display: inline-block;
-            content: '';
-            width: 1132px;
-            margin-top: -3px;
-            border-bottom: 2px solid #999999; 
-            position: absolute;
-            left: 90px;      
-            top: 14px;
-        }
+        float: left;
+        margin-top: 0;
     }
-    .all-content {
-        margin: 10px 0 0 120px;
-        overflow: hidden;
+    em {
+        display: block;
+        width: 92%;
+        margin-top: -3px;
+        border-bottom: 2px solid #999999; 
+        margin-top: 8px;
+        float: right;
+        margin-right: 0;
     }
 }
 .all-img {

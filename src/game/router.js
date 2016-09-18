@@ -77,7 +77,7 @@ export default Router.extend({
     },
 
     materialIntro() {
-        return new materialIntroRoute({
+        return new MaterialIntroRoute({
           container: this.container
         });
     },
