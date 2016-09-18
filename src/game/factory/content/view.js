@@ -5,8 +5,8 @@ import {Model} from 'backbone';
 
 export default ItemView.extend({
     template: template,
-    className: 'authentic-content',
-
+    className: 'factory-content',
+    
     initialize(options={}){
         this.model = new Model(options);
     }
