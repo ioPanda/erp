@@ -2,6 +2,6 @@ import {Collection} from 'backbone';
 import model from './model';
 
 export default Collection.extend({
-	url:'/marketController/findPrediction.do',
+	url:'/erp/market/findPrediction.do',
 	model:model
 });

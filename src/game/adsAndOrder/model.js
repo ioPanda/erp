@@ -1,7 +1,7 @@
 import {Model} from 'backbone';
 
 export default Model.extend({
-	url:'/username.do',
+	url:'/',
 	default:{
 		name:'xxxx'
 	}

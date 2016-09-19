@@ -42,16 +42,38 @@ export default ItemView.extend({
         let $this = $(e.target),
             $text = $this.text(),
             $statu = $this.prev().find('.statu').find('h3'),
-            statu = $statu.text();
+            statu = $statu.text(),
+            marketName = $this.prev().find('.Name').find('h3');
         if($text == '暂停开拓' && statu == '正在开拓'){
             $this.text('进行开拓');
             $statu.text('暂停开拓');
             //ajax--startDevelopingMarket
-            
+            $.ajax({
+                type:'POST',
+                url:'/erp/market/stopDevelopingMarket.do',
+                data:{"marketName":marketName},
+                success:function(res){
+                    console.log(res.status);
+                },
+                error:function(res){
+                    console.log(res.status);
+                }
+            });
         }else if($text == '进行开拓' && statu == '暂停开拓'){
             $this.text('暂停开拓');
             $statu.text('正在开拓');
             //ajax--stopDevelopingMarket
+            $.ajax({
+                type:'POST',
+                url:'/erp/market/startDevelopingMarket.do',
+                data:{"marketName":marketName},
+                success:function(res){
+                    console.log(res.status);
+                },
+                error:function(res){
+                    console.log(res.status);
+                }
+            });
         }
     }
 

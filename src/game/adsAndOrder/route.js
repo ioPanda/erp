@@ -9,6 +9,7 @@ import stepFourView from './stepFour/view';
 import stepFiveView from './stepFive/view';
 import TalkroomView from './talkroom/view';
 import UserName from './model';
+import $ from 'jquery';
 
 export default Route.extend({
 	initialize(options={}){
@@ -20,10 +21,9 @@ export default Route.extend({
     fetch () {
     	return this.username.fetch();
     },
-    //ajax--UserStatusOfAdvertisement
-    //this.step = ??
+ 
     render () {
-
+    	
     	this.layout=new LayoutView();
 		this.container.show(this.layout);
         this.layout.breadcrumb.show(new BreadcrumbView({
@@ -34,7 +34,19 @@ export default Route.extend({
 		}));	
 
         this.layout.nav.show(new NavView());
-        
+        $.ajax({
+        	type:'POST',
+        	url:'/advertisement/userStatusOfAdvertisement.do',
+        	data:{"period":""},
+        	success:function(res){
+        		console.log(res.status);
+        		this.step = res.data;
+        	},
+        	error:function(res){
+                this.step = 1;
+        		console.log(res.status);
+        	}
+        });
         //step路由
         switch(this.step){
         	case '1' :

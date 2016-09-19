@@ -1,7 +1,7 @@
 import {Model} from 'backbone';
 
 export default Model.extend({
-	url:'/marketController/findPrediction.do',
+	url:'/erp/market/findPrediction.do',
 
 	default:{
 		"marketName":"xxxx",
