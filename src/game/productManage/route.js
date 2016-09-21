@@ -2,7 +2,6 @@ import {Route} from 'backbone-routing';
 import LayoutView from './layout-view';
 import BreadcrumbView from '../../component/breadcrumb/view';
 import ContentView from './content/view';
-// import HouseBuildView from '../../component/popUp/houseBuild/view';
 
 export default Route.extend({
     initialize(options = {}) {
@@ -21,8 +20,6 @@ export default Route.extend({
 
         //生产管理部分
         this.layout.content.show(new ContentView());
-
-        // this.layout.body.show(new HouseBuildView());
     }
 
 });

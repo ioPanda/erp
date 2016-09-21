@@ -9,9 +9,5 @@ export default ItemView.extend({
     
     initialize(options={}){
         this.model = new Model(options);
-    },
-
-    // ui: {
-    //     btnInquire: '.btnInquire'
-    // }
+    }
 });

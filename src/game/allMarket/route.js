@@ -29,10 +29,10 @@ export default Route.extend({
             'subTitle': 'Kinds Of Market Manager',
             'icon':'glyphicon-map-marker'
         }));
-
-        let filter= _.chain(this.collection.models[0].get('DevelopedMarket')).value().developedMarket,
-            filterO = _.chain(this.collection.models[0].get('DevelopingMarket')).value().developingMarket,
-            filterT = _.chain(this.collection.models[0].get('UnDevelopMarket')).value().unDevelopMarket;
+        console.log(this.collection);
+        let filter= _.chain(this.collection.models[0].get('developedMarkets')).value(),
+            filterO = _.chain(this.collection.models[0].get('developingMarkets')).value(),
+            filterT = _.chain(this.collection.models[0].get('undevelopMarkets')).value();
 
         this.done = new Collection(filter);
         this.doing = new Collection(filterO);

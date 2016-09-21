@@ -20,10 +20,10 @@ export default ItemView.extend({
         'mouseenter @ui.btnInquire': 'moveIn',
         'mouseleave @ui.btnInquire': 'moveOut'
     },
-
+    
     moveIn (e) {
         // ModalService.request('houseBuild');
-         ModalService.request('confirm');
+         // ModalService.request('confirm');
 
         let $this = $(e.target);
         $('.btn-hover').css('display', 'none');

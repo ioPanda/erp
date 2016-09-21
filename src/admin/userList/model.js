@@ -2,10 +2,11 @@ import {Model} from 'backbone';
 
 export default Model.extend({
   // urlRoot: '/api/colors',
-  urlRoot: '/userManagerController/getUserList.do',
+  urlRoot: '/erp/userManager/findAllApprovedUser.do',
+
+  // url: '/userManagerController/getUserList.do',
 
   defaults: {
-  	active: false,
-  	// nihao: 'nihao'
+  	active: false
   }
 });

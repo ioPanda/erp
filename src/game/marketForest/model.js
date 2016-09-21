@@ -1,9 +1,8 @@
 import {Model} from 'backbone';
 
 export default Model.extend({
-	url:'/erp/market/findPrediction.do',
 
-	default:{
+	defaults:{
 		"marketName":"xxxx",
 		"mountMap":{
 			"mountMax":"2",

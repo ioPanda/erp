@@ -2,6 +2,7 @@ import {ItemView} from 'backbone.marionette';
 import template from './template.hbs';
 import $ from 'jquery';
 import _ from 'lodash';
+import Util from '../../../util.js';
 
 export default ItemView.extend({
 	template:template,
@@ -35,31 +36,23 @@ export default ItemView.extend({
         if($text == '暂停维护' && statu == '正在维护'){
             $this.text('进行维护');
             $statu.text('暂停维护');
-            //ajax--stopDevelopedMarket
-            $.ajax({
-                type:'POST',
-                url:'/erp/market/stopDevelopedMarket.do',
-                data:{"marketName":marketName},
-                success:function(res){
-                    console.log(res.status);
-                },
-                error:function(res){
-                    console.log(res.status);
-                }
-            });
+            Util.ajax('POST','/erp/market/stopDevelopedMarket.do',{"marketName":marketName})
+                .then((res) => {
+                    if(res.statu == 1){
+                        console.log(res.message);
+                    }else{
+                        console.log(res.message);
+                    }
+                });
         }else if($text == '进行维护' && statu == '暂停维护'){
             $this.text('暂停维护');
             $statu.text('正在维护');
-            //ajax--startDevelopedMarket
-            $.ajax({
-                type:'POST',
-                url:'/erp/market/startDevelopedMarket.do',
-                data:{"marketName":marketName},
-                success:function(res){
-                    console.log(res.status);
-                },
-                error:function(res){
-                    console.log(res.status);
+            Util.ajax('POST','/erp/market/startDevelopedMarket.do',{"marketName":marketName})
+            .then((res) => {
+                if(res.statu == 1){
+                        console.log(res.message);
+                }else{
+                        console.log(res.message);
                 }
             });
         }

@@ -7,8 +7,8 @@ export default Route.extend({
     initialize(options = {}) {
         this.container = options.container;
 
-        this.view = new View();
-        this.container.show(this.view);
+        this.layout = new LayoutView();
+        this.container.show(this.layout);
 
         //面包屑
         this.layout.breadcrumb.show(new BreadcrumbView({

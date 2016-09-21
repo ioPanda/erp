@@ -64,19 +64,21 @@ export default LayoutView.extend({
      update    : '.update',
      delete    : '.delete',
      deleteMore: '.btn',
-     updateForm: '#nihao'
+     ok        : '.modal-footer button'
   },
 
   events: {
-    'change @ui.pageLimit' :'changeLimit',
+    'change @ui.pageLimit' : 'changeLimit',
     'click @ui.page'       : 'changePage',
     'click @ui.checkAll'   : 'checkAll',
     'click @ui.check'      : 'check',
     'click @ui.update'     : 'update',
     'click @ui.delete'     : 'delete',
-    'click @ui.deleteMore' : 'delete',
-    'focus @ui.updateForm' : 'updateForm'
+    'click @ui.deleteMore' : 'deleteMore',
+    'submit @ui.ok'         : 'ok'
   },
+
+  
 
   changeLimit(e) {
       //重置列表内容
@@ -161,16 +163,22 @@ export default LayoutView.extend({
   },
 
   update(e) {
+    var da = {};
+    $('div.application__overlay').on('change', function(e){
+      da[$(e.target).attr('name')] = $(e.target).val();
+      // da.push($(e.target).val());    
+    });
+
     let rowData = $(e.target).parent().parent().children();
-   
+
     ModalService.request('confirm', {
       title : '修改用户信息',
       text: '<form class="ud">'
-            + '<div class="form-group input-group"><span class="input-group-addon">*用户名ID</span><input type="text" class="form-control" value="'+rowData.eq(1).html()+'"></div>'
-            + '<div class="form-group input-group"><span class="input-group-addon">*姓名</span><input type="text" class="form-control" value="'+rowData.eq(2).html()+'"></div>'
-            + '<div class="form-group input-group"><span class="input-group-addon">*专业</span><input type="text" class="form-control" value="'+rowData.eq(3).html()+'"></div>'
-            + '<div class="form-group input-group"><span class="input-group-addon">*班级</span><input type="text" id="nihao" class="form-control" value="'+rowData.eq(4).html()+'"></div>'
-            + '<div class="form-group input-group"><span class="input-group-addon">*学号</span><input type="text" class="form-control" value="'+rowData.eq(5).html()+'"></div>'
+            + '<div class="form-group input-group"><span class="input-group-addon">*用户名ID</span><input type="text" name="userId" class="form-control" value="'+rowData.eq(1).html()+'" disabled></div>'
+            + '<div class="form-group input-group"><span class="input-group-addon">*姓名</span><input type="text" name="userName" class="form-control" value="'+rowData.eq(2).html()+'"></div>'
+            + '<div class="form-group input-group"><span class="input-group-addon">*专业</span><input type="text" name="major" class="form-control" value="'+rowData.eq(3).html()+'"></div>'
+            + '<div class="form-group input-group"><span class="input-group-addon">*班级</span><input type="text" name="class" id="nihao" class="form-control" value="'+rowData.eq(4).html()+'"></div>'
+            + '<div class="form-group input-group"><span class="input-group-addon">*学号</span><input type="text" name="studentId" class="form-control" value="'+rowData.eq(5).html()+'"></div>'
             + '</form>'
     }).then(confirmed => {
       if (!confirmed) {
@@ -180,18 +188,12 @@ export default LayoutView.extend({
          let jqXHR = $.ajax({
             type: 'GET',
             url: '/userManagerController/getUserList.do',
-            data: {
-              // userId:1,
-              // userName:'zz',
-              // major:'xingua',
-              // class:0311401,
-              // studentId:20142108
-            }
+            data: da
          });
 
          jqXHR.done(function(response){
-            // alert($('form').serialize() + 'jjjlll');
             alert(updateId + ' update');
+            alert(da.userName);
             // alert(response[0]['data'][1]['userId']);
          });
 
@@ -202,47 +204,73 @@ export default LayoutView.extend({
     });   
   },
 
-  updateForm(e){
-    console.log('change');
-  },
-
   delete(e){
     let rowData = $(e.target).parent().parent().children();
+    let deleteId;
     ModalService.request('confirm', {
       title : '',
-      text: e.target.tagName.toLowerCase() === 'a' ? '是否删除 ID为'+ rowData.eq(1).html() +'、用户名为'+ rowData.eq(2).html() +' 的用户？' : '是否删除所有选中用户？'
+      text: '是否删除 ID为'+ rowData.eq(1).html() +'、用户名为'+ rowData.eq(2).html() +' 的用户？'
     }).then(confirmed => {
-      if (!confirmed) {
-        return;
-      } else {
-        let arr = [];    // 保存要删除的  userId
-
-        if(e.target.tagName.toLowerCase() === 'a') {
-           let deleteId = rowData.eq(1).html();
-           arr.push(deleteId);
+        if (!confirmed) {
+          return;
         } else {
-           for(let i=0;i<$('tbody input').length;i++) {
-                // alert($('tbody').children().eq(i).children().eq(1).html());
-              $('tbody input').eq(i).prop('checked') === true ? arr.push($('tbody').children().eq(i).children().eq(1).html()) : '';       
-           }
-        }
+            deleteId = rowData.eq(1).html();
+        } 
         
         let jqXHR = $.ajax({
             type: 'GET',
-            url: '/userManagerController/getUserList.do',
-            data: arr
+            // url: '/userManagerController/getUserList.do',
+            url: '/erp/userManager/deleteApprUser.do',
+            data: deleteId
         });
 
         jqXHR.done(function(response) {
-            alert(arr + ' delete');
+            alert(deleteId + ' delete');   
         });
 
         jqXHR.fail(function(xhr, errorText, errorStatus) {
             alert('there is a error in delete');
         });
-      }
+     
     });     
-  }
+  },
 
+  deleteMore(e){
+    let arr = [];    // 保存要删除的  userId
+
+    for(let i=0;i<$('tbody input').length;i++) {
+       $('tbody input').eq(i).prop('checked') === true ? arr.push($('tbody').children().eq(i).children().eq(1).html()) : '';       
+    }
+
+    if(arr.length === 0) {
+       alert('0');
+       return;
+    } else {
+       let rowData = $(e.target).parent().parent().children();
+       ModalService.request('confirm', {
+         title : '',
+         text: '是否删除所有选中用户？'
+       }).then(confirmed => {
+         if (!confirmed) {
+           return;
+         } else {
+           let jqXHR = $.ajax({
+               type: 'GET',
+               url: '/userManagerController/getUserList.do',
+               // url: 'http://172.22.1.159:8080/erp/userManager/deleteBatchApprUsers.do',
+               data: arr
+           });
+
+           jqXHR.done(function(response) {
+               alert(arr + ' delete');
+           });
+
+           jqXHR.fail(function(xhr, errorText, errorStatus) {
+               alert('there is a error in delete');
+           });
+         }    
+       });
+     }
+   }
   
 });

@@ -11,10 +11,11 @@ export default Route.extend({
         this.container.show(this.layout);
 
         // 面包屑
-        this.layout.breadcrumb.show(new BreadcrumbView({
-        	'mainNav': '主页',
-        	'title': '年度规划会议',
-        	'subTitle': 'Annual Planning Meeting'
+        this.layout.breadcrumb.show(new BreadcrumbView({ 
+            'mainNav' : '产品研发&认证',
+            'title' : '认证管理',
+            'subTitle' : 'Workshop management',
+            'icon' : 'glyphicon-globe'
         }));
 
         // 年度会议规划部分

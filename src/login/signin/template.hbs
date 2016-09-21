@@ -11,9 +11,9 @@
   {{/if}}
   
   <div class="form-group">
-    <label class="col-sm-1 control-label" for="name">Name</label>
+    <label class="col-sm-1 control-label" for="userId">Name</label>
     <div class="col-sm-11">
-      <input id="name" class="form-control" name="name" type="text" placeholder="username">
+      <input id="userId" class="form-control" name="userId" type="text" placeholder="username">
     </div>
   </div>
 
@@ -21,6 +21,30 @@
     <label class="col-sm-1 control-label" for="password">Password</label>
     <div class="col-sm-11">
       <input id="password" class="form-control" name="password" type="password" placeholder="请输入密码">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-1 control-label" for="identity">Role</label>
+    <div class="col-sm-11">
+      <select id="identity" class="form-control" name="identity" type="text" value="teacher">
+        <option>student</option>
+        <option>teacher</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-1 control-label" for="checkCode">Code</label>
+    <div class="col-sm-3">
+      <input id="checkCode" class="form-control" name="checkCode" type="text">
+    </div>
+    <div class="col-sm-3">
+      <a href="javascript:;">
+        {{#if codePic}}
+          {{this}}
+        {{/if}}
+      </a>
     </div>
   </div>
 

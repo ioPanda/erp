@@ -3,6 +3,7 @@ import template from './template.hbs';
 import $ from 'jquery';
 import _ from 'lodash';
 import Backbone from 'backbone';
+import Util from '../../../util.js';
 
 export default ItemView.extend({
 	template:template,
@@ -10,8 +11,10 @@ export default ItemView.extend({
 
     initialize(options={}){
         this.collection=options.collection;
+        console.log(this.collection);
         Backbone.on('append',this.append,this);
         this.listenTo(this.collection, 'add', this.changeRneder);
+        console.log(_.invoke(this.collection, 'toJSON'));
     },
 
     changeRneder () {
@@ -43,37 +46,33 @@ export default ItemView.extend({
             $text = $this.text(),
             $statu = $this.prev().find('.statu').find('h3'),
             statu = $statu.text(),
-            marketName = $this.prev().find('.Name').find('h3');
+            marketName = $this.prev().find('.Name').find('h3').text();
+            console.log(typeof marketName);
+        let m = {"marketName":marketName};
+        console.log(m);
         if($text == '暂停开拓' && statu == '正在开拓'){
             $this.text('进行开拓');
             $statu.text('暂停开拓');
-            //ajax--startDevelopingMarket
-            $.ajax({
-                type:'POST',
-                url:'/erp/market/stopDevelopingMarket.do',
-                data:{"marketName":marketName},
-                success:function(res){
-                    console.log(res.status);
-                },
-                error:function(res){
-                    console.log(res.status);
-                }
-            });
+            Util.ajax('POST','/erp/market/stopDevelopingMarket.do',m)
+                .then((res) => {
+                    if(res.statu == 1){
+                        console.log(res.message);
+                    }else{
+                        console.log(res.message);
+                    }
+                });
         }else if($text == '进行开拓' && statu == '暂停开拓'){
             $this.text('暂停开拓');
             $statu.text('正在开拓');
-            //ajax--stopDevelopingMarket
-            $.ajax({
-                type:'POST',
-                url:'/erp/market/startDevelopingMarket.do',
-                data:{"marketName":marketName},
-                success:function(res){
-                    console.log(res.status);
-                },
-                error:function(res){
-                    console.log(res.status);
-                }
-            });
+            console.log(marketName);
+            Util.ajax('POST','/erp/market/startDevelopingMarket.do',{'marketName':marketName})
+                .then((res) => {
+                    if(res.statu == 1){
+                        console.log(res.message);
+                    }else{
+                        console.log(res.message);
+                    }
+                });
         }
     }
 

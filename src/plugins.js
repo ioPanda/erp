@@ -42,10 +42,10 @@ Handlebars.registerHelper('marketN', function (marketName) {
 
 Handlebars.registerHelper('Status',function(status) {
 	switch (status){
-	    case '1' :
+	    case 1 :
 		    return '正在维护';
 		    break;
-		case '0' :
+		case 0 :
 			return '暂停维护';
 			break;
 		default:
@@ -55,10 +55,10 @@ Handlebars.registerHelper('Status',function(status) {
 
 Handlebars.registerHelper('StatusOne',function(status) {
 	switch (status){
-	    case '1' :
+	    case 1:
 		    return '正在开拓';
 		    break;
-		case '0' :
+		case 0:
 			return '暂停开拓';
 			break;
 		default:
@@ -68,10 +68,10 @@ Handlebars.registerHelper('StatusOne',function(status) {
 
 Handlebars.registerHelper('lastStatus',function(lastStatus) {
 	switch (lastStatus){
-	    case '1' :
+	    case 1:
 		    return '上期已维护';
 		    break;
-		case '0' :
+		case 0:
 			return '上期未维护';
 			break;
 		default:
@@ -79,4 +79,29 @@ Handlebars.registerHelper('lastStatus',function(lastStatus) {
 	};
 });
 
+Handlebars.registerHelper('StatusTwo',function(status) {
+	switch (status){
+	    case 1 :
+		    return '暂停开拓';
+		    break;
+		case 0 :
+			return '进行开拓';
+			break;
+		default:
+			break;
+	};
+});
+
+Handlebars.registerHelper('StatusThree',function(status) {
+	switch (status){
+	    case 1 :
+		    return '暂停维护';
+		    break;
+		case 0 :
+			return '进行维护';
+			break;
+		default:
+			break;
+	};
+});
 
