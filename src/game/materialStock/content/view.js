@@ -4,7 +4,7 @@ import $ from 'jquery';
 
 export default ItemView.extend({
   template: template,
-  className: 'article',
+  className: 'mcon',
     
   initialize(options={}){
     this.container = options.container;
