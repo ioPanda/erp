@@ -22,6 +22,11 @@ import ExitRoute from './exit/route';
 import ProductManageRoute from './productManage/route';
 import AuthenticationManageRoute from './authenticationManage/route';
 import materialStockRoute from './materialStock/route';
+import viewBalanceSheetRoute from './viewBalanceSheet/route';
+import viewAccountingEntryRoute from './viewAccountingEntry/route';
+import discountRoute from './discount/route';
+import viewProfitRoute from './viewProfit/route';
+import checkMoneyRoute from './checkMoney/route';
 
 import routerTable from './routes.json';
 
@@ -118,5 +123,36 @@ export default Router.extend({
       return new materialStockRoute({
         container:this.container
       });
+    },
+
+    viewAccountingEntry() {
+      return new viewAccountingEntryRoute({
+        container:this.container
+      });
+    },
+
+    viewBalanceSheet() {
+      return new viewBalanceSheetRoute({
+        container:this.container
+      });
+    },
+
+    checkMoney() {
+      return new checkMoneyRoute({
+        container:this.container
+      });
+    },
+
+    viewProfit() {
+      return new viewProfitRoute({
+        container:this.container
+      });
+    },
+
+    discount() {
+      return new discountRoute({
+        container:this.container
+      });
     }
+
 });
