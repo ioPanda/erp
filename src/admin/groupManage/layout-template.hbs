@@ -27,7 +27,7 @@
   
   <ul class="pagination">
     {{#if prev}}
-      <li><a href="#colors?page={{prev}}">&laquo;</a></li>
+      <li><a href="#admin/groupManage">&laquo;</a></li>
     {{else}}
       <li class="disabled"><a>&laquo;</a></li>
     {{/if}}
@@ -36,12 +36,12 @@
       {{#if current}}
         <li class="active"><a>{{page}} <span class="sr-only">(current)</span></a></li>
       {{else}}
-        <li><a href="#colors?page={{page}}">{{page}}</a></li>
+        <li><a href="#admin/groupManage">{{page}}</a></li>
       {{/if}}
     {{/each}}
 
     {{#if next}}
-      <li><a href="#colors?page={{next}}">&raquo;</a></li>
+      <li><a href="#admin/groupManage">&raquo;</a></li>
     {{else}}
       <li class="disabled"><a>&raquo;</a></li>
     {{/if}}
