@@ -10,11 +10,7 @@ export default ItemView.extend({
   className: 'request_content',
   
   initialize(options={}){
-  	this.collection=options.collection;
-  	console.log(this.collection.length);
-  	this.len = this.collection.length;
-  
-    Backbone.on('selectMkt',this.show,this);
+    // Backbone.on('selectMkt',this.show,this);
     
   },
   

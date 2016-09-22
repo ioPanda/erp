@@ -16,7 +16,7 @@ export default Route.extend({
 
         // 面包屑
         this.layout.breadcrumb.show(new BreadcrumbView({
-            'mainNav': '库存管理',
+            'mainNav': '原料管理',
             'title': '产品库存',
             'subTitle': 'Product inventory',
             'icon':'glyphicon-th'

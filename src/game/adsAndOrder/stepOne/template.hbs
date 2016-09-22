@@ -12,9 +12,9 @@
 		       <span>请选择市场：</span>
 		       <select class="form-control">
 		     
-					<option>请选择市场：</option>
+					<option>请选择市场</option>
 		       		{{#each market}}
-		       			<option>{{marketName}}</option>
+		       			<option index="{{@index}}">{{marketName}}</option>
 		    	    {{/each}}
 		       
 		       </select>
@@ -30,49 +30,25 @@
 	    	   		<th>投放广告费(单位：万)</th>
 	    	   		<th>操作</th>
 	    	   	</tr>
-	    	   
+	    	   {{#each products}}
 	    	   	<tr>
-
-	    	   		<td class="productId">{{productId}}</td>
+	    	   		<td class="productId">{{id}}</td>
 	    	   		<td>{{productName}}</td>
 	    	   		<td class="money">
-	    	   			<input type="text" class="putInto" placeholder="0.0">
+	    	   			<input type="text" class="putInto" value="{{money}}" placeholder="0.0">
 	    	   		</td>
 	    	   		<td>
 	    	   			<button type="button" class="btn btn-info sure">提交</button>
 	    	   		</td>
 	    	   	</tr>
+	    	   	{{/each}}
+	    	   	<tr>
+	    	   		<td></td>
+	    	   		<td></td>
+	    	   		<td></td>
+	    	   		<td></td>
+	    	   	</tr>
 	    	   	
-	    	   	<tr>
-	    	   		<td></td>
-	    	   		<td></td>
-	    	   		<td></td>
-	    	   		<td></td>
-	    	   	</tr>
-	    	   	<tr>
-	    	   		<td></td>
-	    	   		<td></td>
-	    	   		<td></td>
-	    	   		<td></td>
-	    	   	</tr>
-	    	   	<tr>
-	    	   		<td></td>
-	    	   		<td></td>
-	    	   		<td></td>
-	    	   		<td></td>
-	    	   	</tr>
-	    	   	<tr>
-	    	   		<td></td>
-	    	   		<td></td>
-	    	   		<td></td>
-	    	   		<td></td>
-	    	   	</tr>
-	    	   	<tr>
-	    	   		<td></td>
-	    	   		<td></td>
-	    	   		<td></td>
-	    	   		<td></td>
-	    	   	</tr>
     	   </table>
 		</div>
 	</div>

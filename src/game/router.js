@@ -21,6 +21,7 @@ import TimeRoute from './time/route';
 import ExitRoute from './exit/route';
 import ProductManageRoute from './productManage/route';
 import AuthenticationManageRoute from './authenticationManage/route';
+import materialStockRoute from './materialStock/route';
 
 import routerTable from './routes.json';
 
@@ -103,6 +104,18 @@ export default Router.extend({
     
     marketForest() {
       return new MarketForestRoute({
+        container:this.container
+      });
+    },
+
+    productStock() {
+      return new ProductStockRoute({
+        container:this.container
+      });
+    },
+
+    materialStock() {
+      return new materialStockRoute({
         container:this.container
       });
     }

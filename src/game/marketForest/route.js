@@ -3,21 +3,16 @@ import LayoutView from './layout-view';
 import BreadcrumbView from '../../component/breadcrumb/view';
 import ChartView from './chart/view';
 import CheckedView from './checked/view';
-import Collection from './collection';
+import Collection from './markets-colletion';
 
 export default Route.extend({
     initialize(options = {}) {
         this.container = options.container;
-        this.collection = new Collection();
         this.layout = new LayoutView();
-    },
-
-    fetch () {
-        return this.collection.fetch();
+        this.collection = new Collection();
     },
 
     render () {
-        console.log(this.collection);
         this.container.show(this.layout);
         
         this.layout.breadcrumb.show(new BreadcrumbView({
