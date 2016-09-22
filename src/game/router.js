@@ -20,8 +20,8 @@ import ProductStockRoute from './productStock/route';
 import TimeRoute from './time/route';
 import ExitRoute from './exit/route';
 import ProductManageRoute from './productManage/route';
-import materialIntroRoute from './materialIntro/route';
-
+import AuthenticationManageRoute from './authenticationManage/route';
+import materialStockRoute from './materialStock/route';
 
 import routerTable from './routes.json';
 
@@ -47,6 +47,18 @@ export default Router.extend({
     	});
     },
 
+    authenticationManage() {
+      return new AuthenticationManageRoute({
+        container: this.container
+      });
+    },
+
+    factory() {
+      return new FactoryRoute({
+        container: this.container
+      });
+    },
+
     yearMeeting() {
       return new YearMeetingRoute({
         container: this.container
@@ -66,7 +78,7 @@ export default Router.extend({
     },
 
     materialIntro() {
-        return new materialIntroRoute({
+        return new MaterialIntroRoute({
           container: this.container
         });
     },
@@ -92,6 +104,18 @@ export default Router.extend({
     
     marketForest() {
       return new MarketForestRoute({
+        container:this.container
+      });
+    },
+
+    productStock() {
+      return new ProductStockRoute({
+        container:this.container
+      });
+    },
+
+    materialStock() {
+      return new materialStockRoute({
         container:this.container
       });
     }

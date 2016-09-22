@@ -14,11 +14,11 @@ export default ItemView.extend({
 		// _.bindAll(this,'addMessage');
 	},
 
-	serializeData () {
-		return {
-			"record" :this.name.record
-		}
-	},
+	// serializeData () {
+	// 	return {
+	// 		"record" :this.name.record
+	// 	}
+	// },
 
 	ui:{
 		inputRegion:'.input',

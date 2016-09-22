@@ -10,23 +10,16 @@ export default ItemView.extend({
   className: 'request_content',
   
   initialize(options={}){
-  	this.collection=options.collection;
-  	console.log(this.collection.length);
-  	this.len = this.collection.length;
-  
-    Backbone.on('selectMkt',this.show,this);
+    // Backbone.on('selectMkt',this.show,this);
     
   },
   
   show ($marketName) {      //传递参数
     for(let i=0; i<this.len; i++){
-    	let _this = this.collection.models[i].get("marketName"),
-    		_thisMmax,_thisMmin,_thisPmax,_thisPmin,
-        mP1,mP2,mP3,mP4,
-        pP1,pP2,pP3,pP4,
-        mName,
+    let _this = this.collection.models[i].get("marketName"),
         dataList = [];
     	if (_this == $marketName){
+        let
         mName = this.collection.models[i].get("marketName"),
         mP1 = this.collection.models[i].get("mountMap").p1,
         mP2 = this.collection.models[i].get("mountMap").p2,
@@ -36,9 +29,9 @@ export default ItemView.extend({
         pP2 = this.collection.models[i].get("priceMap").p2,
         pP3 = this.collection.models[i].get("priceMap").p3,
         pP4 = this.collection.models[i].get("priceMap").p4,
-    		_thisMmax = this.collection.models[i].get("mountMap").mountMax;
-    		_thisMmin = this.collection.models[i].get("mountMap").mountMin;
-    		_thisPmax = this.collection.models[i].get("priceMap").mountMax;
+    		_thisMmax = this.collection.models[i].get("mountMap").mountMax,
+    		_thisMmin = this.collection.models[i].get("mountMap").mountMin,
+    		_thisPmax = this.collection.models[i].get("priceMap").mountMax,
     		_thisPmin = this.collection.models[i].get("priceMap").mountMin;
         dataList.push(mName,mP1,mP2,mP3,mP4,pP1,pP2,pP3,pP4,_thisMmax,_thisMmin,_thisPmax,_thisPmin);
         this.getChart(dataList);

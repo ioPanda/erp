@@ -44,7 +44,19 @@ export default ItemView.extend({
                      "beginTime":"0",
                      "status":"1"
                     };
+        console.log(marketName);
         //ajax--startUndevelopMarket
+        $.ajax({
+            type:'POST',
+            url:'/erp/marketController/startDevelopingMarket.do',
+            data:{"marketName":marketName},
+            success:function(res){
+                console.log(res.status);
+            },
+            error:function(res){
+                console.log(res.status);
+            }
+        });
         $parent.remove();
         Backbone.trigger('append', [model]);
     }

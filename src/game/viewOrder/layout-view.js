@@ -1,4 +1,3 @@
-
 import {LayoutView} from 'backbone.marionette';
 import template from './template.hbs';
 
@@ -11,9 +10,7 @@ export default LayoutView.extend({
     content: '.content'
   },
 
-  
-
-
+ 
   initialize(options = {}) {
     this.model = options.model;
   }

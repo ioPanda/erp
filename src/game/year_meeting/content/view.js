@@ -1,7 +1,6 @@
 import {ItemView} from 'backbone.marionette';
 import template from './template.hbs';
 import $ from 'jquery';
-import {Model} from 'backbone'
 
 export default ItemView.extend({
   template: template,
@@ -18,7 +17,9 @@ export default ItemView.extend({
   },
   
   initialize(options={}){
-    this.model=new Model(options);
+    this.model=options.model;
+    this.model1=options.model1;
+    this.data=this.model1.get('data');
   },
 
   onMoveover(e){

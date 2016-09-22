@@ -3,6 +3,9 @@ import FormBehavior from '../../forms/behavior';
 import Backbone from 'backbone';
 import {ItemView} from 'backbone.marionette';
 import template from './template.hbs';
+import _ from 'lodash';
+import Util from '../../util';
+import nprogress from 'nprogress';
 
 export default ItemView.extend({
   template: template,
@@ -51,6 +54,22 @@ export default ItemView.extend({
   handleSubmit() {
     this.onInputChange(this.form, () => {
       this.model.set(this.form);
+
+      nprogress.start();
+      this.model= _.invoke(this.model,'toJSON');
+      console.log(this.model);
+      Util.ajax('POST','/erp/user/addRegister.do',this.model)
+          .then((res) => {
+            if(res){
+              console.log(res.status);
+            }else{
+              console.log(res.status);
+            }
+            nprogress.done();
+          })
+          .catch((res) => {
+            nprogress.done(true);
+          });
     });
   }
 });
