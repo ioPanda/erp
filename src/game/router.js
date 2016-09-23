@@ -21,6 +21,9 @@ import TimeRoute from './time/route';
 import ExitRoute from './exit/route';
 import ProductManageRoute from './productManage/route';
 import AuthenticationManageRoute from './authenticationManage/route';
+import LoanInYearRoute from './loanInYear/route';
+import LoanManageRoute from './loanManage/route';
+import ApplyLoanRoute from './applyLoan/route';
 
 import routerTable from './routes.json';
 
@@ -103,6 +106,42 @@ export default Router.extend({
     
     marketForest() {
       return new MarketForestRoute({
+        container:this.container
+      });
+    },
+
+    buyMaterial() {
+      return new BuyMaterialRoute({
+        container:this.container
+      });
+    },
+    postOrder() {
+      return new PostOrderRoute({
+        container:this.container
+      });
+    },
+    viewOrder() {
+      return new ViewOrderRoute({
+        container:this.container
+      });
+    },
+    materialOrder() {
+      return new MaterialOrderRoute({
+        container:this.container
+      });
+    },
+    applyLoan() {
+      return new ApplyLoanRoute({
+        container:this.container
+      });
+    },
+    loanInYear() {
+      return new LoanInYearRoute({
+        container:this.container
+      });
+    },
+    loanManage() {
+      return new LoanManageRoute({
         container:this.container
       });
     }
