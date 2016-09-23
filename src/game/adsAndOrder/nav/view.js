@@ -45,19 +45,19 @@ export default ItemView.extend({
     		spans = lis.find('span'),
     		OneArr = this.classNameArr('active','active1','actived','active2','prev_actived');
     	switch(step){
-    		case '1':
+    		case 1:
     			this.One(lis,spans,OneArr,step);
     			break;
-    		case '2':
+    		case 2:
     			this.Two(lis,spans,OneArr,step);
     			break;
-    		case '3':
+    		case 3:
     			this.More(lis,spans,OneArr,step);
     			break;
-    		case '4':
+    		case 4:
     			this.More(lis,spans,OneArr,step);
     			break;
-    		case '5':
+    		case 5:
     			this.More(lis,spans,OneArr,step);
     			break;
     		default :

@@ -3,6 +3,7 @@ import $ from 'jquery';
 import {LayoutView} from 'backbone.marionette';
 import CollectionView from './content/collection-view';
 import {Collection} from 'backbone';
+import CollectionUpdate from './collection';  //
 import template from './layout-template.hbs';
 import ModalService from '../../component/modal/service';
 
@@ -78,25 +79,14 @@ export default LayoutView.extend({
     'submit @ui.ok'         : 'ok'
   },
 
-  
-
   changeLimit(e) {
       //重置列表内容
       this.state.limit = $('.page select').val();
-      this.state.start = (this.page - 1) * this.state.limit;
+      // this.state.start = (this.page - 1) * this.state.limit;
+      this.state.start = 0;
 
-      let filtered = _.chain(this.data)
-        .drop(this.state.start)
-        .take(this.state.limit)
-        .value();
-
-      this.filteredCollection = new Collection(filtered);
-
-      this.collectionView = new CollectionView({
-         collection: this.filteredCollection
-      });
-
-      this.list.show(this.collectionView);
+      this.onBeforeRender();
+      this.onAttach();
       
       //重置页码数
       let num = Math.ceil(this.data.length / this.state.limit);
@@ -105,7 +95,7 @@ export default LayoutView.extend({
          $('.pagination').html('');
          $('.pagination').append('<li class="disabled"><a>&laquo;</a></li>');
          for(let i=0;i<num;i++){
-            $('.pagination').append('<li><a href="#colors?page='+(i+1)+'">'+(i+1)+'</a></li>');
+            $('.pagination').append('<li><a href="#admin/userList">'+(i+1)+'</a></li>');
          }
          $('.pagination').append('<li><a>&raquo;</a></li>');
          
@@ -131,18 +121,8 @@ export default LayoutView.extend({
     }
      
      this.state.start = (this.page-1)*this.state.limit;
-     
-     let filtered = _.chain(this.data)
-            .drop(this.state.start)
-            .take(this.state.limit)
-            .value();
-
-          this.filteredCollection = new Collection(filtered);
-
-          this.collectionView = new CollectionView({
-             collection: this.filteredCollection
-          });
-     this.list.show(this.collectionView);
+     this.onBeforeRender();
+     this.onAttach();
       
      $$.removeClass('active');
      $$.eq(this.page).addClass('active');
@@ -162,49 +142,124 @@ export default LayoutView.extend({
      $(e.target).prop('checked', false);
   },
 
-  update(e) {
-    var da = {};
-    $('div.application__overlay').on('change', function(e){
-      da[$(e.target).attr('name')] = $(e.target).val();
-      // da.push($(e.target).val());    
-    });
+  createAjax(urlData, done){
+     let jqXHR = $.ajax({
+        type: 'GET',
+        url : urlData
+     });
 
+     jqXHR.done(done);
+
+     jqXHR.fail(function(xhr, errorText, errorStatus){
+        ModalService.request('alert', {
+          title: errorText,
+          text : '请求连接失败！'
+        });
+     });
+  },
+
+  update(e) {
     let rowData = $(e.target).parent().parent().children();
+    let oldData = {     // 保存表格中的数据
+       userID: rowData.eq(1).html(),
+       name: rowData.eq(2).html(),
+       className: rowData.eq(4).html(),
+       major: rowData.eq(3).html(),
+       studentId: rowData.eq(5).html()
+    }; 
+    let da = {    
+       userID: rowData.eq(1).html(),
+       name: rowData.eq(2).html(),
+       className: rowData.eq(4).html(),
+       major: rowData.eq(3).html(),
+       studentId: rowData.eq(5).html()
+    };
+
+    $('div.application__overlay').on('change', function(e) {
+      if($(e.target).val() === '') {
+        if(!$(e.target).parent().hasClass('has-error')) {
+           $(e.target).parent().addClass('has-error');
+           $(e.target).next().attr('class', 'glyphicon glyphicon-remove form-control-feedback');
+           $(e.target).parent().after('<span class="help-block">信息不能为空！</span>');
+           // $('div.modal-footer .btn-primary').addClass('disabled');
+        }
+      } else {
+        if($(e.target).parent().hasClass('has-error')) {
+           $(e.target).parent().removeClass('has-error');
+           $(e.target).next().attr('class', 'glyphicon glyphicon-ok form-control-feedback');
+           $(e.target).parent().next().remove();
+        }
+        da[$(e.target).attr('name')] = $(e.target).val();
+      }
+      // for(let i = 0; i < $('.modal-body span').length; i++){
+      //   if($('.modal-body span').eq(i).hasClass('help-block')){
+      //     $('div.modal-footer .btn-primary').addClass('disabled');
+      //     break;
+      //   }
+      // }
+    });
+    
 
     ModalService.request('confirm', {
       title : '修改用户信息',
       text: '<form class="ud">'
-            + '<div class="form-group input-group"><span class="input-group-addon">*用户名ID</span><input type="text" name="userId" class="form-control" value="'+rowData.eq(1).html()+'" disabled></div>'
-            + '<div class="form-group input-group"><span class="input-group-addon">*姓名</span><input type="text" name="userName" class="form-control" value="'+rowData.eq(2).html()+'"></div>'
-            + '<div class="form-group input-group"><span class="input-group-addon">*专业</span><input type="text" name="major" class="form-control" value="'+rowData.eq(3).html()+'"></div>'
-            + '<div class="form-group input-group"><span class="input-group-addon">*班级</span><input type="text" name="class" id="nihao" class="form-control" value="'+rowData.eq(4).html()+'"></div>'
-            + '<div class="form-group input-group"><span class="input-group-addon">*学号</span><input type="text" name="studentId" class="form-control" value="'+rowData.eq(5).html()+'"></div>'
+            + '<div class="form-group input-group has-feedback"><span class="input-group-addon">*用户名ID</span><input type="text" name="userID" class="form-control" value="'+rowData.eq(1).html()+'" disabled><span class="glyphicon glyphicon-ok form-control-feedback"></span></div>'
+            + '<div class="form-group input-group has-feedback"><span class="input-group-addon">*姓名</span><input type="text" name="name" class="form-control" value="'+rowData.eq(2).html()+'"><span class="glyphicon glyphicon-ok form-control-feedback"></span></div>'
+            + '<div class="form-group input-group has-feedback"><span class="input-group-addon">*专业</span><input type="text" name="major" class="form-control" value="'+rowData.eq(3).html()+'"><span class="glyphicon glyphicon-ok form-control-feedback"></span></div>'
+            + '<div class="form-group input-group has-feedback"><span class="input-group-addon">*班级</span><input type="text" name="className" id="nihao" class="form-control" value="'+rowData.eq(4).html()+'"><span class="glyphicon glyphicon-ok form-control-feedback"></span></div>'
+            + '<div class="form-group input-group has-feedback"><span class="input-group-addon">*学号</span><input type="text" name="studentId" class="form-control" value="'+rowData.eq(5).html()+'"><span class="glyphicon glyphicon-ok form-control-feedback"></span></div>'
             + '</form>'
     }).then(confirmed => {
       if (!confirmed) {
         return;
       } else {
-         let updateId = rowData.eq(1).html();
-         let jqXHR = $.ajax({
-            type: 'GET',
-            url: '/userManagerController/getUserList.do',
-            data: da
-         });
+        for(let i in oldData){
+           if(da[i] !== oldData[i]){
+              let jqXHR = $.ajax({
+                 type: 'GET',
+                 url: '/erp/userManager/updateApprovedUserInfo.do',
+                 data: da
+              });
 
-         jqXHR.done(function(response){
-            alert(updateId + ' update');
-            alert(da.userName);
-            // alert(response[0]['data'][1]['userId']);
-         });
+              jqXHR.done(function(response) {
+                 if(response.status === 1) {
+                    for(let i in da){
+                      switch(i){
+                        case 'userID'   : rowData.eq(1).html(da[i]);
+                                          console.log('userID'+rowData.eq(1).html());
+                                          break;
+                        case 'name'     : rowData.eq(2).html(da[i]);
+                                          console.log('name'+rowData.eq(2).html());
+                                          break;
+                        case 'major'    : rowData.eq(3).html(da[i]);
+                                          console.log('major'+rowData.eq(3).html());
+                                          break;
+                        case 'className': rowData.eq(4).html(da[i]);
+                                          console.log('className'+rowData.eq(4).html());
+                                          break;
+                        case 'studentId': rowData.eq(5).html(da[i]);
+                                          console.log('studentId'+rowData.eq(5).html());
+                                          break;
+                      }
+                    }
+                 }
+              });
 
-         jqXHR.fail(function(xhr, errorText, errorStatus){
-            alert('there is a error in updata');
-         });
+              jqXHR.fail(function(xhr, errorText, errorStatus) {
+                 ModalService.request('alert', {
+                    title : errorText,
+                    text: '请求连接失败！'
+                 });
+              });
+              
+              return;
+           }
+        }
       }
     });   
   },
 
-  delete(e){
+  delete(e) {
     let rowData = $(e.target).parent().parent().children();
     let deleteId;
     ModalService.request('confirm', {
@@ -214,37 +269,44 @@ export default LayoutView.extend({
         if (!confirmed) {
           return;
         } else {
-            deleteId = rowData.eq(1).html();
-        } 
-        
-        let jqXHR = $.ajax({
-            type: 'GET',
-            // url: '/userManagerController/getUserList.do',
-            url: '/erp/userManager/deleteApprUser.do',
-            data: deleteId
-        });
+          deleteId = rowData.eq(1).html();
+          let url = '/erp/userManager/deleteApprUser.do?userId='+deleteId;
+          
+          let index;
 
-        jqXHR.done(function(response) {
-            alert(deleteId + ' delete');   
-        });
-
-        jqXHR.fail(function(xhr, errorText, errorStatus) {
-            alert('there is a error in delete');
-        });
-     
+          function done(response){
+             ModalService.request('alert', {
+                title : '',
+                text: response.message
+             });
+             if(response.status === 1){
+               for(let i=0;i<$('tbody tr').length;i++) {  
+                 $('tbody tr').eq(i).children().eq(1).html() === agreeId ? index = i :'';       
+               }
+               $('tbody').get(0).deleteRow(index);
+               console.log('删除了：'+ index);
+             }
+          }
+          this.createAjax(url, done);
+        }   
     });     
   },
 
-  deleteMore(e){
+  deleteMore(e) {
     let arr = [];    // 保存要删除的  userId
+    let index = [];  // 保存要删除的 tr 的索引
 
-    for(let i=0;i<$('tbody input').length;i++) {
+    for(let i=0; i<$('tbody input').length; i++) {
        $('tbody input').eq(i).prop('checked') === true ? arr.push($('tbody').children().eq(i).children().eq(1).html()) : '';       
+       $('tbody input').eq(i).prop('checked') === true ? index.push(i) : '';       
     }
-
+   
     if(arr.length === 0) {
-       alert('0');
-       return;
+      ModalService.request('alert', {
+         title : '',
+         text: '请选择要删除的用户！'
+      });
+      return;
     } else {
        let rowData = $(e.target).parent().parent().children();
        ModalService.request('confirm', {
@@ -254,20 +316,21 @@ export default LayoutView.extend({
          if (!confirmed) {
            return;
          } else {
-           let jqXHR = $.ajax({
-               type: 'GET',
-               url: '/userManagerController/getUserList.do',
-               // url: 'http://172.22.1.159:8080/erp/userManager/deleteBatchApprUsers.do',
-               data: arr
-           });
+           let url = '/erp/userManager/deleteBatchApprUsers.do?userIds='+arr;
 
-           jqXHR.done(function(response) {
-               alert(arr + ' delete');
-           });
-
-           jqXHR.fail(function(xhr, errorText, errorStatus) {
-               alert('there is a error in delete');
-           });
+           function done(response){
+              ModalService.request('alert', {
+                 title : '',
+                 text: response.message
+              });
+              if(response.status === 1){ //删除成功
+                 for(let i=0; i < index.length; i++){
+                    $('tbody').get(0).deleteRow(index[i]-i);
+                    console.log('删除了：'+index[i]);
+                 }
+              }
+           }
+           this.createAjax(url, done);
          }    
        });
      }

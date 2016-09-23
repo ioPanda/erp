@@ -1,7 +1,7 @@
 import Backbone from 'backbone';
 import {Router} from 'backbone-routing';
 import Aside from '../component/aside/service';
-import Header from "../component/header/service";
+import Header from '../component/header/service';
 import UserListRoute from './userList/route';
 import UserCheckRoute from './userCheck/route';
 import GroupManageRoute from './groupManage/route';
@@ -23,13 +23,13 @@ export default Router.extend({
   },
 
   routes: {
-    "admin/userList": "userList",
-  	"admin/userCheck": "userCheck",
-    "admin/groupManage":"groupManage",
-    "admin/companyRate": "companyRate",
-    "admin/ownerEquity": "ownerEquity",
-  	"admin/oldCompanyRate": "oldCompanyRate",
-    "admin/oldOwnerEquity": "oldOwnerEquity"
+    'admin/userList': 'userList',
+  	'admin/userCheck': 'userCheck',
+    'admin/groupManage':'groupManage',
+    'admin/companyRate': 'companyRate',
+    'admin/ownerEquity': 'ownerEquity',
+  	'admin/oldCompanyRate': 'oldCompanyRate',
+    'admin/oldOwnerEquity': 'oldOwnerEquity'
   },
 
   companyRate() {

@@ -1,6 +1,7 @@
 import {ItemView} from 'backbone.marionette';
 import template from './template.hbs';
 import Backbone from 'backbone';
+import Collection from './collection';
 
 export default ItemView.extend({
 	template:template,
@@ -8,8 +9,14 @@ export default ItemView.extend({
 	initialize(options={}){
 		this.step = options.step;
 		Backbone.trigger('Step',this.step);
-	}
-	//make sure Ad
-	//ajax--getAlreadyAd 
+		this.collection = new Collection();
+		console.log(this.collection);
+	},
+
+    serializeData () {
+    	return {
+
+    	}
+    }
 
 });

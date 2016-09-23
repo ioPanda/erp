@@ -21,9 +21,18 @@ import TimeRoute from './time/route';
 import ExitRoute from './exit/route';
 import ProductManageRoute from './productManage/route';
 import AuthenticationManageRoute from './authenticationManage/route';
+
 import LoanInYearRoute from './loanInYear/route';
 import LoanManageRoute from './loanManage/route';
 import ApplyLoanRoute from './applyLoan/route';
+
+import materialStockRoute from './materialStock/route';
+import viewBalanceSheetRoute from './viewBalanceSheet/route';
+import viewAccountingEntryRoute from './viewAccountingEntry/route';
+import discountRoute from './discount/route';
+import viewProfitRoute from './viewProfit/route';
+import checkMoneyRoute from './checkMoney/route';
+
 
 import routerTable from './routes.json';
 
@@ -110,6 +119,7 @@ export default Router.extend({
       });
     },
 
+<<<<<<< HEAD
     buyMaterial() {
       return new BuyMaterialRoute({
         container:this.container
@@ -142,7 +152,48 @@ export default Router.extend({
     },
     loanManage() {
       return new LoanManageRoute({
+=======
+    productStock() {
+      return new ProductStockRoute({
+        container:this.container
+      });
+    },
+
+    materialStock() {
+      return new materialStockRoute({
+        container:this.container
+      });
+    },
+
+    viewAccountingEntry() {
+      return new viewAccountingEntryRoute({
+        container:this.container
+      });
+    },
+
+    viewBalanceSheet() {
+      return new viewBalanceSheetRoute({
+        container:this.container
+      });
+    },
+
+    checkMoney() {
+      return new checkMoneyRoute({
+        container:this.container
+      });
+    },
+
+    viewProfit() {
+      return new viewProfitRoute({
+        container:this.container
+      });
+    },
+
+    discount() {
+      return new discountRoute({
+>>>>>>> 60e9f501a1cda3f41e004c142d80f5d541781fd1
         container:this.container
       });
     }
+
 });

@@ -4,6 +4,12 @@ import $ from 'jquery';
 
 export default ItemView.extend({
   template: template,
-  className: 'exit',
+  className: 'viewBalanceCount',
+  
+  initialize(options={}){
+
+  }
+
+ 
 
 });

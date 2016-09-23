@@ -1,3 +1,4 @@
+
 import {Route} from 'backbone-routing';
 import LayoutView from './layout-view';
 import BreadcrumbView from '../../component/breadcrumb/view';
@@ -21,6 +22,7 @@ export default Route.extend({
         this.layout.content.show(new ContentView());
     }
 });
+
 
 
 

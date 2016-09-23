@@ -5,12 +5,10 @@ export default Backbone.Model.extend({
   urlRoot: '/erp/user/login.do',
 
   defaults: {
-    loginInfo: {
-      password: '',
-      username: 'admin',
-    },
+    password: '',
+    userId: 'qing',
     identity: 'teacher',
-    ckeckcode: ''
+    ckeckCode: ''
   },
 
   validate(attrs = {}) {

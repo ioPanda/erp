@@ -1,4 +1,3 @@
-
 import {LayoutView} from 'backbone.marionette';
 import template from './template.hbs';
 import {Model} from 'backbone';

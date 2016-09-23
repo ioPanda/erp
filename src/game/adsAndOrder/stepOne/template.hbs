@@ -1,5 +1,4 @@
 {{!步骤1 投放广告}}
-
     
     <div class="panel panel-default">
     	<div class="panel-heading">
@@ -8,20 +7,22 @@
 
     	<div class="panel-body">
     	   {{!下拉菜单}}
-    	   <h4>
+    	   <form class="form-inline">
+
 		       <span>请选择市场：</span>
-		       <select>
-		    	   	<option>本地市场</option>
-		    	   	<option>区域市场</option>
-		    	   	<option>国内市场</option>
-		    	   	<option>亚洲市场</option>
-		    	   	<option>国际市场</option>
+		       <select class="form-control">
+		     
+					<option>请选择市场</option>
+		       		{{#each market}}
+		       			<option index="{{@index}}">{{marketName}}</option>
+		    	    {{/each}}
+		       
 		       </select>
 	    	   <button class="btn btn-info findButton">查询</button>
 	    	   <button type="button" class="next btn btn-info">
 		    	   <a href="#game/adsAndOrder/step2">已投放完毕，下一步</a>
 		       </button>
-           </h4>
+           </form>
     	   <table class="table table-striped table-bordered table-condensed">
 	    	   	<tr>
 	    	   		<th>编号</th>
@@ -29,42 +30,25 @@
 	    	   		<th>投放广告费(单位：万)</th>
 	    	   		<th>操作</th>
 	    	   	</tr>
+	    	   {{#each products}}
 	    	   	<tr>
-	    	   		<td>{{productId}}</td>
+	    	   		<td class="productId">{{id}}</td>
 	    	   		<td>{{productName}}</td>
-	    	   		<td></td>
-	    	   		<td></td>
+	    	   		<td class="money">
+	    	   			<input type="text" class="putInto" value="{{money}}" placeholder="0.0">
+	    	   		</td>
+	    	   		<td>
+	    	   			<button type="button" class="btn btn-info sure">提交</button>
+	    	   		</td>
 	    	   	</tr>
+	    	   	{{/each}}
 	    	   	<tr>
-	    	   		<td>{{productId}}</td>
-	    	   		<td>{{productName}}</td>
+	    	   		<td></td>
+	    	   		<td></td>
 	    	   		<td></td>
 	    	   		<td></td>
 	    	   	</tr>
-	    	   	<tr>
-	    	   		<td>{{productId}}</td>
-	    	   		<td>{{profuctName}}</td>
-	    	   		<td></td>
-	    	   		<td></td>
-	    	   	</tr>
-	    	   	<tr>
-	    	   		<td>{{productId}}</td>
-	    	   		<td>{{productName}}</td>
-	    	   		<td></td>
-	    	   		<td></td>
-	    	   	</tr>
-	    	   	<tr>
-	    	   		<td>{{productId}}</td>
-	    	   		<td>{{productName}}</td>
-	    	   		<td></td>
-	    	   		<td></td>
-	    	   	</tr>
-	    	   	<tr>
-	    	   		<td>{{productId}}</td>
-	    	   		<td>{{productName}}</td>
-	    	   		<td></td>
-	    	   		<td></td>
-	    	   	</tr>
+	    	   	
     	   </table>
 		</div>
 	</div>

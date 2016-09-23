@@ -33,13 +33,11 @@ export default LayoutView.extend({
     this.collectionView = new CollectionView({
       collection: this.filteredCollection
     });
-
     this.list.show(this.collectionView);
 
     $('.group__item').unwrap();   // 去除 <tr class=''> 外部包含的 <tr class="">  -----表格布局
 
-    $('.details').hide();
-    
+    $('.details').hide();  
   },
 
   templateHelpers() {
@@ -79,24 +77,9 @@ export default LayoutView.extend({
   changeLimit(e) {
       //重置列表内容
       this.state.limit = $('.page select').val();
-      this.state.start = (this.page - 1) * this.state.limit;
-
-      let filtered = _.chain(this.data)
-        .drop(this.state.start)
-        .take(this.state.limit)
-        .value();
-
-      this.filteredCollection = new Collection(filtered);
-
-      this.collectionView = new CollectionView({
-         collection: this.filteredCollection
-      });
-
-      this.list.show(this.collectionView);
-
-       $('.group__item').unwrap();   // 去除 <tr class=''> 外部包含的 <tr class="">  -----表格布局
-
-       $('.details').hide();
+      this.state.start = 0;
+      this.onBeforeRender();
+      this.onAttach();
       
       //重置页码数
       let num = Math.ceil(this.data.length / this.state.limit);
@@ -105,7 +88,7 @@ export default LayoutView.extend({
          $('.pagination').html('');
          $('.pagination').append('<li class="disabled"><a>&laquo;</a></li>');
          for(let i=0; i<num; i++){
-            $('.pagination').append('<li><a href="#colors?page='+(i+1)+'">'+(i+1)+'</a></li>');
+            $('.pagination').append('<li><a href="#admin/groupManage">'+(i+1)+'</a></li>');
          }
          $('.pagination').append('<li><a>&raquo;</a></li>');
          
@@ -113,7 +96,6 @@ export default LayoutView.extend({
          $('.pagination').children().eq(1).addClass('active');
          $('.pagination').children().length=3 ? $('.pagination').children().last().addClass('disabled') : '';
       }
-
   },
 
   changePage(e) {
@@ -132,41 +114,77 @@ export default LayoutView.extend({
     }
      
      this.state.start = (this.page-1) * this.state.limit;
-     
-     let filtered = _.chain(this.data)
-            .drop(this.state.start)
-            .take(this.state.limit)
-            .value();
-
-          this.filteredCollection = new Collection(filtered);
-
-          this.collectionView = new CollectionView({
-             collection: this.filteredCollection
-          });
-
-     this.list.show(this.collectionView);
-
-     $('.group__item').unwrap();   // 去除 <tr class=''> 外部包含的 <tr class="">  -----表格布局
-
-     $('.details').hide();
+     this.onBeforeRender();
+     this.onAttach();
       
      $$.removeClass('active');
      $$.eq(this.page).addClass('active');
      this.page === 1 ? $$.eq(0).addClass('disabled') : $$.eq(0).removeClass('disabled');
      this.page === ($$.length-2) ? $$.last().addClass('disabled') : $$.last().removeClass('disabled');
   },
+  
+  createAjax(urlData, done){
+    let jqXHR = $.ajax({
+      type: 'GET',
+      url : urlData
+    });
+
+    jqXHR.done(done);
+
+    jqXHR.fail(function(xhr, errorText, errorStatus){
+       ModalService.request('alert', {
+          title : errorText,
+          text  : '请求连接失败！'
+       });
+    });
+  },
 
   toggleDetails(e) {
-    var $this = $(e.target).parent().parent();
-    var $next = $this.nextUntil('.item');
-
+    let $this = $(e.target).parent().parent();
+    let $after = $(e.target).parent().parent().next().next();
+    let $next = $this.nextUntil('.item');
+    
     $next.slideToggle('slow');
 
     $(e.target).toggleClass('glyphicon-minus');
     
-    // $next.eq(0).slideToggle('normal',function(){
-    //   $next.eq(1).slideToggle('normal');
-    // });
+    let groupName = $(e.target).parent().next().html();
+    
+    if($(e.target).hasClass('glyphicon-minus')){
+       let url ='/erp/gameGroupManager/findGameGroupMemberStatusByGroupName.do?groupName='+groupName;
+       let removeData = $this.next().nextUntil('.item');
+       
+       removeData.remove();
+
+       function done(response){
+         let data = response.data;
+         if(data.length){
+            for(let i = 0; i<data.length; i++){
+              $after.before('<tr class="group__item details details-body"></tr>');
+
+              $after.prev().append('<td colspan="3">'+data[i].userUnique+'</td>');
+         
+              if(data[i].currentPeriod > data[i].periodsOfOneYear){
+                 console.log(Math.ceil(data[i].currentPeriod/data[i].periodsOfOneYear));
+                 if(Math.ceil(data[i].currentPeriod/data[i].periodsOfOneYear) > response.data.year){
+                     $after.prev().append('<td colspan="2">'+'当前：第'+Math.ceil(data[i].currentPeriod/data[i].periodsOfOneYear)+'年 第'+data[i].currentPeriod%data[i].periodsOfOneYear+'期</td>');
+                 } else {
+                     $after.prev().append('<td colspan="2">'+'当前：第'+Math.ceil(data[i].currentPeriod/data[i].periodsOfOneYear)+'年 第'+data[i].currentPeriod%data[i].periodsOfOneYear+'期 <a href="javascript:;">推进下一周期</a></td>')
+                 }
+              } else {
+                 $after.prev().append('<td colspan="2">游戏进行中</td>');
+              }
+
+              data[i].status === -1 ? $after.prev().append('<td>已结束</td>') : $after.prev().append('<td>进行中/<a href="javascript:;">结束运营</a></td>');
+
+              data[i].finishAdFlag === 1 ? $after.prev().append('<td>广告以投放</td>') : $after.prev().append('<td><a href="javascript:;">结束投放广告</a></td>');
+
+              data.finishOrderFlag === 1 ? $after.prev().append('<td>已完成订单选择</td>') : $after.prev().append('<td><a href="javascript:;">结束订单选择</a></td>');               
+            }
+         }
+       }
+       this.createAjax(url, done);   
+    }
   },
 
   delete(e) {
@@ -179,20 +197,23 @@ export default LayoutView.extend({
          return;
        } else {
          let deleteId = rowData.eq(1).html();
-         
-         let jqXHR = $.ajax({
-             type: 'GET',
-             url: '/userManagerController/getUserList.do',
-             data: deleteId
-         });
+         let url = '/erp/gameGroupManager/deteleGameGroup.do?groupName='+deleteId;
 
-         jqXHR.done(function(response) {
-             alert(deleteId + ' delete');
-         });
-
-         jqXHR.fail(function(xhr, errorText, errorStatus) {
-             alert('there is a error in delete');
-         });
+         function done(response) {
+            let index;
+            ModalService.request('alert', {
+               title : '',
+               text: response.message
+            });
+            if(response.status === 1) {
+               for(let i=0;i<$('tbody tr').length;i++) {  
+                 $('tbody tr').eq(i).children().eq(1).html() === deleteId ? index = i :'';       
+               }
+               $('tbody').get(0).deleteRow(index);
+               console.log('删除了：'+ index);
+            }
+         }
+         this.createAjax(url, done);
        }
      });     
   },
