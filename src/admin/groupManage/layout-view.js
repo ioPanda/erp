@@ -33,13 +33,11 @@ export default LayoutView.extend({
     this.collectionView = new CollectionView({
       collection: this.filteredCollection
     });
-
     this.list.show(this.collectionView);
 
     $('.group__item').unwrap();   // 去除 <tr class=''> 外部包含的 <tr class="">  -----表格布局
 
-    $('.details').hide();
-    
+    $('.details').hide();  
   },
 
   templateHelpers() {
@@ -79,24 +77,9 @@ export default LayoutView.extend({
   changeLimit(e) {
       //重置列表内容
       this.state.limit = $('.page select').val();
-      this.state.start = (this.page - 1) * this.state.limit;
-
-      let filtered = _.chain(this.data)
-        .drop(this.state.start)
-        .take(this.state.limit)
-        .value();
-
-      this.filteredCollection = new Collection(filtered);
-
-      this.collectionView = new CollectionView({
-         collection: this.filteredCollection
-      });
-
-      this.list.show(this.collectionView);
-
-       $('.group__item').unwrap();   // 去除 <tr class=''> 外部包含的 <tr class="">  -----表格布局
-
-       $('.details').hide();
+      this.state.start = 0;
+      this.onBeforeRender();
+      this.onAttach();
       
       //重置页码数
       let num = Math.ceil(this.data.length / this.state.limit);
@@ -105,7 +88,7 @@ export default LayoutView.extend({
          $('.pagination').html('');
          $('.pagination').append('<li class="disabled"><a>&laquo;</a></li>');
          for(let i=0; i<num; i++){
-            $('.pagination').append('<li><a href="#colors?page='+(i+1)+'">'+(i+1)+'</a></li>');
+            $('.pagination').append('<li><a href="#admin/groupManage">'+(i+1)+'</a></li>');
          }
          $('.pagination').append('<li><a>&raquo;</a></li>');
          
@@ -113,7 +96,6 @@ export default LayoutView.extend({
          $('.pagination').children().eq(1).addClass('active');
          $('.pagination').children().length=3 ? $('.pagination').children().last().addClass('disabled') : '';
       }
-
   },
 
   changePage(e) {
@@ -132,23 +114,8 @@ export default LayoutView.extend({
     }
      
      this.state.start = (this.page-1) * this.state.limit;
-     
-     let filtered = _.chain(this.data)
-            .drop(this.state.start)
-            .take(this.state.limit)
-            .value();
-
-          this.filteredCollection = new Collection(filtered);
-
-          this.collectionView = new CollectionView({
-             collection: this.filteredCollection
-          });
-
-     this.list.show(this.collectionView);
-
-     $('.group__item').unwrap();   // 去除 <tr class=''> 外部包含的 <tr class="">  -----表格布局
-
-     $('.details').hide();
+     this.onBeforeRender();
+     this.onAttach();
       
      $$.removeClass('active');
      $$.eq(this.page).addClass('active');
@@ -191,7 +158,6 @@ export default LayoutView.extend({
 
        function done(response){
          let data = response.data;
-
          if(data.length){
             for(let i = 0; i<data.length; i++){
               $after.before('<tr class="group__item details details-body"></tr>');
@@ -217,7 +183,6 @@ export default LayoutView.extend({
             }
          }
        }
-
        this.createAjax(url, done);   
     }
   },
@@ -248,7 +213,6 @@ export default LayoutView.extend({
                console.log('删除了：'+ index);
             }
          }
-
          this.createAjax(url, done);
        }
      });     

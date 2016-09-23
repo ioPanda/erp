@@ -31,9 +31,7 @@ export default Route.extend({
       "hasYear":true,
       "type":"line",
       "xAxis":"group",
-      "legend":[],
-      
-        
+      "legend":[]
     },
     {
       "module":"综合市场占有率分析",
