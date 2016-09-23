@@ -119,7 +119,7 @@ export default Router.extend({
       });
     },
 
-<<<<<<< HEAD
+
     buyMaterial() {
       return new BuyMaterialRoute({
         container:this.container
@@ -152,9 +152,9 @@ export default Router.extend({
     },
     loanManage() {
       return new LoanManageRoute({
-=======
-    productStock() {
-      return new ProductStockRoute({
+
+   /* productStock() {
+      return new ProductStockRoute({*/
         container:this.container
       });
     },
@@ -191,7 +191,7 @@ export default Router.extend({
 
     discount() {
       return new discountRoute({
->>>>>>> 60e9f501a1cda3f41e004c142d80f5d541781fd1
+
         container:this.container
       });
     }
