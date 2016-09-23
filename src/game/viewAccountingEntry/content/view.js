@@ -4,10 +4,12 @@ import $ from 'jquery';
 
 export default ItemView.extend({
   template: template,
-  className: 'mcon',
-    
+  className: 'conViewCount',
+  
   initialize(options={}){
-    this.container = options.container;
+
   }
+
+ 
 
 });
