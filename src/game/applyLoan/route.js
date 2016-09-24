@@ -9,18 +9,19 @@ export default Route.extend({
 
         this.layout = new LayoutView();
         this.container.show(this.layout);
-        
-        this.layout.breadcrumb.show(new BreadcrumbView({
-            'mainNav': '销售管理',
-            'title': '按订单发货',
-            'subTitle': 'According to the order of delivery ',
-            'icon' : 'glyphicon-briefcase'
+
+
+        this.layout.breadcrumb.show(new BreadcrumbView({ 
+            'mainNav' : '贷款与融资',
+            'title' : '申请贷款',
+            'subTitle' : '',
+            'icon' : 'glyphicon-euro'
         }));
 
-        // 销售管理
         this.layout.content.show(new ContentView());
     }
 });
+
 
 
 

@@ -5,12 +5,14 @@ import {Model} from 'backbone';
 export default LayoutView.extend({
   template: template,
 
-  regions: {
-    breadcrumb: '#breadcrumb',
-    content: '.viewOrder_content'
+  regions:{
+  	breadcrumb:'#breadcrumb',
+  	content:'.post_content'
   },
 
-  initialize(options = {}) {
-    this.model = options.model;
+  className: 'post',
+  
+  initialize(options = {}){
+  	this.model = options.model;
   }
 });

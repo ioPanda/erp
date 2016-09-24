@@ -12,12 +12,13 @@ export default Route.extend({
 
         // 面包屑
         this.layout.breadcrumb.show(new BreadcrumbView({
-            'mainNav': '主页',
-            'title': '年度规划会议',
-            'subTitle': 'Annual Planning Meeting'
+            'mainNav': '销售管理',
+            'title': '查看订单',
+            'subTitle': 'To view the order ',
+            'icon' : 'glyphicon-briefcase'
         }));
 
-        // 年度会议规划部分
+        // 销售管理
         this.layout.content.show(new ContentView());
     }
 });

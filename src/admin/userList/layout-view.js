@@ -82,20 +82,11 @@ export default LayoutView.extend({
   changeLimit(e) {
       //重置列表内容
       this.state.limit = $('.page select').val();
-      this.state.start = (this.page - 1) * this.state.limit;
+      // this.state.start = (this.page - 1) * this.state.limit;
+      this.state.start = 0;
 
-      let filtered = _.chain(this.data)
-        .drop(this.state.start)
-        .take(this.state.limit)
-        .value();
-
-      this.filteredCollection = new Collection(filtered);
-
-      this.collectionView = new CollectionView({
-         collection: this.filteredCollection
-      });
-
-      this.list.show(this.collectionView);
+      this.onBeforeRender();
+      this.onAttach();
       
       //重置页码数
       let num = Math.ceil(this.data.length / this.state.limit);
@@ -130,18 +121,8 @@ export default LayoutView.extend({
     }
      
      this.state.start = (this.page-1)*this.state.limit;
-     
-     let filtered = _.chain(this.data)
-            .drop(this.state.start)
-            .take(this.state.limit)
-            .value();
-
-      this.filteredCollection = new Collection(filtered);
-
-      this.collectionView = new CollectionView({
-         collection: this.filteredCollection
-      });
-     this.list.show(this.collectionView);
+     this.onBeforeRender();
+     this.onAttach();
       
      $$.removeClass('active');
      $$.eq(this.page).addClass('active');
@@ -306,7 +287,6 @@ export default LayoutView.extend({
                console.log('删除了：'+ index);
              }
           }
-
           this.createAjax(url, done);
         }   
     });     
@@ -350,7 +330,6 @@ export default LayoutView.extend({
                  }
               }
            }
-          
            this.createAjax(url, done);
          }    
        });

@@ -21,12 +21,18 @@ import TimeRoute from './time/route';
 import ExitRoute from './exit/route';
 import ProductManageRoute from './productManage/route';
 import AuthenticationManageRoute from './authenticationManage/route';
+
+import LoanInYearRoute from './loanInYear/route';
+import LoanManageRoute from './loanManage/route';
+import ApplyLoanRoute from './applyLoan/route';
+
 import materialStockRoute from './materialStock/route';
 import viewBalanceSheetRoute from './viewBalanceSheet/route';
 import viewAccountingEntryRoute from './viewAccountingEntry/route';
 import discountRoute from './discount/route';
 import viewProfitRoute from './viewProfit/route';
 import checkMoneyRoute from './checkMoney/route';
+
 
 import routerTable from './routes.json';
 
@@ -113,8 +119,42 @@ export default Router.extend({
       });
     },
 
-    productStock() {
-      return new ProductStockRoute({
+
+    buyMaterial() {
+      return new BuyMaterialRoute({
+        container:this.container
+      });
+    },
+    postOrder() {
+      return new PostOrderRoute({
+        container:this.container
+      });
+    },
+    viewOrder() {
+      return new ViewOrderRoute({
+        container:this.container
+      });
+    },
+    materialOrder() {
+      return new MaterialOrderRoute({
+        container:this.container
+      });
+    },
+    applyLoan() {
+      return new ApplyLoanRoute({
+        container:this.container
+      });
+    },
+    loanInYear() {
+      return new LoanInYearRoute({
+        container:this.container
+      });
+    },
+    loanManage() {
+      return new LoanManageRoute({
+
+   /* productStock() {
+      return new ProductStockRoute({*/
         container:this.container
       });
     },
@@ -151,6 +191,7 @@ export default Router.extend({
 
     discount() {
       return new discountRoute({
+
         container:this.container
       });
     }

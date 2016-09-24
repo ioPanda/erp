@@ -11,16 +11,13 @@ export default Route.extend({
         this.container.show(this.layout);
         
         this.layout.breadcrumb.show(new BreadcrumbView({
-            'mainNav': '销售管理',
-            'title': '按订单发货',
-            'subTitle': 'According to the order of delivery ',
-            'icon' : 'glyphicon-briefcase'
+            'mainNav': '贷款与融资',
+            'title': '贷款管理' ,
+            'subTitle': ' ',
+            'icon' : 'glyphicon-euro'
         }));
 
-        // 销售管理
+        // 贷款与融资
         this.layout.content.show(new ContentView());
     }
 });
-
-
-
