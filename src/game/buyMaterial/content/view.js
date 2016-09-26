@@ -9,5 +9,6 @@ export default ItemView.extend({
 
     initialize(options={}){
         this.model = new Model(options);
-    }
+    },
+    
 });
