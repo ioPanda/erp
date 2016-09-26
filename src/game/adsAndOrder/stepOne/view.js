@@ -13,7 +13,7 @@ export default ItemView.extend({
 		this.step = options.step;
 		this.collection = options.collection;
 		Backbone.trigger('Step',this.step);
-         this.model = [];
+        this.model = [];
 	},
 
 	ui:{
@@ -39,8 +39,9 @@ export default ItemView.extend({
 
     find (e) {
     	let $this = $(e.target),
-    		$select = $this.prev().find('option:selected').val();
-    	Util.ajax('POST','/erp/advertisement/getAdByMarket.do',{"marketName":$select})
+            $select = $this.prev().find('option:selected'),
+    		$selectVal = $select.val();
+    	Util.ajax('POST','/erp/advertisement/getAdByMarket.do',{"marketName":$selectVal})
     		.then((res) => {
                 if(res.status == 1){
                     this.model = res.data;
@@ -49,6 +50,7 @@ export default ItemView.extend({
                     console.log(res.status);
                 }
     		});
+        $select.atrr('selected','selected');
     },
 
     putIntoMoney (e){
