@@ -1,20 +1,13 @@
 {{!聊天框}}
 
 	<form>
-		<fieldset>
-			<legend class="glyphicon glyphicon-comment">聊天室</legend>
-			<div class="form-group display">
-				<div class="screen">
-					{{#each record}}
-						{{ChatRoom.userName}}:{{ChatRoom.record}}<br>
-					{{/each}}
-				</div>
+		<legend>talk</legend>
+		<div class="screen">
+			<textarea disabled="disabled" class="display"></textarea>
+		
+			<div class="sdoin">
+				<textarea class="putInto"></textarea>
+			    <button type="submit" class="send">发<br/>送</button>
 			</div>
-			<div class="form-group input">
-				<textarea rows="4" cols="33" maxlength="120"></textarea>	
-			</div>
-			<div class="form-group send">
-				<button type="submit" class="btn btn-primary btnSend">发<br>送</button>
-			</div>
-		</fieldset>
+		</div>
 	</form>

@@ -11,18 +11,16 @@ export default ItemView.extend({
 
     initialize(options={}){
         this.collection=options.collection;
-        console.log(this.collection);
         Backbone.on('append',this.append,this);
         this.listenTo(this.collection, 'add', this.changeRneder);
-        console.log(_.invoke(this.collection, 'toJSON'));
     },
 
     changeRneder () {
         this.render();
+        
     },
     
     append (model) {
-        console.log(model);
         this.collection.add(model);
     },
 
@@ -41,15 +39,15 @@ export default ItemView.extend({
         'click @ui.stopRes':'stopResFun'
     },
 
+
+
     stopResFun (e) {
         let $this = $(e.target),
             $text = $this.text(),
             $statu = $this.prev().find('.statu').find('h3'),
             statu = $statu.text(),
             marketName = $this.prev().find('.Name').find('h3').text();
-            console.log(typeof marketName);
         let m = {"marketName":marketName};
-        console.log(m);
         if($text == '暂停开拓' && statu == '正在开拓'){
             $this.text('进行开拓');
             $statu.text('暂停开拓');
@@ -64,7 +62,6 @@ export default ItemView.extend({
         }else if($text == '进行开拓' && statu == '暂停开拓'){
             $this.text('暂停开拓');
             $statu.text('正在开拓');
-            console.log(marketName);
             Util.ajax('POST','/erp/market/startDevelopingMarket.do',{'marketName':marketName})
                 .then((res) => {
                     if(res.statu == 1){

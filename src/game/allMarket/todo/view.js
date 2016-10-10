@@ -33,17 +33,17 @@ export default ItemView.extend({
     todoFun (e) {
         let $this = $(e.target),
             $parent = $this.parent(),
-            marketName = $this.prev().find('.name').find('h3').text(),
+            marketName = $this.prev().find('.Name').find('h3').text(),
             researchPeriod = $this.prev().find('.period').find('h3').text(),
             researchCost = $this.prev().find('.creatFee').find('h3').text(),
             maintainCost = $this.prev().find('.serFee').find('h3').text();
-        
+    
         let model = {"marketName":marketName,
                      "researchPeriod":researchPeriod,
                      "researchCost":researchCost,
-                     "finishedPeriod":"0",
-                     "beginTime":"0",
-                     "status":"1"
+                     "finishedPeriod":0,
+                     "beginTime":0,
+                     "status":1
                     };
         console.log(marketName);
         Util.ajax(
@@ -54,6 +54,7 @@ export default ItemView.extend({
             if(res.status == 1){
                 console.log(res.message);
             }else{
+                console.log(1);
                 console.log(res.message);
             }
         });

@@ -3,32 +3,39 @@
 <div class="panel panel-default">
     <div class="panel-heading">
     	<h4>广告投放&nbsp;&nbsp;&nbsp;<span class="item"> >> </span></h4>
-    </div>
-    <div class="panel-body">
-	    <h4>
-	    	{{!返回修改广告费}}
-    		<button class="btn btn-info back">
-                <a href="#game/adsAndOrder/step1">返回修改广告费</a>
-            </button>
-    		{{!确认，下一步}}
-            <button class="btn btn-info next">
-                <a href="#game/adsAndOrder/step3">已确认，下一步</a>
-            </button>
-    	</h4>
 
+        
+    </div>
+    
+    <div class="panel-body">
+
+        <button class="btn btn-info back">
+            <a href="#game/adsAndOrder/step1">  返回确认投放信息      
+            </a>
+        </button> 
+        
+        
+        <button class="btn btn-info next">
+            <a href="#game/adsAndOrder/step3">已确认，下一步
+            </a>
+        </button>  
+        
+        
     	<table class="table table-bordered table-striped">
     		<tr>
     			<th>编号</th>
     			<th>市场</th>
     			<th>产品</th>
     			<th>广告费(单位：万)</th>
-    		</tr>        
+    		</tr>  
+            {{#each orders}}      
     		<tr>
-    			<td>{{productId}}</td>
+    			<td>{{id}}</td>
+    			<td>{{marketName}}</td>
     			<td>{{productName}}</td>
-    			<td></td>
-    			<td></td>
+    			<td>{{money}}</td>
     		</tr>
+            {{/each}}
     		<tr>
     			<td></td>
     			<td></td>
@@ -39,3 +46,4 @@
     	</table>
     </div>
 </div>
+

@@ -10,7 +10,7 @@ export default ItemView.extend({
 
 	initialize(options={}){
 		this.model = options.model;
-        this.name = _.invoke(this.model, 'toJSON');//toJSON json.stringlify
+        // this.name = _.invoke(this.model, 'toJSON');//toJSON json.stringlify
 		// _.bindAll(this,'addMessage');
 	},
 
@@ -42,8 +42,7 @@ export default ItemView.extend({
 			e.preventDefault();
         	alert("发送不能为空！");
 		}else if(val!= ''){
-			screen.append(this.name.username+ ":" +val+'<br>');
-			//ajax
+			screen.append(":" +val+'<br>');
             $val.val("");//clear
             
 		}
