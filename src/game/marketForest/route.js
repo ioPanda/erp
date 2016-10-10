@@ -4,13 +4,25 @@ import BreadcrumbView from '../../component/breadcrumb/view';
 import ChartView from './chart/view';
 import CheckedView from './checked/view';
 import Collection from './markets-colletion';
+import Util from '../../util.js';
+import Backbone from 'backbone';
 
 export default Route.extend({
     initialize(options = {}) {
         this.container = options.container;
         this.layout = new LayoutView();
         this.collection = new Collection();
+        //Backbone.on('init',this.initFun,this);
+        //Backbone.trigger('init');
     },
+
+    // initFun() {
+    //     Util.ajax(
+    //         'POST',
+    //         '',
+    //         {}
+    //         );
+    // },
 
     render () {
         this.container.show(this.layout);

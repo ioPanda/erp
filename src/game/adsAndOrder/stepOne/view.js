@@ -12,8 +12,10 @@ export default ItemView.extend({
 	initialize(options={}){
 		this.step = options.step;
 		this.collection = options.collection;
-		Backbone.trigger('Step',this.step);
         this.model = [];
+        Backbone.on('req',this.reqFun,this);
+		Backbone.trigger('Step',this.step);
+        Backbone.trigger('req');
 	},
 
 	ui:{
@@ -24,6 +26,18 @@ export default ItemView.extend({
     events:{
     	"click @ui.sure":"putIntoMoney",
     	"click @ui.findButton":"find"
+    },
+
+    reqFun () {
+        Util.ajax('POST','/erp/advertisement/getAdByMarket.do',{"marketName":"本地市场"})
+            .then((res) => {
+                if(res.status == 1){
+                    this.model = res.data;
+                    this.changeRender();
+                }else {
+                    console.log(res.status);
+                }
+            });
     },
 
     changeRender () {
@@ -50,7 +64,6 @@ export default ItemView.extend({
                     console.log(res.status);
                 }
     		});
-        $select.atrr('selected','selected');
     },
 
     putIntoMoney (e){

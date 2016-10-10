@@ -4,7 +4,7 @@ import {Model} from 'backbone';
 
 export default LayoutView.extend({
 		template:template,
-		className:'ads',
+		className:'adsm',
 
 		regions:{
 			breadcrumb:'#breadcrumb',

@@ -115,7 +115,8 @@ export default ItemView.extend({
                 history.navigate("game",{trigger:true});
                 break;
               case 8:
-                history.navigate("game/exit",{trigger:true});
+                // history.navigate("game/exit",{trigger:true});
+                // 破产
                 break;
               default :
                 break;            
