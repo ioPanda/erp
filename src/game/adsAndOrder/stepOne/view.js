@@ -36,6 +36,7 @@ export default ItemView.extend({
                     this.changeRender();
                 }else {
                     console.log(res.status);
+                    throw new error("error!");
                 }
             });
     },

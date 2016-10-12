@@ -10,40 +10,35 @@ export default ItemView.extend({
 
 	initialize(options={}){
 		this.model = options.model;
-        // this.name = _.invoke(this.model, 'toJSON');//toJSON json.stringlify
-		// _.bindAll(this,'addMessage');
+		this.Id = localStorage.getItem('userID');
+		console.log(this.Id);
 	},
-
-	// serializeData () {
-	// 	return {
-	// 		"record" :this.name.record
-	// 	}
-	// },
 
 	ui:{
 		inputRegion:'.input',
 		showRegion:'.display',
-		submit:'.btnSend'
+		submit:'.send'
 	},
 
 	events:{
 		"click @ui.submit":"sendFun",
 	},
 
-    
 	sendFun (e) {
-
 	    let $this=$(e.target),
-		    $val=$this.parent().prev().find('textarea'),
-		    str='',
-		    screen=$this.parent().prev().prev().find('.screen'),
+		    $val=$this.prev(),
+		    $display=$this.parent().prev(),
 		    val=$val.val();
 		if(val==''){
 			e.preventDefault();
-        	alert("发送不能为空！");
+    		$val.attr('placeholder','发送不能为空');
 		}else if(val!= ''){
-			screen.append(":" +val+'<br>');
-            $val.val("");//clear
+    		$val.attr('placeholder','');
+			var display = $display.get(0);
+			var itemHtml = display.innerHTML;
+			itemHtml +=this.Id+'&nbsp;:&nbsp;&nbsp;'+val+"\n";
+			display.innerHTML = itemHtml;
+            $val.val('');//clear
             
 		}
 
