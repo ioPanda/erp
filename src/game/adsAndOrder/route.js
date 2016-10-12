@@ -28,23 +28,23 @@ export default Route.extend({
     	return this.Mcollection.fetch();
     },
  	
- 	findPageFun () {
- 		Util.ajax(
- 			'POST',
- 			'/erp/advertisement/userStatusOfAdvertisement.do',
- 			{}
- 			)
- 		.then((res) =>{
- 			if(res.status == 1){
- 				console.log(res.data);
- 				this.step = res.data;
- 				this.render();
- 			}else{
- 				console.log(res.message);
- 			}
+ 	// findPageFun () {
+ 	// 	Util.ajax(
+ 	// 		'POST',
+ 	// 		'/erp/advertisement/userStatusOfAdvertisement.do',
+ 	// 		{}
+ 	// 		)
+ 	// 	.then((res) =>{
+ 	// 		if(res.status == 1){
+ 	// 			console.log(res.data);
+ 	// 			this.step = res.data;
+ 	// 			this.render();
+ 	// 		}else{
+ 	// 			console.log(res.message);
+ 	// 		}
 
- 		});
- 	},
+ 	// 	});
+ 	// },
 
  	changedRender() {
  		this.render();
