@@ -10,6 +10,4 @@ export default ItemView.extend({
 
   }
 
- 
-
 });

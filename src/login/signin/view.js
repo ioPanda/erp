@@ -9,6 +9,7 @@ import Util from '../../util';
 import {history} from 'backbone';
 import nprogress from 'nprogress';
 import _ from 'lodash';
+import AlertView from '../../component/modal/service';
 
 export default ItemView.extend({
   template: template,
@@ -26,7 +27,7 @@ export default ItemView.extend({
     inputName: '#name',
     inputPsw: '#password',
     inputRole: '#identity',
-    inputCode: '#checkcode'
+    inputCode: '#checkcode',
   },
 
   events: {
@@ -72,28 +73,27 @@ export default ItemView.extend({
     this.onInputChange({ password: this.ui.inputPsw.val() });
   },
 
-  handleSubmit() {
+  handleSubmit(e) {
     this.onInputChange(this.form, () => {
       this.model.set(this.form);
-      console.log(this.model);
       this.model= _.invoke(this.model,'toJSON');
-      console.log(this.model);
 
       nprogress.start();
       Util.ajax("POST",'/erp/user/login.do',this.model)
           .then((res) => {
+            this.userID = res.data.userID;
             this.status = res.status;
-            console.log(this.status);
             switch(this.status){
               case 0:
-                console.log(res.message);
+                // AlertView.request('alert',{title:"确认",text:"用户名 密码 身份信息输入有误！"});
+                // 刷新页面
+                // history.navigate('login/signin/',{trigger:true});
+                history.navigate('login/signin',{trigger:true});
                 break;
               case 1:
-                console.log(this.status);
                 // history.navigate("",{trigger:true});
                 break;
               case 2:
-                console.log(this.status);
                 // history.navigate("",{trigger:true});
                 break;
               case 3:
@@ -103,19 +103,19 @@ export default ItemView.extend({
                 history.navigate("group",{trigger:true});
                 break;
               case 5:
-                console.log(this.status);
                 // history.navigate("",{trigger:true});
                 break;
               case 6:
-                console.log(this.status);
                 // history.navigate("",{trigger:true});
                 break;
               case 7:
-                console.log(this.status);
+                localStorage.setItem('userID',this.userID);
                 history.navigate("game",{trigger:true});
+
                 break;
               case 8:
-                history.navigate("game/exit",{trigger:true});
+                // history.navigate("game/exit",{trigger:true});
+                // 破产
                 break;
               default :
                 break;            
@@ -127,5 +127,6 @@ export default ItemView.extend({
 
           });
     });
+    // return false;
   }
 });

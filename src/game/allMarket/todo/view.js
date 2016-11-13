@@ -3,6 +3,7 @@ import template from './template.hbs';
 import $ from 'jquery';
 import _ from 'lodash';
 import Backbone from 'backbone';
+import Util from '../../../util.js';
 
 export default ItemView.extend({
 	template:template,
@@ -32,31 +33,32 @@ export default ItemView.extend({
     todoFun (e) {
         let $this = $(e.target),
             $parent = $this.parent(),
-            marketName = $this.prev().find('.name').find('h3').text(),
+            marketName = $this.prev().find('.Name').find('h3').text(),
             researchPeriod = $this.prev().find('.period').find('h3').text(),
             researchCost = $this.prev().find('.creatFee').find('h3').text(),
             maintainCost = $this.prev().find('.serFee').find('h3').text();
-        
+    
         let model = {"marketName":marketName,
                      "researchPeriod":researchPeriod,
                      "researchCost":researchCost,
-                     "finishedPeriod":"0",
-                     "beginTime":"0",
-                     "status":"1"
+                     "finishedPeriod":0,
+                     "beginTime":0,
+                     "status":1
                     };
         console.log(marketName);
-        //ajax--startUndevelopMarket
-        $.ajax({
-            type:'POST',
-            url:'/erp/marketController/startDevelopingMarket.do',
-            data:{"marketName":marketName},
-            success:function(res){
-                console.log(res.status);
-            },
-            error:function(res){
-                console.log(res.status);
+        Util.ajax(
+            'POST',
+            '/erp/market/startUndevelopMarketToDeveloping.do',
+            {"marketName":marketName})
+        .then((res) => {
+            if(res.status == 1){
+                console.log(res.message);
+            }else{
+                console.log(1);
+                console.log(res.message);
             }
         });
+        
         $parent.remove();
         Backbone.trigger('append', [model]);
     }

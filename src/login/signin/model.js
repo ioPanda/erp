@@ -6,9 +6,9 @@ export default Backbone.Model.extend({
 
   defaults: {
     password: '',
-    userId: 'qing',
-    identity: 'teacher',
-    ckeckCode: ''
+    userId: '2014210872',
+    identity: 'student',
+    ckeckCode: '1111'
   },
 
   validate(attrs = {}) {

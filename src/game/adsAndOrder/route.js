@@ -12,19 +12,44 @@ import $ from 'jquery';
 import Util from '../../util.js';
 import Markets_Collection from './markets-colletion';
 import _ from 'lodash';
+import Backbone from 'backbone';
 
 export default Route.extend({
 	initialize(options={}){
 		this.step = options.step;
+		Backbone.on('findPage',this.findPageFun,this);
 		this.container=options.container;
 		this.Mcollection = new Markets_Collection();
+		Backbone.trigger('findPage');
 
     },
 
     fetch () {
     	return this.Mcollection.fetch();
     },
- 
+ 	
+ 	// findPageFun () {
+ 	// 	Util.ajax(
+ 	// 		'POST',
+ 	// 		'/erp/advertisement/userStatusOfAdvertisement.do',
+ 	// 		{}
+ 	// 		)
+ 	// 	.then((res) =>{
+ 	// 		if(res.status == 1){
+ 	// 			console.log(res.data);
+ 	// 			this.step = res.data;
+ 	// 			this.render();
+ 	// 		}else{
+ 	// 			console.log(res.message);
+ 	// 		}
+
+ 	// 	});
+ 	// },
+
+ 	changedRender() {
+ 		this.render();
+ 	},
+
     render () {
     	
     	this.layout = new LayoutView();
