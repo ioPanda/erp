@@ -83,12 +83,11 @@ export default ItemView.extend({
           .then((res) => {
             this.userID = res.data.userID;
             this.status = res.status;
-            console.log(this.status,this.userID);
             switch(this.status){
               case 0:
-                AlertView.request('alert',{title:"确认",text:"用户名 密码 身份信息输入有误！"});
+                // AlertView.request('alert',{title:"确认",text:"用户名 密码 身份信息输入有误！"});
                 // 刷新页面
-                history.navigate('login/signin/',{trigger:true});
+                // history.navigate('login/signin/',{trigger:true});
                 history.navigate('login/signin',{trigger:true});
                 break;
               case 1:
