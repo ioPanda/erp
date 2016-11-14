@@ -33,8 +33,9 @@ export default ItemView.extend({
     		)
     	.then((res) =>{
     		if(res.status == 1){
+                let sta = res.data.status;
     			if(res.data.length == 1){
-    				history.navigate("game/adsAndOrder/step4",{trigger:true});
+    				history.navigate("game/adsAndOrder/step4",{trigger:true});//step4
     			}else if(res.data.length > 1){
     				this.model = res.data;
 	    			this.changeRender();

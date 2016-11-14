@@ -5,8 +5,8 @@ export default Backbone.Model.extend({
   urlRoot: '/erp/user/login.do',
 
   defaults: {
-    password: '',
-    userId: '2014210872',
+    password: '123456',
+    userId: '2012211184',
     identity: 'student',
     ckeckCode: '1111'
   },
