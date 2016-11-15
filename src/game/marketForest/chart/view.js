@@ -10,34 +10,22 @@ export default ItemView.extend({
   className: 'request_content',
   
   initialize(options={}){
-    // Backbone.on('selectMkt',this.show,this);
-    
+    Backbone.on('chartEvent',this.show,this);
   },
   
-  show ($marketName) {      //传递参数
-    for(let i=0; i<this.len; i++){
-    let _this = this.collection.models[i].get("marketName"),
-        dataList = [];
-    	if (_this == $marketName){
-        let
-        mName = this.collection.models[i].get("marketName"),
-        mP1 = this.collection.models[i].get("mountMap").p1,
-        mP2 = this.collection.models[i].get("mountMap").p2,
-        mP3 = this.collection.models[i].get("mountMap").p3,
-        mP4 = this.collection.models[i].get("mountMap").p4,
-        pP1 = this.collection.models[i].get("priceMap").p1,
-        pP2 = this.collection.models[i].get("priceMap").p2,
-        pP3 = this.collection.models[i].get("priceMap").p3,
-        pP4 = this.collection.models[i].get("priceMap").p4,
-    		_thisMmax = this.collection.models[i].get("mountMap").mountMax,
-    		_thisMmin = this.collection.models[i].get("mountMap").mountMin,
-    		_thisPmax = this.collection.models[i].get("priceMap").mountMax,
-    		_thisPmin = this.collection.models[i].get("priceMap").mountMin;
-        dataList.push(mName,mP1,mP2,mP3,mP4,pP1,pP2,pP3,pP4,_thisMmax,_thisMmin,_thisPmax,_thisPmin);
-        this.getChart(dataList);
-        return false;
-    	}
-    }
+  show (cModel) {      //传递参数
+    let mName = cModel.marketName,
+        mountMap = cModel.mountMap,
+        priceMap = cModel.priceMap,
+        mountMap_Max = mountMap.mountMax,
+        mountMap_Min = mountMap.mountMin,
+        priceMap_Max = priceMap.priceMax,
+        priceMap_Min = priceMap.priceMin;
+        // mountMap_Arr = mountMap.,
+        // priceMap_Arr = priceMap.;
+    // let Arr = mountMap_Arr.concact(priceMap_Arr);
+    // this.getChart(Arr);
+    return;
   },
 
   getChart (obj) {

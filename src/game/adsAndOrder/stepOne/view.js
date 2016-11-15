@@ -36,7 +36,7 @@ export default ItemView.extend({
                     this.changeRender();
                 }else {
                     console.log(res.status);
-                    throw new error("error!");
+                    // throw new Err or("error!");
                 }
             });
     },
@@ -46,6 +46,7 @@ export default ItemView.extend({
     },
 
     serializeData () {
+
         return  { 
             "market": _.invoke(this.collection,'toJSON'),
             "products": this.model

@@ -10,6 +10,7 @@ export default ItemView.extend({
   className: 'checked_content',
 
   initialize (options={}) {
+    this.cModel = null;
     this.container = options.container;
     this.collection = options.collection;
   },
@@ -32,11 +33,17 @@ export default ItemView.extend({
   },
   
   link (e) {
+    e.preventDefault();
     let $marketName=$('option:checked').text();
     Util.ajax('POST','/erp/market/findPrediction.do',{"marketName":$marketName})
         .then((res) => {
-          console.log(res);
+          this.cModel = res;
+          Backbone.trigger('chartEvent',this.cModel);
         });
+
+
   }
+
+
 
 });

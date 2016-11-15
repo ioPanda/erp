@@ -1,3 +1,6 @@
+/*
+* by fangqing
+*/
 import {Route} from 'backbone-routing';
 import BreadcrumbView from '../../component/breadcrumb/view';
 import LayoutView from './layout-view';
@@ -18,7 +21,7 @@ export default Route.extend({
 	initialize(options={}){
 		this.step = options.step;
 		Backbone.on('findPage',this.findPageFun,this);
-		this.container=options.container;
+		this.container = options.container;
 		this.Mcollection = new Markets_Collection();
 		Backbone.trigger('findPage');
 
