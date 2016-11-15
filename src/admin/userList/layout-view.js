@@ -3,7 +3,6 @@ import $ from 'jquery';
 import {LayoutView} from 'backbone.marionette';
 import CollectionView from './content/collection-view';
 import {Collection} from 'backbone';
-import CollectionUpdate from './collection';  //
 import template from './layout-template.hbs';
 import ModalService from '../../component/modal/service';
 
@@ -271,7 +270,6 @@ export default LayoutView.extend({
         } else {
           deleteId = rowData.eq(1).html();
           let url = '/erp/userManager/deleteApprUser.do?userId='+deleteId;
-          
           let index;
 
           function done(response){
