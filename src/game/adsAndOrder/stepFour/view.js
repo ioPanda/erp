@@ -2,6 +2,7 @@ import {ItemView} from 'backbone.marionette';
 import template from './template.hbs';
 import Backbone from 'backbone';
 import Util from '../../../util.js';
+import $ from 'jquery';
 
 export default ItemView.extend({
 	template:template,
@@ -15,6 +16,7 @@ export default ItemView.extend({
 	},
 
 	reqFun () {
+
 		Util.ajax(
 			'POST',
 			'/erp/chooseOrder/chooseOrderList.do',
@@ -42,6 +44,27 @@ export default ItemView.extend({
 
     changeRender () {
     	this.render();
+    },
+
+    ui:{
+    	screen: 'form .screen',
+    	legend: 'from #leg'
+
+    },
+
+    events:{
+    	"click @ui.legend":"hide"
+    	// "mouseout @ui.legend":"hide"
+    },
+
+    show (e) {
+    	let $target = $(e.target).next();
+    	target.show();
+    },
+
+    hide (e) {
+    	let $target = $(e.target).next();
+    	target.hide();
     }
 
 });

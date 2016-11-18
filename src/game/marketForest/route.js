@@ -1,3 +1,6 @@
+/*
+* by fangqing
+*/
 import {Route} from 'backbone-routing';
 import LayoutView from './layout-view';
 import BreadcrumbView from '../../component/breadcrumb/view';
@@ -6,25 +9,24 @@ import CheckedView from './checked/view';
 import Collection from './markets-colletion';
 import Util from '../../util.js';
 import Backbone from 'backbone';
+import _ from 'lodash';
 
 export default Route.extend({
     initialize(options = {}) {
         this.container = options.container;
         this.layout = new LayoutView();
         this.collection = new Collection();
-        //Backbone.on('init',this.initFun,this);
-        //Backbone.trigger('init');
+        
     },
 
-    // initFun() {
-    //     Util.ajax(
-    //         'POST',
-    //         '',
-    //         {}
-    //         );
-    // },
+    fetch () {
+        return this.collection.fetch();
+    },
 
     render () {
+        let filter = _.chain(this.collection.models[0].get('data')).value();
+        this.coll = new Collection(filter);
+
         this.container.show(this.layout);
         
         this.layout.breadcrumb.show(new BreadcrumbView({
@@ -34,9 +36,9 @@ export default Route.extend({
         	'icon':'glyphicon-map-marker'
         }));
 
-        this.layout.select.show(new CheckedView());
-
-        this.layout.chart.show(new ChartView({collection:this.collection}));
+        this.layout.select.show(new CheckedView({collection:this.coll}));
+        // biaoge
+        this.layout.chart.show(new ChartView());
 
     }
 });
