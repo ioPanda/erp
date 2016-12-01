@@ -55,7 +55,8 @@ export default ItemView.extend({
                         console.log(res.message);
                 }
             });
-        }
-    }
+        }    },
 
-});
+    
+
+})

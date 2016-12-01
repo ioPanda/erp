@@ -10,5 +10,11 @@ export default ItemView.extend({
   
   initialize(options = {}) {
     this.model = options.model;
+  },
+  ui:{
+  	pagesone:"#pagesone",
+  	pagestwo:"#pagestwo",
+  	pagesthree:"#pagesthree"
   }
+
 });
